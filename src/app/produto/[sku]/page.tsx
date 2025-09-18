@@ -9,6 +9,7 @@ import produtos from '@/data/db.json';
 import { notFound } from 'next/navigation';
 import IProdutosFiltrados from '@/interface/IProdutosFiltrados';
 import slugify from 'slugify';
+import MarkdownToHtml from '@/components/MarkdownToHtml';
 
 interface Props {
   params: Promise<{
@@ -188,10 +189,7 @@ async function PaginaProduto({ params }: Props) {
           </div>
           <div className='col-span-5 border-y-2 py-10 border-secondary'>
             <h3 className='text-ms text-secondary font-semibold'>Descrição:</h3>
-            <p
-              dangerouslySetInnerHTML={{ __html: produto.descricao }}
-              className='text-xs flex flex-col text-gray-600'
-            ></p>
+            <MarkdownToHtml markdown={produto?.descricao} />
           </div>
           <div className='w-full col-span-full'>
             <h2 className='text-2xl text-secondary font-semibold'>
