@@ -188,7 +188,7 @@ async function PaginaProduto({ params }: Props) {
             </div>
           </div>
           <div className="col-span-5 border-y-2 py-10 border-secondary">
-            <h3 className="text-lg font-medium mt-4 text-secondary">
+            <h3 className="text-lg font-bold mt-4 text-secondary">
               Descrição:
             </h3>
             <MarkdownToHtml markdown={produto?.descricao} />
