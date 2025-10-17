@@ -14,23 +14,32 @@ const MarkdownToHtml = ({ markdown }: Props) => {
         h1: (props: ReactMarkdownProps) => (
           <h1
             {...props}
-            className='text-xl font-bold mb-4 leading-tight text-primary'
+            className='text-xl font-bold mb-4 leading-tight text-secondary'
           />
         ),
         h2: (props: ReactMarkdownProps) => (
           <h2 {...props} className='text-lg font-semibold text-secondary' />
         ),
         h3: (props: ReactMarkdownProps) => (
-          <h3 {...props} className='text-lg font-medium mt-4 text-secondary' />
+          <h3 {...props} className='text-lg font-medium mb-4 text-secondary' />
         ),
         p: (props: ReactMarkdownProps) => (
           <p {...props} className='leading-relaxed text-foreground/90 mb-4' />
         ),
+        strong: (props: ReactMarkdownProps) => (
+          <strong {...props} className='text-secondary' />
+        ),
         ul: (props: ReactMarkdownProps) => (
-          <ul {...props} className='list-disc pl-6 mb-4 space-y-0' />
+          <ul
+            {...props}
+            className='list-disc pl-6 mb-4 space-y-0 marker:text-secondary'
+          />
         ),
         ol: (props: ReactMarkdownProps) => (
-          <ol {...props} className='list-decimal pl-6 mb-4 space-y-0' />
+          <ol
+            {...props}
+            className='list-decimal pl-6 mb-4 space-y-0 marker:text-secondary'
+          />
         ),
         li: (props: ReactMarkdownProps) => (
           <li {...props} className='leading-relaxed' />

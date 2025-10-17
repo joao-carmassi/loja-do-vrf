@@ -183,6 +183,12 @@ async function PaginaProduto({ params }: Props) {
               Descrição:
             </h3>
             <MarkdownToHtml markdown={produto?.descricao} />
+            <p>
+              <strong className='text-secondary uppercase'>
+                Loja do VRF: Transformando desafios térmicos em soluções de
+                precisão!
+              </strong>
+            </p>
           </div>
           <div className='w-full col-span-full'>
             <h2 className='text-2xl text-secondary font-semibold'>
