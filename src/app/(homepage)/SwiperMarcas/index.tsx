@@ -30,34 +30,36 @@ const SwiperMarcas = ({ marcas }: SwiperMarcasProps) => {
       loop={true}
       navigation={true}
       modules={[Navigation, Virtual]}
-      className="w-10/12 swiper-container swiper-marcas"
+      className='w-10/12 swiper-container swiper-marcas'
       breakpoints={{
         640: { slidesPerView: 2 },
         768: { slidesPerView: 3 },
         1024: { slidesPerView: 4 },
       }}
     >
-      {marcas.map((marca) => (
-        <SwiperSlide key={marca} className="my-auto">
-          <div className="flex h-fit justify-center duration-200 items-center md:hover:scale-105 py-2">
-            <Link
-              prefetch={false}
-              className="bg-white rounded-full shadow-md w-8/12 aspect-square relative"
-              href={`/marca/${slugify(marca, { strict: true, lower: true })}`}
-            >
-              <ExportedImage
-                placeholder="empty"
-                loading="lazy"
-                width={220}
-                height={100}
-                className="w-10/12 -translate-y-1/2 absolute right-1/2 top-1/2 translate-x-1/2"
-                src={`${path}/assets/img/marcas/${marca}.png`}
-                alt={`Logo ${marca}`}
-              />
-            </Link>
-          </div>
-        </SwiperSlide>
-      ))}
+      {marcas
+        .filter((marca) => marca !== 'MONTREAL')
+        .map((marca) => (
+          <SwiperSlide key={marca} className='my-auto'>
+            <div className='flex h-fit justify-center duration-200 items-center md:hover:scale-105 py-2'>
+              <Link
+                prefetch={false}
+                className='bg-white rounded-full shadow-md w-8/12 aspect-square relative'
+                href={`/marca/${slugify(marca, { strict: true, lower: true })}`}
+              >
+                <ExportedImage
+                  placeholder='empty'
+                  loading='lazy'
+                  width={220}
+                  height={100}
+                  className='w-10/12 -translate-y-1/2 absolute right-1/2 top-1/2 translate-x-1/2'
+                  src={`${path}/assets/img/marcas/${marca}.png`}
+                  alt={`Logo ${marca}`}
+                />
+              </Link>
+            </div>
+          </SwiperSlide>
+        ))}
     </Swiper>
   );
 };

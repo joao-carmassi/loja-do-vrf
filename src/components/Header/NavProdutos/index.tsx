@@ -83,31 +83,31 @@ const NavProdutos = ({ categorias, subcategorias }: Props) => {
   }, []);
 
   return (
-    <div className="hidden md:block">
+    <div className='hidden md:block'>
       <nav
         className={`bg-base-100 shadow-sm text-white ContainerCategoriaNav py-1 ${
           abreNav.hidden ? 'hidden' : ''
         } ${abreNav.block ? 'lg:block' : ''}`}
-        id="navBar"
+        id='navBar'
       >
-        <div className="relative">
-          <ul className="flex justify-center text-secondary gap-10 items-center">
-            <li className="categoriaNav relative" id="categoria">
+        <div className='relative'>
+          <ul className='flex justify-center text-secondary gap-10 items-center'>
+            <li className='categoriaNav relative' id='categoria'>
               <div>
-                <p className="flex justify-center font-semibold gap-1 items-center tracking-wide">
+                <p className='flex justify-center font-semibold gap-1 items-center tracking-wide'>
                   <img
-                    className="h-4 inline"
+                    className='h-4 inline'
                     src={`${path}/assets/img/nav/categoria.webp`}
                   />
                   CATEGORIAS
                 </p>
                 <div
-                  id="filhoNav"
-                  className="bg-white shadow-md absolute FilhoCategoriaNav right-1/2 top-[1.7rem] translate-x-1/2 z-10 hidden"
+                  id='filhoNav'
+                  className='bg-white shadow-md absolute FilhoCategoriaNav right-1/2 top-[1.7rem] translate-x-1/2 z-10 hidden'
                 >
-                  <ul className="flex flex-col h-fit py-2 relative">
+                  <ul className='flex flex-col h-fit py-2 relative'>
                     {categorias.map((categoria) => (
-                      <li className="categoriaNav" key={categoria}>
+                      <li className='categoriaNav' key={categoria}>
                         <Link
                           prefetch={false}
                           href={`/produtos/${slugify(categoria, {
@@ -115,38 +115,38 @@ const NavProdutos = ({ categorias, subcategorias }: Props) => {
                             lower: true,
                           })}`}
                         >
-                          <p className="bg-base-100 text-nowrap font-semibold link-hover px-5 py-2">
+                          <p className='bg-base-100 text-nowrap font-semibold link-hover px-5 py-2'>
                             {categoria}
                           </p>
                         </Link>
                         <div
-                          id="filhoCategoria"
-                          className="bg-base-100 absolute FilhoCategoriaNav left-[13.5rem] top-0 "
+                          id='filhoCategoria'
+                          className='bg-base-100 absolute FilhoCategoriaNav left-[12.8rem] top-0 '
                         >
                           {subcategorias[categoria].length > 0 && (
-                            <div className="h-[26rem] shadow-md px-5 py-3">
+                            <div className='h-[26rem] shadow-md px-5 py-3'>
                               <Link
                                 prefetch={false}
                                 href={`/produtos/${slugify(categoria, {
                                   strict: true,
                                   lower: true,
                                 })}`}
-                                className="text-lg text-nowrap font-semibold"
+                                className='text-lg text-nowrap font-semibold'
                               >
-                                <h3 className="pb-3">{categoria}:</h3>
+                                <h3 className='pb-3'>{categoria}:</h3>
                               </Link>
-                              <hr className="border-secondary pb-3" />
-                              <ul className="grid grid-flow-col grid-rows-7 gap-x-16 gap-y-3">
+                              <hr className='border-secondary pb-3' />
+                              <ul className='grid grid-flow-col grid-rows-7 gap-x-16 gap-y-3'>
                                 {subcategorias[categoria].map(
                                   (subcategoria, index) => (
-                                    <li className="w-fit" key={index}>
+                                    <li className='w-fit' key={index}>
                                       <Link
                                         prefetch={false}
                                         href={`/produtos/${slugify(categoria, {
                                           strict: true,
                                           lower: true,
                                         })}?subproduto=${subcategoria}`}
-                                        className="text-nowrap font-semibold link-hover"
+                                        className='text-nowrap font-semibold link-hover'
                                       >
                                         {subcategoria}
                                       </Link>
@@ -164,31 +164,31 @@ const NavProdutos = ({ categorias, subcategorias }: Props) => {
               </div>
             </li>
             {itemsNav.map((item) => (
-              <li className="categoriaNav" key={item.nome}>
+              <li className='categoriaNav' key={item.nome}>
                 <Link
                   prefetch={false}
                   href={`/produtos/${slugify(item.nome, {
                     strict: true,
                     lower: true,
                   })}`}
-                  className="flex justify-center font-semibold gap-1 items-center tracking-wide"
+                  className='flex justify-center font-semibold gap-1 items-center tracking-wide'
                 >
                   <img
-                    className="h-5 inline"
+                    className='h-5 inline'
                     src={`${path}/assets/img/nav/${item.foto}.webp`}
                   />
                   {item.nome}
                 </Link>
                 {['PLACA', 'SENSOR'].includes(item.nome) ? (
                   <div
-                    id="filhoNav"
-                    className="bg-base-100 text-secondary w-[55vw] absolute FilhoCategoriaNav min-w-[55rem] right-1/2 top-[1.79rem] translate-x-1/2 z-10 hidden"
+                    id='filhoNav'
+                    className='bg-base-100 text-secondary w-[55vw] absolute FilhoCategoriaNav min-w-[55rem] right-1/2 top-[1.79rem] translate-x-1/2 z-10 hidden'
                   >
-                    <div className="flex h-[21rem] justify-between shadow-md">
-                      <ul className="grid grid-flow-col grid-rows-7 p-5 gap-x-9 gap-y-5">
+                    <div className='flex h-[21rem] justify-between shadow-md'>
+                      <ul className='grid grid-flow-col grid-rows-7 p-5 gap-x-9 gap-y-5'>
                         {subcategorias[item.nome].map((subcategoria) => (
                           <li
-                            className="flex h-fit justify-center items-center"
+                            className='flex h-fit justify-center items-center'
                             key={subcategoria}
                           >
                             <Link
@@ -197,15 +197,15 @@ const NavProdutos = ({ categorias, subcategorias }: Props) => {
                                 lower: true,
                                 strict: true,
                               })}?subproduto=${subcategoria}`}
-                              className="text-nowrap font-semibold link-hover"
+                              className='text-nowrap font-semibold link-hover'
                             >
                               {subcategoria}
                             </Link>
                           </li>
                         ))}
                       </ul>
-                      <div className="flex justify-center w-[30rem] items-center">
-                        <div className="flex justify-center w-[29rem] items-center px-10 relative">
+                      <div className='flex justify-center w-[30rem] items-center'>
+                        <div className='flex justify-center w-[29rem] items-center px-10 relative'>
                           <SwiperNavProdutos produtos={produtos[item.nome]} />
                         </div>
                       </div>
