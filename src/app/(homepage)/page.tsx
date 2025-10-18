@@ -203,7 +203,7 @@ const Home = () => {
           </section>
         )}
       {marcas
-        .filter((marca) => ['MIDEA', 'TOSHIBA', 'HITACHI'].includes(marca))
+        .filter((marca) => ['MIDEA', 'TOSHIBA'].includes(marca))
         .map((marca) => (
           <section key={marca} className='containerCarrosel relative'>
             <hr className='border-secondary block md:hidden' />
