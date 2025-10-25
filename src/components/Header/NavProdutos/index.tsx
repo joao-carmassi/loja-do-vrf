@@ -24,18 +24,22 @@ const NavProdutos = ({ categorias, subcategorias }: Props) => {
   const itemsNav = [
     {
       nome: 'PLACA',
+      link: 'placa',
       foto: 'PLACAS',
     },
     {
       nome: 'MOTOR VENTILADOR',
+      link: 'motor',
       foto: 'MOTORES VENTILADORES',
     },
     {
       nome: 'COMPRESSOR',
+      link: 'compressor',
       foto: 'COMPRESSORES',
     },
     {
       nome: 'SENSOR',
+      link: 'sensor',
       foto: 'SENSORES',
     },
   ];
@@ -167,7 +171,7 @@ const NavProdutos = ({ categorias, subcategorias }: Props) => {
               <li className='categoriaNav' key={item.nome}>
                 <Link
                   prefetch={false}
-                  href={`/produtos/${slugify(item.nome, {
+                  href={`/produtos/${slugify(item.link, {
                     strict: true,
                     lower: true,
                   })}`}
