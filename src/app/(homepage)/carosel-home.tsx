@@ -5,7 +5,7 @@ import {
   CarouselItem,
   CarouselNavigation,
 } from '@/components/bannerCarousel';
-import { H1 } from '@/components/ui/h1';
+import Image from 'next/image';
 
 const CarouselHome = () => {
   return (
@@ -18,7 +18,13 @@ const CarouselHome = () => {
                 className='w-full h-80 md:h-[26rem] bg-muted flex items-center justify-center'
                 key={index}
               >
-                <H1>{index + 1}</H1>
+                <Image
+                  width={1280}
+                  height={416}
+                  src='https://picsum.photos/200'
+                  alt=''
+                  className='w-full h-full object-cover object-center'
+                />
               </CarouselItem>
             )),
           ]}

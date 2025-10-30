@@ -1,10 +1,6 @@
 import ReactMarkdown from 'react-markdown';
 import { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
 import remarkGfm from 'remark-gfm';
-import { H1 } from './h1';
-import { H2 } from './h2';
-import { H3 } from './h3';
-import { P } from './p';
 import { A } from './a';
 import { Ul } from './ul';
 import { Ol } from './ol';
@@ -20,10 +16,16 @@ const MarkdownToHtml = ({ markdown }: Props) => {
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       components={{
-        h1: (props: ReactMarkdownProps) => <H1 {...props} />,
-        h2: (props: ReactMarkdownProps) => <H2 {...props} />,
-        h3: (props: ReactMarkdownProps) => <H3 {...props} />,
-        p: (props: ReactMarkdownProps) => <P {...props} />,
+        h1: (props: ReactMarkdownProps) => (
+          <h1 className='text-primary font-bold text-lg' {...props} />
+        ),
+        h2: (props: ReactMarkdownProps) => (
+          <h2 className='mt-5 text-primary font-bold' {...props} />
+        ),
+        h3: (props: ReactMarkdownProps) => (
+          <h3 className='mt-5 text-primary font-bold' {...props} />
+        ),
+        p: (props: ReactMarkdownProps) => <p {...props} />,
         a: (props: ReactMarkdownProps) => (
           <A
             href={(props.node?.properties?.href as string) || '#'}

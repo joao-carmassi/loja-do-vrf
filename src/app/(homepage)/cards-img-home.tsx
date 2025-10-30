@@ -1,15 +1,17 @@
-import { H1 } from '@/components/ui/h1';
+import Image from 'next/image';
 
 const CardsImgHome = () => {
   return (
     <section className='mx-auto max-w-[95rem] md:p-12 md:space-y-12'>
       {Array.from({ length: 2 }).map((_, i) => (
-        <div
-          className='w-full bg-muted h-80 rounded-lg grid place-items-center'
+        <Image
           key={i}
-        >
-          <H1>{i + 1}</H1>
-        </div>
+          width={1200}
+          height={300}
+          src='https://picsum.photos/200'
+          alt=''
+          className='w-full h-80 object-cover object-center rounded-lg'
+        />
       ))}
     </section>
   );

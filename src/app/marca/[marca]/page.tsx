@@ -1,9 +1,6 @@
-import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
-import { H1 } from '@/components/ui/h1';
-import { H2 } from '@/components/ui/h2';
-import { Label } from '@/components/ui/label';
-import { P } from '@/components/ui/p';
+import getProdutos from '@/utils/getProdutos';
+import AsideEProdutos from './asideEProdutos';
+import type { Metadata } from 'next';
 
 interface Props {
   params: Promise<{
@@ -14,62 +11,53 @@ interface Props {
 const Produtos = async ({ params }: Props) => {
   const { marca } = await params;
 
+  const produtosFiltrados = getProdutos.produtos.filter(
+    (produto) => produto.marca.toLowerCase() === marca
+  );
+
+  const categorias = Array.from(
+    new Set(produtosFiltrados.map((produto) => produto.categoria.toLowerCase()))
+  );
+
   return (
     <main>
-      <section className='mx-auto max-w-[120rem] px-6 py-6 md:pl-0 md:pr-6 md:py-12'>
-        <div className='flex'>
-          <aside className='px-8 w-64 space-y-6 sticky top-6 h-fit hidden md:block'>
-            <div className='space-y-3 '>
-              <P className='font-semibold'>Categoria:</P>
-              <ul className='space-y-4'>
-                <li className='flex items-center gap-2'>
-                  <Checkbox id='categoria1' />
-                  <Label className='uppercase' htmlFor='categoria1'>
-                    categoria
-                  </Label>
-                </li>
-                <li className='flex items-center gap-2'>
-                  <Checkbox id='categoria2' />
-                  <Label className='uppercase' htmlFor='categoria2'>
-                    categoria
-                  </Label>
-                </li>
-                <li className='flex items-center gap-2'>
-                  <Checkbox id='categoria3' />
-                  <Label className='uppercase' htmlFor='categoria3'>
-                    categoria
-                  </Label>
-                </li>
-              </ul>
-            </div>
-          </aside>
-          <div className='w-full space-y-3 md:space-y-6'>
-            <H1 className='capitalize p-4 bg-secondary w-fit rounded-lg'>
-              {marca}
-            </H1>
-            <div className='grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-5'>
-              {Array.from({ length: 100 }).map((_, i) => (
-                <Card key={i}>
-                  <CardHeader>
-                    <div className='w-full aspect-square bg-muted grid place-items-center rounded-md border-secondary'>
-                      <H1>{i + 1}</H1>
-                    </div>
-                  </CardHeader>
-                  <CardContent className=''>
-                    <p>Marca</p>
-                    <div>
-                      <H2 className='!text-base'>Produto {i + 1}</H2>
-                      <p>Card Content</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <AsideEProdutos
+        categorias={categorias}
+        marca={marca}
+        produtos={produtosFiltrados}
+      />
     </main>
   );
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { marca: string };
+}): Promise<Metadata> {
+  const marca = params.marca?.toUpperCase() || '';
+  const title = `Produtos da marca ${marca} | ${process.env.NEXT_PUBLIC_WEBSITE_NAME}`;
+  const description = `Veja todos os produtos da marca ${marca} disponíveis na ${process.env.NEXT_PUBLIC_WEBSITE_NAME}. Peças originais, qualidade garantida e entrega para todo o Brasil.`;
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
+  };
+}
+
+export function generateStaticParams() {
+  const { marcas } = getProdutos;
+
+  return marcas.map((marca) => ({ marca: marca.toLowerCase() }));
+}
 
 export default Produtos;

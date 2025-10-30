@@ -6,6 +6,7 @@ import {
   CarouselItem,
 } from './base-carousel-fotos-produto';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const ITEMS = new Array(4).fill(null).map((_, index) => index + 1);
 
@@ -46,9 +47,13 @@ export function CarouselProdutos({ className }: Props) {
         <CarouselContent className='relative'>
           {ITEMS.map((item) => (
             <CarouselItem key={item}>
-              <div className='flex aspect-square items-center justify-center border border-zinc-200 dark:border-zinc-800'>
-                {item}
-              </div>
+              <Image
+                width={790}
+                height={790}
+                src='https://picsum.photos/200'
+                alt=''
+                className='w-full h-full object-cover object-center border-zinc-200 dark:border-zinc-800'
+              />
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -68,9 +73,15 @@ export function CarouselProdutos({ className }: Props) {
             type='button'
             aria-label={`Go to slide ${item}`}
             onClick={() => setIndex(item - 1)}
-            className='aspect-square w-full border border-zinc-200 dark:border-zinc-800 flex items-center justify-center'
+            className='aspect-square w-full border border-zinc-200 dark:border-zinc-800 flex items-center justify-center cursor-pointer'
           >
-            {item}
+            <Image
+              width={100}
+              height={100}
+              src='https://picsum.photos/200'
+              alt=''
+              className='w-full h-full object-cover object-center'
+            />
           </button>
         ))}
       </div>
