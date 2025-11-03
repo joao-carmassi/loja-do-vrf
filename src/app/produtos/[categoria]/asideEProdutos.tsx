@@ -15,15 +15,18 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import generateUrl from '@/utils/generateUrl';
 import { TProduto } from '@/utils/getProdutos';
 import { FilterIcon } from 'lucide-react';
-import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 interface Props {
   subcategorias: string[];
   marcas: string[];
   categoria: string;
   produtosFiltrados: TProduto[];
+  q?: string;
 }
 
 function AsideProdutos({
@@ -31,9 +34,11 @@ function AsideProdutos({
   marcas,
   categoria,
   produtosFiltrados,
+  q,
 }: Props): React.ReactNode {
   const [subcategoriaSelecionada, setSubcategoriaSelecionada] = useState('');
   const [marcaSelecionada, setMarcaSelecionada] = useState('');
+  const router = useRouter();
 
   const handleSubcategoriaChange = (subcategoria: string) => {
     setSubcategoriaSelecionada((prev) =>
@@ -47,7 +52,7 @@ function AsideProdutos({
 
   const produtosFiltradosFinal = produtosFiltrados.filter((produto) => {
     const matchesSubcategoria = subcategoriaSelecionada
-      ? produto.subcategoria === subcategoriaSelecionada
+      ? generateUrl(produto.subcategoria) === subcategoriaSelecionada
       : true;
     const matchesMarca = marcaSelecionada
       ? produto.marca === marcaSelecionada
@@ -55,10 +60,16 @@ function AsideProdutos({
     return matchesSubcategoria && matchesMarca;
   });
 
+  useEffect(() => {
+    if (q) {
+      setSubcategoriaSelecionada(q);
+    }
+  }, [q, router]);
+
   return (
     <section className='mx-auto max-w-[120rem] px-6 py-6 md:pl-0 md:pr-6 md:py-12'>
       <div className='flex'>
-        <aside className='px-8 min-w-64 space-y-6 sticky top-6 h-fit hidden md:block'>
+        <aside className='px-8 min-w-64 space-y-6 sticky top-[5.75rem] h-fit hidden md:block'>
           {subcategorias.length > 1 && (
             <div className='space-y-3'>
               <P className='font-semibold'>Subcategoria:</P>
@@ -69,59 +80,58 @@ function AsideProdutos({
                     onCheckedChange={() => handleSubcategoriaChange('')}
                     id='todosSubcategoria'
                   />
-                  <Label className='uppercase' htmlFor='todosSubcategoria'>
+                  <Label className='' htmlFor='todosSubcategoria'>
                     Todos
                   </Label>
                 </li>
-                {subcategorias.map((subcategoria) => (
-                  <li className='flex items-center gap-2' key={subcategoria}>
+                {subcategorias.map((subcategoria) => {
+                  const id = generateUrl(subcategoria);
+                  return (
+                    <li className='flex items-center gap-2' key={subcategoria}>
+                      <Checkbox
+                        id={id}
+                        checked={subcategoriaSelecionada === id}
+                        onCheckedChange={() => handleSubcategoriaChange(id)}
+                      />
+                      <Label className='capitalize' htmlFor={id}>
+                        {subcategoria.toLocaleLowerCase()}
+                      </Label>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          )}
+          {marcas.length > 1 && subcategorias.length > 1 && <Separator />}
+          <>
+            <div className='space-y-3 '>
+              <P className='font-semibold'>Marca:</P>
+              <ul className='space-y-4'>
+                <li className='flex items-center gap-2'>
+                  <Checkbox
+                    checked={marcaSelecionada === ''}
+                    onCheckedChange={() => handleMarcaChange('')}
+                    id='todosMarca'
+                  />
+                  <Label className='' htmlFor='todosMarca'>
+                    Todos
+                  </Label>
+                </li>
+                {marcas.map((marca) => (
+                  <li className='flex items-center gap-2' key={marca}>
                     <Checkbox
-                      id={subcategoria}
-                      checked={subcategoriaSelecionada === subcategoria}
-                      onCheckedChange={() =>
-                        handleSubcategoriaChange(subcategoria)
-                      }
+                      id={marca}
+                      checked={marcaSelecionada === marca}
+                      onCheckedChange={() => handleMarcaChange(marca)}
                     />
-                    <Label className='uppercase' htmlFor={subcategoria}>
-                      {subcategoria}
+                    <Label className='capitalize' htmlFor={marca}>
+                      {marca.toLocaleLowerCase()}
                     </Label>
                   </li>
                 ))}
               </ul>
             </div>
-          )}
-          {marcas.length > 1 && (
-            <>
-              <Separator />
-              <div className='space-y-3 '>
-                <P className='font-semibold'>Marca:</P>
-                <ul className='space-y-4'>
-                  <li className='flex items-center gap-2'>
-                    <Checkbox
-                      checked={marcaSelecionada === ''}
-                      onCheckedChange={() => handleMarcaChange('')}
-                      id='todosMarca'
-                    />
-                    <Label className='uppercase' htmlFor='todosMarca'>
-                      Todos
-                    </Label>
-                  </li>
-                  {marcas.map((marca) => (
-                    <li className='flex items-center gap-2' key={marca}>
-                      <Checkbox
-                        id={marca}
-                        checked={marcaSelecionada === marca}
-                        onCheckedChange={() => handleMarcaChange(marca)}
-                      />
-                      <Label className='uppercase' htmlFor={marca}>
-                        {marca}
-                      </Label>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </>
-          )}
+          </>
         </aside>
         <div className='w-full space-y-3'>
           <H1 className='capitalize'>{categoria}</H1>
@@ -150,77 +160,75 @@ function AsideProdutos({
                                 id='todosSubcategoriaCelular'
                               />
                               <Label
-                                className='uppercase'
+                                className=''
                                 htmlFor='todosSubcategoriaCelular'
                               >
                                 Todos
                               </Label>
                             </li>
-                            {subcategorias.map((subcategoria) => (
+                            {subcategorias.map((subcategoria) => {
+                              const id = generateUrl(subcategoria);
+                              return (
+                                <li
+                                  className='flex items-center gap-2'
+                                  key={id}
+                                >
+                                  <Checkbox
+                                    id={id + 'Celular'}
+                                    checked={subcategoriaSelecionada === id}
+                                    onCheckedChange={() =>
+                                      handleSubcategoriaChange(id)
+                                    }
+                                  />
+                                  <Label
+                                    className='capitalize'
+                                    htmlFor={id + 'Celular'}
+                                  >
+                                    {subcategoria.toLocaleLowerCase()}
+                                  </Label>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      )}
+                      {marcas.length > 1 && subcategorias.length > 1 && (
+                        <Separator />
+                      )}
+                      <>
+                        <div className='space-y-3 '>
+                          <P className='font-semibold'>Marca:</P>
+                          <ul className='space-y-4'>
+                            <li className='flex items-center gap-2'>
+                              <Checkbox
+                                checked={marcaSelecionada === ''}
+                                onCheckedChange={() => handleMarcaChange('')}
+                                id='todosMarca'
+                              />
+                              <Label className='' htmlFor='todosMarca'>
+                                Todos
+                              </Label>
+                            </li>
+                            {marcas.map((marca) => (
                               <li
                                 className='flex items-center gap-2'
-                                key={subcategoria + 'Celular'}
+                                key={marca}
                               >
                                 <Checkbox
-                                  id={subcategoria + 'Celular'}
-                                  checked={
-                                    subcategoriaSelecionada === subcategoria
-                                  }
+                                  id={marca}
+                                  checked={marcaSelecionada === marca}
                                   onCheckedChange={() =>
-                                    handleSubcategoriaChange(subcategoria)
+                                    handleMarcaChange(marca)
                                   }
                                 />
-                                <Label
-                                  className='uppercase'
-                                  htmlFor={subcategoria + 'Celular'}
-                                >
-                                  {subcategoria}
+                                <Label className='capitalize' htmlFor={marca}>
+                                  {marca.toLocaleLowerCase()}
                                 </Label>
                               </li>
                             ))}
                           </ul>
                         </div>
-                      )}
-                      {marcas.length > 1 && (
-                        <>
-                          <Separator />
-                          <div className='space-y-3 '>
-                            <P className='font-semibold'>Marca:</P>
-                            <ul className='space-y-4'>
-                              <li className='flex items-center gap-2'>
-                                <Checkbox
-                                  checked={marcaSelecionada === ''}
-                                  onCheckedChange={() => handleMarcaChange('')}
-                                  id='todosMarca'
-                                />
-                                <Label
-                                  className='uppercase'
-                                  htmlFor='todosMarca'
-                                >
-                                  Todos
-                                </Label>
-                              </li>
-                              {marcas.map((marca) => (
-                                <li
-                                  className='flex items-center gap-2'
-                                  key={marca}
-                                >
-                                  <Checkbox
-                                    id={marca}
-                                    checked={marcaSelecionada === marca}
-                                    onCheckedChange={() =>
-                                      handleMarcaChange(marca)
-                                    }
-                                  />
-                                  <Label className='uppercase' htmlFor={marca}>
-                                    {marca}
-                                  </Label>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </>
-                      )}
+                      </>
                     </div>
                   </SheetDescription>
                 </SheetHeader>

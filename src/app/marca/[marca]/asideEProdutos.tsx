@@ -40,7 +40,7 @@ function AsideEProdutos({
   return (
     <section className='mx-auto max-w-[120rem] px-6 py-6 md:pl-0 md:pr-6 md:py-12'>
       <div className='flex'>
-        <aside className='px-8 min-w-64 space-y-6 sticky top-6 h-fit hidden md:block'>
+        <aside className='px-8 min-w-64 space-y-6 sticky top-[5.75rem] h-fit hidden md:block'>
           <div className='space-y-3 '>
             <P className='font-semibold'>Categoria:</P>
             <ul className='space-y-4'>
@@ -50,7 +50,7 @@ function AsideEProdutos({
                   checked={selectedCategorias === ''}
                   onCheckedChange={() => setSelectedCategorias('')}
                 />
-                <Label className='uppercase' htmlFor='todas'>
+                <Label className='capitalize' htmlFor='todas'>
                   Todas
                 </Label>
               </li>
@@ -65,8 +65,8 @@ function AsideEProdutos({
                       )
                     }
                   />
-                  <Label className='uppercase' htmlFor={categoria}>
-                    {categoria}
+                  <Label className='capitalize' htmlFor={categoria}>
+                    {categoria.toLocaleLowerCase()}
                   </Label>
                 </li>
               ))}
@@ -97,7 +97,7 @@ function AsideEProdutos({
                             checked={selectedCategorias === ''}
                             onCheckedChange={() => setSelectedCategorias('')}
                           />
-                          <Label className='uppercase' htmlFor='todasCelular'>
+                          <Label className='' htmlFor='todasCelular'>
                             Todas
                           </Label>
                         </li>
@@ -116,10 +116,10 @@ function AsideEProdutos({
                               }
                             />
                             <Label
-                              className='uppercase'
+                              className='capitalize'
                               htmlFor={categoria + 'Celular'}
                             >
-                              {categoria}
+                              {categoria.toLocaleLowerCase()}
                             </Label>
                           </li>
                         ))}

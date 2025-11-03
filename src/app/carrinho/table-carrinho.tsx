@@ -65,7 +65,7 @@ export default function TableCarrinho() {
                         {produto.item.nome}
                       </p>
                       <p className='text-sm group-hover:underline text-muted-foreground font-normal'>
-                        {produto.item.id.split(', ')}
+                        {produto.item.codigos.join(', ')}
                       </p>
                     </div>
                   </Link>

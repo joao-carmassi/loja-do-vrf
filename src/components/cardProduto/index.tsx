@@ -13,6 +13,7 @@ interface Props {
 function CardProduto({ produto }: Props): React.ReactNode {
   return (
     <Link
+      prefetch={false}
       className='hover:scale-105 duration-300'
       href={`/produto/${generateUrl(`${produto.nome}-${produto.sku}`)}`}
     >
