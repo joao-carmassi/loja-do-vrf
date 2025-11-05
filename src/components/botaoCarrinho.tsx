@@ -8,12 +8,13 @@ import { Badge } from './ui/badge';
 import storeCarrinho from '@/store/carrinho';
 
 function BotaoCarrinho(): React.ReactNode {
-  const { carrinho } = storeCarrinho();
+  const { carrinho, checaCarrinho } = storeCarrinho();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    checaCarrinho();
+  }, [checaCarrinho]);
 
   return (
     <Button

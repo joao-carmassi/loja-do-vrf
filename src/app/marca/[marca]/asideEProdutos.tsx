@@ -38,7 +38,7 @@ function AsideEProdutos({
     : produtos;
 
   return (
-    <section className='mx-auto max-w-[120rem] px-6 py-6 md:pl-0 md:pr-6 md:py-12'>
+    <section className='mx-auto max-w-[120rem] p-6 md:pl-0'>
       <div className='flex'>
         <aside className='px-8 min-w-64 space-y-6 sticky top-[5.75rem] h-fit hidden md:block'>
           <div className='space-y-3 '>

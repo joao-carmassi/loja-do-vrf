@@ -1,3 +1,6 @@
+'use client';
+
+import React from 'react';
 import Logo from '@/components/logo';
 import { Button } from '@/components/ui/button';
 import {
@@ -21,10 +24,14 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import BotaoCarrinho from './botaoCarrinho';
+import { ChevronRight } from 'lucide-react';
 
 export default function Header(): React.ReactNode {
   const { categorias, subcategorias: itens } = getProdutos;
   const navItens = ['placa', 'motor', 'compressor', 'sensor'];
+
+  // Estado para controlar qual dropdown está aberto
+  const [openDropdown, setOpenDropdown] = React.useState<string | null>(null);
 
   return (
     <>
@@ -92,17 +99,80 @@ export default function Header(): React.ReactNode {
                       Categorias
                     </NavigationMenuTrigger>
                     <NavigationMenuContent>
-                      {categorias.map((categoria) => (
-                        <NavigationMenuLink
-                          className='text-nowrap capitalize'
-                          key={`${categoria}-desktop-categorias`}
-                          asChild
-                        >
-                          <Link href={`/produtos/${generateUrl(categoria)}`}>
-                            {categoria}
-                          </Link>
-                        </NavigationMenuLink>
-                      ))}
+                      {categorias.map((categoria) =>
+                        itens[categoria as keyof typeof itens].subcategorias
+                          .length === 0 ? (
+                          <NavigationMenuLink
+                            className='text-nowrap capitalize'
+                            key={`${categoria}-desktop-categorias`}
+                            asChild
+                          >
+                            <Link href={`/produtos/${generateUrl(categoria)}`}>
+                              {categoria}
+                            </Link>
+                          </NavigationMenuLink>
+                        ) : (
+                          <DropdownMenu
+                            key={`${categoria}-dropdown`}
+                            open={openDropdown === categoria}
+                            onOpenChange={(open) => {
+                              if (!open) setOpenDropdown(null);
+                            }}
+                          >
+                            <DropdownMenuTrigger asChild>
+                              <Button
+                                className='font-normal w-full justify-between capitalize px-2'
+                                size={'sm'}
+                                variant={'ghost'}
+                                onMouseEnter={() => setOpenDropdown(categoria)}
+                                onMouseLeave={() => setOpenDropdown(null)}
+                                aria-haspopup='menu'
+                              >
+                                {categoria}{' '}
+                                <ChevronRight
+                                  className={`${
+                                    openDropdown === categoria
+                                      ? 'rotate-180'
+                                      : ''
+                                  } duration-300`}
+                                />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent
+                              align='start'
+                              side='right'
+                              className='min-w-40'
+                              sideOffset={0}
+                              onMouseEnter={() => setOpenDropdown(categoria)}
+                              onMouseLeave={() => setOpenDropdown(null)}
+                            >
+                              {itens[
+                                categoria as keyof typeof itens
+                              ].subcategorias.map((subcat) => (
+                                <DropdownMenuItem
+                                  key={`${categoria}-${subcat}`}
+                                  asChild
+                                >
+                                  <Button
+                                    className='font-normal w-full justify-between capitalize px-2 hover:!ring-0'
+                                    size={'sm'}
+                                    variant={'ghost'}
+                                    asChild
+                                  >
+                                    <Link
+                                      href={`/produtos/${generateUrl(
+                                        categoria
+                                      )}?q=${generateUrl(subcat)}`}
+                                    >
+                                      {subcat}
+                                    </Link>
+                                  </Button>
+                                </DropdownMenuItem>
+                              ))}
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        )
+                      )}
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                   {navItens.map((item) => {
@@ -133,8 +203,11 @@ export default function Header(): React.ReactNode {
                       </NavigationMenuItem>
                     ) : (
                       <NavigationMenuItem key={`${item}-desktop-unicos`}>
-                        <Button variant='ghost'>
-                          <Link href={`/produtos/${generateUrl(item)}`}>
+                        <Button variant='ghost' asChild>
+                          <Link
+                            className='capitalize'
+                            href={`/produtos/${generateUrl(item)}`}
+                          >
                             {item}
                           </Link>
                         </Button>

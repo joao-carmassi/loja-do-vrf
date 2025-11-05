@@ -5,7 +5,7 @@ import storeCarrinho from '@/store/carrinho';
 import Link from 'next/link';
 
 function BotoesCarrinho(): React.ReactNode {
-  const { carrinho } = storeCarrinho();
+  const { carrinho, geraListaDeOrcamento } = storeCarrinho();
 
   if (carrinho.length === 0) return null;
 
@@ -21,7 +21,9 @@ function BotoesCarrinho(): React.ReactNode {
       </Button>
       <Button
         onClick={() => {
-          alert('Iniciando consulta');
+          const lista = geraListaDeOrcamento();
+          const url = `https://wa.me/5512996233750?text=${lista}`;
+          window.open(url, '_blank');
         }}
         className='flex-1 w-full md:flex-none md:w-fit'
         size={'lg'}

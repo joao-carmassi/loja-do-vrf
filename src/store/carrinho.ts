@@ -1,4 +1,4 @@
-import { TProduto } from '@/utils/getProdutos';
+import getProdutos, { TProduto } from '@/utils/getProdutos';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
@@ -8,11 +8,15 @@ interface CarrinhoState {
   alterarQuantidade: (id: string, quantidade: string) => void;
   removerDoCarrinho: (id: string) => void;
   limparCarrinho: () => void;
+  checaCarrinho: () => void;
+  geraListaDeOrcamento: () => string;
 }
+
+const { produtos } = getProdutos;
 
 const storeCarrinho = create<CarrinhoState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       carrinho: [] as Array<{ item: TProduto; quantidade: string }>,
       adicionarAoCarrinho: (produto: TProduto) =>
         set((state) => ({
@@ -37,6 +41,32 @@ const storeCarrinho = create<CarrinhoState>()(
           carrinho: state.carrinho.filter((produto) => produto.item.id !== id),
         })),
       limparCarrinho: () => set({ carrinho: [] }),
+      checaCarrinho: () => {
+        set((state) => {
+          const carrinhoAtualizado = state.carrinho.filter(
+            (produtoNoCarrinho) =>
+              produtos.some(
+                (produtoDisponivel) =>
+                  produtoDisponivel.id === produtoNoCarrinho.item.id
+              )
+          );
+          return { carrinho: carrinhoAtualizado };
+        });
+      },
+      geraListaDeOrcamento: () => {
+        const carrinho = get().carrinho;
+        let lista = `Olá, gostaria de fazer uma cotação:%0A%0A*${
+          carrinho.length >= 2 ? 'Produtos' : 'Produto'
+        }:*`;
+        carrinho.forEach((item) => {
+          lista += `%0A%0A*Nome:* ${item.item.nome}%0A*Quantidade:* ${
+            item.quantidade
+          }%0A*Codigo:* ${item.item.codigos.join(', ')}%0A*Sku:* ${
+            item.item.sku
+          }`;
+        });
+        return lista;
+      },
     }),
     {
       name: 'carrinho-storage',
