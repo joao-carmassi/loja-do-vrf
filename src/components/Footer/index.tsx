@@ -65,7 +65,9 @@ const Footer = () => {
                 href='mailto:vendas@lojadovrf.com.br'
                 className='flex flex-col p-2 rounded-none rounded-t-md font-semibold gap-0 items-center tracking-wide'
               >
-                <span className='block font-normal'>Envie uma Mensagem:</span>
+                <span className='block font-normal'>
+                  Troque mensagem por e-mail
+                </span>
                 <div className='flex gap-1 items-center'>
                   <svg
                     className='inline'
@@ -92,7 +94,9 @@ const Footer = () => {
                 href='https://wa.me/5511969189244?text=Olá!%0AVim através do site da loja do VRF e preciso de peças.'
                 className='flex flex-col p-2 rounded-none font-semibold gap-0 items-center tracking-wide'
               >
-                <span className='block font-normal'>Compre por telefone:</span>
+                <span className='block font-normal'>
+                  Troque telefone por Whatsapp
+                </span>
                 <div className='flex gap-1 items-center'>
                   <svg
                     className='text-green-500 inline'
@@ -136,8 +140,7 @@ const Footer = () => {
                     <path d='M12 7v5'></path>
                   </svg>
                   <div>
-                    <p>Segunda a sexta</p>
-                    <p>9 as 17 horas</p>
+                    <p>Segunda a sexta 9 as 17 horas</p>
                   </div>
                 </div>
               </div>
