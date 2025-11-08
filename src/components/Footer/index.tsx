@@ -39,9 +39,9 @@ const Footer = () => {
           <button onClick={() => sobeTopoTela()}>
             <ExportedImage
               placeholder='empty'
-              className='w-20 mx-auto'
-              width={90}
-              height={90}
+              className='w-56 mx-auto'
+              width={225}
+              height={85}
               src={`${path}/assets/img/favicon.webp`}
               alt='Logo Loja do vrf'
               loading='lazy'
@@ -94,9 +94,7 @@ const Footer = () => {
                 href='https://wa.me/5511969189244?text=Olá!%0AVim através do site da loja do VRF e preciso de peças.'
                 className='flex flex-col p-2 rounded-none font-semibold gap-0 items-center tracking-wide'
               >
-                <span className='block font-normal'>
-                  Troque telefone por Whatsapp
-                </span>
+                <span className='block font-normal'>Compre por whatsapp</span>
                 <div className='flex gap-1 items-center'>
                   <svg
                     className='text-green-500 inline'

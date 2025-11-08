@@ -147,7 +147,7 @@ const ContainerHeader = ({ categorias, subcategorias }: Props) => {
                             className='flex flex-col p-2 rounded-none font-semibold gap-0 items-start tracking-wide'
                           >
                             <span className='block font-normal'>
-                              Troque telefone por Whatsapp
+                              Compre por whatsapp
                             </span>
                             <div className='flex gap-1 items-start'>
                               <svg
@@ -353,7 +353,7 @@ const ContainerHeader = ({ categorias, subcategorias }: Props) => {
                     className='flex flex-col p-2 rounded-none font-semibold gap-0 items-start tracking-wide'
                   >
                     <span className='block font-normal'>
-                      Troque telefone por Whatsapp
+                      Compre por whatsapp
                     </span>
                     <div className='flex gap-1 items-start'>
                       <svg

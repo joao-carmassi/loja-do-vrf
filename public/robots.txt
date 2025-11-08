@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://lojadovrf.com.br
+
+# Sitemaps
+Sitemap: https://lojadovrf.com.br/sitemap.xml
