@@ -4,7 +4,15 @@ const nextConfig: NextConfig = {
   /* config options here */
   trailingSlash: true,
   images: {
-    domains: ['picsum.photos'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
+    ],
+  },
+  experimental: {
+    typedEnv: true,
   },
 };
 
