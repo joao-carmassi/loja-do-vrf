@@ -2,19 +2,16 @@ import getProdutos from '@/utils/getProdutos';
 import AsideProdutos from './asideEProdutos';
 import { Metadata } from 'next';
 import generateUrl from '@/utils/generateUrl';
+import { Suspense } from 'react';
 
 interface Props {
   params: {
     categoria: string;
   };
-  searchParams: {
-    q?: string;
-  };
 }
 
-const ProdutosPage = async ({ params, searchParams }: Props) => {
+const ProdutosPage = async ({ params }: Props) => {
   const { categoria } = await params;
-  const { q } = await searchParams;
 
   const produtosFiltrados = getProdutos.produtos.filter(
     (produto) => generateUrl(produto.categoria) === categoria
@@ -30,13 +27,14 @@ const ProdutosPage = async ({ params, searchParams }: Props) => {
 
   return (
     <main>
-      <AsideProdutos
-        q={q}
-        subcategorias={subcategorias}
-        marcas={marcas}
-        categoria={categoria}
-        produtosFiltrados={produtosFiltrados}
-      />
+      <Suspense>
+        <AsideProdutos
+          subcategorias={subcategorias}
+          marcas={marcas}
+          categoria={categoria}
+          produtosFiltrados={produtosFiltrados}
+        />
+      </Suspense>
     </main>
   );
 };

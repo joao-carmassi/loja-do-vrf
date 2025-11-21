@@ -18,7 +18,7 @@ import {
 import generateUrl from '@/utils/generateUrl';
 import { TProduto } from '@/utils/getProdutos';
 import { FilterIcon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 interface Props {
@@ -26,7 +26,6 @@ interface Props {
   marcas: string[];
   categoria: string;
   produtosFiltrados: TProduto[];
-  q?: string;
 }
 
 function AsideProdutos({
@@ -34,11 +33,11 @@ function AsideProdutos({
   marcas,
   categoria,
   produtosFiltrados,
-  q,
 }: Props): React.ReactNode {
   const [subcategoriaSelecionada, setSubcategoriaSelecionada] = useState('');
   const [marcaSelecionada, setMarcaSelecionada] = useState('');
   const router = useRouter();
+  const q = useSearchParams().get('q');
 
   const handleSubcategoriaChange = (subcategoria: string) => {
     setSubcategoriaSelecionada((prev) =>
