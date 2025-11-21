@@ -47,12 +47,8 @@ export async function generateMetadata({
   params: { categoria: string };
 }): Promise<Metadata> {
   const { categoria } = await params;
-  const title = `Produtos da categoria ${categoria.toLocaleLowerCase()} | ${
-    process.env.NEXT_PUBLIC_WEBSITE_NAME
-  }`;
-  const description = `Veja todos os produtos da categoria ${categoria.toLocaleLowerCase()} disponíveis na ${
-    process.env.NEXT_PUBLIC_WEBSITE_NAME
-  }. Peças originais, qualidade garantida e entrega para todo o Brasil.`;
+  const title = `Chiller | Produtos da categoria ${categoria.toLocaleLowerCase()}`;
+  const description = `Veja todos os produtos da categoria ${categoria.toLocaleLowerCase()} disponíveis na Chiller. Peças originais, qualidade garantida e entrega para todo o Brasil.`;
 
   return {
     title,

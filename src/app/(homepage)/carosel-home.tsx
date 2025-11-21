@@ -11,23 +11,63 @@ const CarouselHome = () => {
   return (
     <section>
       <Carousel autoPlay autoPlayInterval={7500}>
-        <CarouselContent>
-          {[
-            ...Array.from({ length: 5 }).map((_, index) => (
-              <CarouselItem
-                className='w-full h-80 md:h-[26rem] bg-muted flex items-center justify-center'
-                key={index}
-              >
-                <Image
-                  width={1280}
-                  height={416}
-                  src='https://picsum.photos/200'
-                  alt=''
-                  className='w-full h-full object-cover object-center'
-                />
-              </CarouselItem>
-            )),
-          ]}
+        <CarouselContent className='hidden md:flex'>
+          <CarouselItem className='w-full h-fit bg-muted items-center justify-center'>
+            <Image
+              width={1800}
+              height={500}
+              src='/imgs/banners/WEB-02.png'
+              alt=''
+              className='w-full h-full object-cover object-center'
+            />
+          </CarouselItem>
+          <CarouselItem className='w-full h-fit bg-muted items-center justify-center'>
+            <Image
+              width={1800}
+              height={500}
+              src='/imgs/banners/WEB-03.png'
+              alt=''
+              className='w-full h-full object-cover object-center'
+            />
+          </CarouselItem>
+          <CarouselItem className='w-full h-fit bg-muted items-center justify-center'>
+            <Image
+              width={1800}
+              height={500}
+              src='/imgs/banners/WEB-04.png'
+              alt=''
+              className='w-full h-full object-cover object-center'
+            />
+          </CarouselItem>
+        </CarouselContent>
+        <CarouselContent className='md:hidden'>
+          <CarouselItem className='w-full h-fit bg-muted flex items-center justify-center'>
+            <Image
+              width={750}
+              height={500}
+              src='/imgs/banners/MOBILE-02.png'
+              alt=''
+              className='w-full h-full object-cover object-center'
+            />
+          </CarouselItem>
+          <CarouselItem className='w-full h-fit bg-muted flex items-center justify-center'>
+            <Image
+              width={750}
+              height={500}
+              src='/imgs/banners/MOBILE-03.png'
+              alt=''
+              className='w-full h-full object-cover object-center'
+            />
+          </CarouselItem>
+          <CarouselItem className='w-full h-fit bg-muted flex items-center justify-center'>
+            <Image
+              width={750}
+              height={500}
+              src='/imgs/banners/MOBILE-04.png'
+              alt=''
+              className='w-full h-full object-cover object-center'
+            />
+          </CarouselItem>
         </CarouselContent>
         <CarouselNavigation alwaysShow />
         <CarouselIndicator />

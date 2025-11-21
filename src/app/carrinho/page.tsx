@@ -6,17 +6,17 @@ import type { Metadata } from 'next';
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: `Carrinho de Compras | ${process.env.NEXT_PUBLIC_WEBSITE_NAME}`,
-    description: `Veja e gerencie os produtos adicionados ao seu carrinho de compras na ${process.env.NEXT_PUBLIC_WEBSITE_NAME}. Finalize sua compra com segurança e agilidade.`,
+    title: `Chiller | Carrinho de Compras`,
+    description: `Veja e gerencie os produtos adicionados ao seu carrinho de compras na Chiller. Finalize sua compra com segurança e agilidade.`,
     openGraph: {
-      title: `Carrinho de Compras | ${process.env.NEXT_PUBLIC_WEBSITE_NAME}`,
-      description: `Veja e gerencie os produtos adicionados ao seu carrinho de compras na ${process.env.NEXT_PUBLIC_WEBSITE_NAME}. Finalize sua compra com segurança e agilidade.`,
+      title: `Chiller | Carrinho de Compras`,
+      description: `Veja e gerencie os produtos adicionados ao seu carrinho de compras na Chiller. Finalize sua compra com segurança e agilidade.`,
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Carrinho de Compras | ${process.env.NEXT_PUBLIC_WEBSITE_NAME}`,
-      description: `Veja e gerencie os produtos adicionados ao seu carrinho de compras na ${process.env.NEXT_PUBLIC_WEBSITE_NAME}. Finalize sua compra com segurança e agilidade.`,
+      title: `Chiller | Carrinho de Compras`,
+      description: `Veja e gerencie os produtos adicionados ao seu carrinho de compras na Chiller. Finalize sua compra com segurança e agilidade.`,
     },
   };
 };

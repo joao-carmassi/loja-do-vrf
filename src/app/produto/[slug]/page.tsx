@@ -49,13 +49,13 @@ export async function generateMetadata({
     (prod) => generateUrl(`${prod.nome}-${prod.sku}`) === slug
   );
   if (!produto) return {};
-  const title = `${produto.nome} | ${produto.marca} | ${process.env.NEXT_PUBLIC_WEBSITE_NAME}`;
+  const title = `${produto.nome} | ${produto.marca} | Chiller`;
   const description =
     produto.descricao
       ?.replace(/[#*\-]/g, '')
       .split('\n')[0]
       ?.trim() ||
-    `Compre ${produto.nome} da marca ${produto.marca} me ${process.env.NEXT_PUBLIC_WEBSITE_NAME}.`;
+    `Compre ${produto.nome} da marca ${produto.marca} em Chiller.`;
   const images: string[] = [];
   return {
     title,
