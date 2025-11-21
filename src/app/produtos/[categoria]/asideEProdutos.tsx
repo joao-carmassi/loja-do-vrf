@@ -22,9 +22,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 interface Props {
-  subcategorias: string[];
+  subcategorias?: string[];
   marcas: string[];
-  categoria: string;
+  categoria?: string;
   produtosFiltrados: TProduto[];
 }
 
@@ -60,7 +60,7 @@ function AsideProdutos({
   });
 
   useEffect(() => {
-    if (q) {
+    if (q && categoria && subcategorias) {
       setSubcategoriaSelecionada(q);
     }
   }, [q, router]);
@@ -69,7 +69,7 @@ function AsideProdutos({
     <section className='mx-auto max-w-[120rem] p-6 md:pl-0'>
       <div className='flex'>
         <aside className='px-8 min-w-64 space-y-6 sticky top-[5.75rem] h-fit hidden md:block'>
-          {subcategorias.length > 1 && (
+          {subcategorias && subcategorias.length > 1 && (
             <div className='space-y-3'>
               <P className='font-semibold'>Subcategoria:</P>
               <ul className='space-y-4'>
@@ -101,7 +101,9 @@ function AsideProdutos({
               </ul>
             </div>
           )}
-          {marcas.length > 1 && subcategorias.length > 1 && <Separator />}
+          {marcas.length > 1 && subcategorias && subcategorias.length > 1 && (
+            <Separator />
+          )}
           <>
             <div className='space-y-3 '>
               <P className='font-semibold'>Marca:</P>
@@ -146,7 +148,7 @@ function AsideProdutos({
                   <SheetTitle hidden>Filtros</SheetTitle>
                   <SheetDescription asChild>
                     <div className='space-y-6'>
-                      {subcategorias.length > 1 && (
+                      {subcategorias && subcategorias.length > 1 && (
                         <div className='space-y-3 '>
                           <P className='font-semibold'>Subcategoria:</P>
                           <ul className='space-y-4'>
@@ -191,9 +193,9 @@ function AsideProdutos({
                           </ul>
                         </div>
                       )}
-                      {marcas.length > 1 && subcategorias.length > 1 && (
-                        <Separator />
-                      )}
+                      {marcas.length > 1 &&
+                        subcategorias &&
+                        subcategorias.length > 1 && <Separator />}
                       <>
                         <div className='space-y-3 '>
                           <P className='font-semibold'>Marca:</P>
