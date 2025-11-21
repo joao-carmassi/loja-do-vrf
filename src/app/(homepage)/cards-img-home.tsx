@@ -11,8 +11,8 @@ const CardsImgHome = () => {
         className='w-full object-cover object-center rounded-lg hidden md:block'
       />
       <Image
-        width={660}
-        height={440}
+        width={750}
+        height={500}
         src='/imgs/banners/01-MOBILE.png'
         alt=''
         className='w-full object-cover object-center md:hidden'

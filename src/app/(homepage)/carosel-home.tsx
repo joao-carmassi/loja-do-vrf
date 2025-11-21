@@ -1,24 +1,43 @@
+'use client';
+
 import {
   Carousel,
   CarouselContent,
-  CarouselIndicator,
   CarouselItem,
-  CarouselNavigation,
-} from '@/components/bannerCarousel';
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 
 const CarouselHome = () => {
   return (
     <section>
-      <Carousel autoPlay autoPlayInterval={7500}>
-        <CarouselContent className='hidden md:flex'>
+      <Carousel
+        plugins={[
+          Autoplay({
+            delay: 3000,
+          }),
+        ]}
+        opts={{
+          loop: true,
+        }}
+      >
+        <CarouselContent>
           <CarouselItem className='w-full h-fit bg-muted items-center justify-center'>
             <Image
               width={1800}
               height={500}
               src='/imgs/banners/WEB-02.png'
               alt=''
-              className='w-full h-full object-cover object-center'
+              className='w-full h-full object-cover object-center hidden md:block'
+            />
+            <Image
+              width={750}
+              height={500}
+              src='/imgs/banners/MOBILE-02.png'
+              alt=''
+              className='w-full h-full object-cover object-center md:hidden'
             />
           </CarouselItem>
           <CarouselItem className='w-full h-fit bg-muted items-center justify-center'>
@@ -27,7 +46,14 @@ const CarouselHome = () => {
               height={500}
               src='/imgs/banners/WEB-03.png'
               alt=''
-              className='w-full h-full object-cover object-center'
+              className='w-full h-full object-cover object-center hidden md:block'
+            />
+            <Image
+              width={750}
+              height={500}
+              src='/imgs/banners/MOBILE-03.png'
+              alt=''
+              className='w-full h-full object-cover object-center md:hidden'
             />
           </CarouselItem>
           <CarouselItem className='w-full h-fit bg-muted items-center justify-center'>
@@ -36,41 +62,19 @@ const CarouselHome = () => {
               height={500}
               src='/imgs/banners/WEB-04.png'
               alt=''
-              className='w-full h-full object-cover object-center'
+              className='w-full h-full object-cover object-center hidden md:block'
             />
-          </CarouselItem>
-        </CarouselContent>
-        <CarouselContent className='md:hidden'>
-          <CarouselItem className='w-full h-fit bg-muted flex items-center justify-center'>
-            <Image
-              width={750}
-              height={500}
-              src='/imgs/banners/MOBILE-02.png'
-              alt=''
-              className='w-full h-full object-cover object-center'
-            />
-          </CarouselItem>
-          <CarouselItem className='w-full h-fit bg-muted flex items-center justify-center'>
-            <Image
-              width={750}
-              height={500}
-              src='/imgs/banners/MOBILE-03.png'
-              alt=''
-              className='w-full h-full object-cover object-center'
-            />
-          </CarouselItem>
-          <CarouselItem className='w-full h-fit bg-muted flex items-center justify-center'>
             <Image
               width={750}
               height={500}
               src='/imgs/banners/MOBILE-04.png'
               alt=''
-              className='w-full h-full object-cover object-center'
+              className='w-full h-full object-cover object-center md:hidden'
             />
           </CarouselItem>
         </CarouselContent>
-        <CarouselNavigation alwaysShow />
-        <CarouselIndicator />
+        <CarouselPrevious className='left-6' />
+        <CarouselNext className='right-6' />
       </Carousel>
     </section>
   );
