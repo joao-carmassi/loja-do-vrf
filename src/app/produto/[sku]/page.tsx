@@ -174,6 +174,15 @@ async function PaginaProduto({ params }: Props) {
                     width={128}
                     height={50}
                   />
+                  <ExportedImage
+                    placeholder='empty'
+                    alt=''
+                    width={140}
+                    height={50}
+                    className='w-32'
+                    src={`${process.env.NEXT_PUBLIC_WEBSITE_BASE_PATH}/assets/img/footer/jadlog.png`}
+                    loading='lazy'
+                  />
                 </div>
               </div>
             </div>

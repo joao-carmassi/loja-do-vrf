@@ -39,7 +39,7 @@ const Footer = () => {
           <button onClick={() => sobeTopoTela()}>
             <ExportedImage
               placeholder='empty'
-              className='w-56 mx-auto'
+              className='w-full md:w-72 mx-auto'
               width={225}
               height={85}
               src={`${path}/assets/img/favicon.webp`}
@@ -66,7 +66,7 @@ const Footer = () => {
                 className='flex flex-col p-2 rounded-none rounded-t-md font-semibold gap-0 items-center tracking-wide'
               >
                 <span className='block font-normal'>
-                  Troque mensagem por e-mail
+                  Envie um e-mail agora mesmo
                 </span>
                 <div className='flex gap-1 items-center'>
                   <svg
@@ -94,7 +94,9 @@ const Footer = () => {
                 href='https://wa.me/5511969189244?text=Olá!%0AVim através do site da loja do VRF e preciso de peças.'
                 className='flex flex-col p-2 rounded-none font-semibold gap-0 items-center tracking-wide'
               >
-                <span className='block font-normal'>Compre por whatsapp</span>
+                <span className='block font-normal'>
+                  Envie uma mensagem por Whatsapp
+                </span>
                 <div className='flex gap-1 items-center'>
                   <svg
                     className='text-green-500 inline'
@@ -138,7 +140,7 @@ const Footer = () => {
                     <path d='M12 7v5'></path>
                   </svg>
                   <div>
-                    <p>Segunda a sexta 9 as 17 horas</p>
+                    <p>Segunda à Sexta - 9 às 17 horas</p>
                   </div>
                 </div>
               </div>
@@ -173,6 +175,15 @@ const Footer = () => {
               height={50}
               className='w-32'
               src={`${path}/assets/img/footer/LATAM_Cargo_logo.svg.png`}
+              loading='lazy'
+            />
+            <ExportedImage
+              placeholder='empty'
+              alt=''
+              width={140}
+              height={50}
+              className='w-32'
+              src={`${path}/assets/img/footer/jadlog.png`}
               loading='lazy'
             />
           </div>

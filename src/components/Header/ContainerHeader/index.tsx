@@ -117,7 +117,7 @@ const ContainerHeader = ({ categorias, subcategorias }: Props) => {
                             className='flex flex-col p-2 rounded-none rounded-t-md font-semibold gap-0 items-start tracking-wide'
                           >
                             <span className='block font-normal'>
-                              Troque mensagem por e-mail
+                              Envie um e-mail agora mesmo
                             </span>
                             <div className='flex gap-1 items-start'>
                               <svg
@@ -147,7 +147,7 @@ const ContainerHeader = ({ categorias, subcategorias }: Props) => {
                             className='flex flex-col p-2 rounded-none font-semibold gap-0 items-start tracking-wide'
                           >
                             <span className='block font-normal'>
-                              Compre por whatsapp
+                              Envie uma mensagem por Whatsapp
                             </span>
                             <div className='flex gap-1 items-start'>
                               <svg
@@ -193,7 +193,7 @@ const ContainerHeader = ({ categorias, subcategorias }: Props) => {
                                 <path d='M12 7v5'></path>
                               </svg>
                               <div>
-                                <p>Segunda a sexta 9 as 17 horas</p>
+                                <p>Segunda à Sexta - 9 às 17 horas</p>
                               </div>
                             </div>
                           </div>
