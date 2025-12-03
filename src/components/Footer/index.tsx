@@ -23,18 +23,6 @@ const Footer = () => {
     <footer>
       <hr className='border-secondary w-full md:hidden' />
       <div className='grid grid-cols-none border-secondary justify-between w-10/12 gap-x-5 gap-y-10 items-center lg:gap-x-10 lg:grid-cols-4 md:border md:grid-cols-2 md:mb-16 md:rounded-lg mx-auto px-5 py-8'>
-        <div className='col-span-full'>
-          <p className='text-center font-semibold mb-5'>Selos de segurança</p>
-          <ExportedImage
-            placeholder='empty'
-            alt=''
-            width={130}
-            height={65}
-            className='mx-auto w-32'
-            src={`${path}/assets/img/footer/seguro.png`}
-            loading='lazy'
-          />
-        </div>
         <div className='flex flex-1 flex-col gap-4'>
           <button onClick={() => sobeTopoTela()}>
             <ExportedImage
@@ -186,22 +174,31 @@ const Footer = () => {
               src={`${path}/assets/img/footer/jadlog.png`}
               loading='lazy'
             />
+            <ExportedImage
+              placeholder='empty'
+              alt=''
+              width={140}
+              height={50}
+              className='w-32'
+              src={`${path}/assets/img/footer/loggi.png`}
+              loading='lazy'
+            />
+            <ExportedImage
+              placeholder='empty'
+              alt=''
+              width={140}
+              height={50}
+              className='w-32'
+              src={`${path}/assets/img/footer/j&t.jpg`}
+              loading='lazy'
+            />
           </div>
         </div>
         <div className='flex flex-1 flex-col'>
           <div>
-            <p className='text-center font-semibold mb-5'>
+            <p className='text-center font-semibold mb-3'>
               Formas de pagamento
             </p>
-            <ExportedImage
-              placeholder='empty'
-              alt=''
-              width={100}
-              height={50}
-              className='mx-auto w-20'
-              src={`${path}/assets/img/footer/pix-logo.png`}
-              loading='lazy'
-            />
           </div>
           <ExportedImage
             placeholder='empty'

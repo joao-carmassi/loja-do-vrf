@@ -27,81 +27,81 @@ const SwiperBanner = () => {
       navigation={true}
       autoplay={{ delay: 7500 }}
       modules={[Navigation, Pagination, Autoplay, EffectFade]}
-      effect="fade"
+      effect='fade'
       fadeEffect={{ crossFade: true }}
-      className="relative swiper-container swiper-marcas swiperMarcas"
+      className='relative swiper-container swiper-marcas swiperMarcas'
     >
-      <SwiperSlide className="my-auto">
-        <div className="hidden lg:block">
-          <ExportedImage
-            priority
-            src={`${path}/assets/img/home/web.png`}
-            alt="Imagem produto"
-            width={1850}
-            height={420}
-            placeholder="empty"
-            className="w-full md:h-[26rem] object-center object-cover"
-          />
-        </div>
-        <div className="lg:hidden">
-          <ExportedImage
-            priority
-            src={`${path}/assets/img/home/mobile2.png`}
-            alt="Imagem produto"
-            width={1020}
-            height={420}
-            placeholder="empty"
-            className="w-full md:h-[26rem] object-center object-cover"
-          />
-        </div>
-      </SwiperSlide>
-
-      <SwiperSlide className="my-auto">
-        <div className="hidden lg:block">
+      <SwiperSlide className='my-auto'>
+        <div className='hidden lg:block'>
           <ExportedImage
             priority
             src={`${path}/assets/img/home/web2.png`}
-            alt="Imagem produto"
+            alt='Imagem produto'
             width={1850}
             height={420}
-            placeholder="empty"
-            className="w-full md:h-[26rem] object-center object-cover"
+            placeholder='empty'
+            className='w-full md:h-[26rem] object-center object-cover'
           />
         </div>
-        <div className="lg:hidden">
+        <div className='lg:hidden'>
           <ExportedImage
             priority
             src={`${path}/assets/img/home/mobile1.png`}
-            alt="Imagem produto"
+            alt='Imagem produto'
             width={1020}
             height={420}
-            placeholder="empty"
-            className="w-full md:h-[26rem] object-center object-cover"
+            placeholder='empty'
+            className='w-full md:h-[26rem] object-center object-cover'
           />
         </div>
       </SwiperSlide>
 
-      <SwiperSlide className="my-auto">
-        <div className="hidden lg:block">
+      <SwiperSlide className='my-auto'>
+        <div className='hidden lg:block'>
+          <ExportedImage
+            priority
+            src={`${path}/assets/img/home/web.png`}
+            alt='Imagem produto'
+            width={1850}
+            height={420}
+            placeholder='empty'
+            className='w-full md:h-[26rem] object-center object-cover'
+          />
+        </div>
+        <div className='lg:hidden'>
+          <ExportedImage
+            priority
+            src={`${path}/assets/img/home/mobile2.png`}
+            alt='Imagem produto'
+            width={1020}
+            height={420}
+            placeholder='empty'
+            className='w-full md:h-[26rem] object-center object-cover'
+          />
+        </div>
+      </SwiperSlide>
+
+      <SwiperSlide className='my-auto'>
+        <div className='hidden lg:block'>
           <ExportedImage
             priority
             src={`${path}/assets/img/home/web3.png`}
-            alt="Imagem produto"
+            alt='Imagem produto'
             width={1850}
             height={420}
-            placeholder="empty"
-            className="w-full md:h-[26rem] object-center object-cover"
+            placeholder='empty'
+            className='w-full md:h-[26rem] object-center object-cover'
           />
         </div>
-        <div className="lg:hidden">
+        <div className='lg:hidden'>
           <ExportedImage
             priority
             src={`${path}/assets/img/home/mobile3.png`}
-            alt="Imagem produto"
+            alt='Imagem produto'
             width={1020}
             height={420}
-            placeholder="empty"
-            className="w-full md:h-[26rem] object-center object-cover"
+            placeholder='empty'
+            className='w-full md:h-[26rem] object-center object-cover'
           />
         </div>
       </SwiperSlide>
