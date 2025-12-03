@@ -65,7 +65,7 @@ const Home = () => {
               </svg>
               <p>
                 <span className='text-secondary block font-semibold'>
-                  ENTREGAMOS
+                  FRETE GRATIS
                 </span>
                 EM TODO BRASIL
               </p>
@@ -128,9 +128,9 @@ const Home = () => {
               </svg>
               <p>
                 <span className='text-secondary block font-semibold'>
-                  PARCELAMOS EM 12X
+                  PARCELAMOS EM ATÉ 12X
                 </span>
-                NO CARTÃO DE CRÉDITO
+                NO CARTÃO DE CRÉDITO
               </p>
             </div>
           </div>
