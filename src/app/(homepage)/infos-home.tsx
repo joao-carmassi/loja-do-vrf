@@ -14,7 +14,7 @@ const InfosHome = () => {
     <section className='p-6 border-b border-border'>
       <div className='max-w-[95rem] mx-auto '>
         <div className='hidden md:grid md:grid-cols-2 lg:grid-cols-3 place-items-center gap-6 pb-0'>
-          <div className='md:col-span-2 lg:col-span-1 flex items-center gap-3'>
+          <div className='lg:col-span-1 flex items-center gap-3'>
             <PencilRuler className='text-primary' size={35} />
             <div>
               <H3 className='text-primary !text-base'>
