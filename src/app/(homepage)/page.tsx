@@ -286,7 +286,6 @@ const Home = () => {
           </div>
         </a>
       </section>
-
       <section className='flex flex-col justify-center w-full gap-5 items-center md:pb-16'>
         <div className='flex flex-col bg-secondary justify-center w-full items-center lg:w-10/12 md:py-20 md:rounded-lg md:w-11/12 mx-auto py-14'>
           <p className='text-lg text-white'>Estamos no instagram:</p>
