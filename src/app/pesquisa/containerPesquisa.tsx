@@ -4,18 +4,18 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Search, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 function ContainerPesquisa({ q }: { q: string | undefined }): React.ReactNode {
   const route = useRouter();
   const [inputValue, setInputValue] = useState(q || '');
   const inputRef = useRef<null | HTMLInputElement>(null);
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     if (inputValue.trim() !== '') {
       route.push(`/pesquisa?q=${inputValue.trim()}`);
     }
-  };
+  }, [inputValue, route]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -28,7 +28,7 @@ function ContainerPesquisa({ q }: { q: string | undefined }): React.ReactNode {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [inputValue, route]);
+  }, [inputValue, route, handleClick]);
 
   return (
     <div

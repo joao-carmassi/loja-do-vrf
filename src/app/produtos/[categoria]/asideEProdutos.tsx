@@ -61,9 +61,10 @@ function AsideProdutos({
 
   useEffect(() => {
     if (q && categoria && subcategorias) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSubcategoriaSelecionada(q);
     }
-  }, [q, router]);
+  }, [q, router, categoria, subcategorias]);
 
   return (
     <section className='mx-auto max-w-[120rem] p-6 md:pl-0'>
