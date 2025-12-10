@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/header';
+import { Inter } from 'next/font/google';
+
+const geist = Inter({
+  subsets: ['latin'],
+});
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
@@ -25,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='pt-BR'>
+    <html className={geist.className} lang='pt-BR'>
       <body>
         <Header />
         {children}
