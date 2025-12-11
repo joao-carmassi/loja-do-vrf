@@ -30,17 +30,16 @@ const CarouselMarcasHome = () => {
                 className='basis-1/2 md:basis-1/3 lg:basis-1/4 grid place-items-center'
                 key={marca}
               >
-                <Link
-                  className='bg-card aspect-square w-40 md:w-52 lg:w-60 rounded-full flex items-center justify-center shadow hover:scale-105 duration-300'
-                  href={`/marca/${generateUrl(marca)}`}
-                >
-                  <Image
-                    width={160}
-                    height={47}
-                    src={`/imgs/marcas/${marca.toUpperCase()}.png`}
-                    alt={`Marca ${marca}`}
-                    className='w-32 md:w-40 h-fit'
-                  />
+                <Link className='p-3' href={`/marca/${generateUrl(marca)}`}>
+                  <div className='bg-card aspect-square w-40 md:w-52 lg:w-60 rounded-full flex items-center justify-center shadow hover:scale-105 duration-300'>
+                    <Image
+                      width={160}
+                      height={47}
+                      src={`/imgs/marcas/${marca.toUpperCase()}.png`}
+                      alt={`Marca ${marca}`}
+                      className='w-32 md:w-40 h-fit'
+                    />
+                  </div>
                 </Link>
               </CarouselItem>
             ))}

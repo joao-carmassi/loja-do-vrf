@@ -2,7 +2,6 @@ import getProdutos from '@/utils/getProdutos';
 import AsideEProdutos from './asideEProdutos';
 import { Metadata } from 'next';
 import generateUrl from '@/utils/generateUrl';
-import { Suspense } from 'react';
 
 interface Props {
   params: Promise<{

@@ -22,7 +22,7 @@ function BotaoComprarCarrinho({ produto, children }: Props): React.ReactNode {
       onClick={handleClick}
       className='w-fit absolute top-1/2 left-1/2 -translate-1/2 hidden group-hover:block z-40 hover:bg-secondary'
     >
-      Comprar
+      {children || 'Comprar'}
     </Button>
   );
 }

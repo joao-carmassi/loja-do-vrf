@@ -6,7 +6,6 @@ import {
   BreadcrumbSeparator,
   BreadcrumbPage,
 } from '@/components/ui/breadcrumb';
-import generateUrl from '@/utils/generateUrl';
 import BotoesCarrinho from './botoes-carrinho';
 import TableCarrinho from './table-carrinho';
 import { H1 } from '@/components/ui/h1';

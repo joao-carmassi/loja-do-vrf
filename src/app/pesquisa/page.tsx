@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Suspense } from 'react';
 import AsideEProdutos from '../produtos/[categoria]/asideEProdutos';
 import getProdutos from '@/utils/getProdutos';

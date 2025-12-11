@@ -1,5 +1,4 @@
 'use client';
-
 import CardProduto from '@/components/card-produto';
 import {
   Breadcrumb,
@@ -22,7 +21,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import generateUrl from '@/utils/generateUrl';
 import { IProduto } from '@/utils/getProdutos';
 import { FilterIcon } from 'lucide-react';
 import Image from 'next/image';

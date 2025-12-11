@@ -26,7 +26,7 @@ import {
 import generateUrl from '@/utils/generateUrl';
 import { IProduto } from '@/utils/getProdutos';
 import { FilterIcon } from 'lucide-react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 interface Props {

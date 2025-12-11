@@ -1,4 +1,3 @@
-import { link } from 'fs';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -25,7 +24,7 @@ const cards = [
 
 const MiniCards = () => {
   return (
-    <section className='flex md:gap-6 md:px-12 md:pt-12 max-w-[95rem] mx-auto'>
+    <section className='flex md:gap-6 md:p-12 max-w-[95rem] mx-auto'>
       {cards.map((card, index) => (
         <div key={index} className='flex-1'>
           <Link href={card.link} target={card.target} rel='noopener noreferrer'>
