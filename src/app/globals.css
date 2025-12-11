@@ -88,7 +88,7 @@ body::-webkit-scrollbar-thumb {
   --accent-foreground: #000000;
   --destructive: #ef4444;
   --border: #ebebeb;
-  --input: #f5f5f5;
+  --input: #ffffff;
   --ring: #009fe3;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);

@@ -31,7 +31,7 @@ const CarouselMarcasHome = () => {
                 key={marca}
               >
                 <Link
-                  className='bg-card aspect-square w-40 md:w-52 lg:w-60 rounded-full flex items-center justify-center'
+                  className='bg-card aspect-square w-40 md:w-52 lg:w-60 rounded-full flex items-center justify-center shadow hover:scale-105 duration-300'
                   href={`/marca/${generateUrl(marca)}`}
                 >
                   <Image

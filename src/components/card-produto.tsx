@@ -1,10 +1,11 @@
-import './cardProduto.css';
 import { IProduto } from '@/utils/getProdutos';
-import { Card, CardContent, CardHeader } from '../ui/card';
-import { H2 } from '../ui/h2';
 import Link from 'next/link';
 import generateUrl from '@/utils/generateUrl';
 import Image from 'next/image';
+import { Card, CardContent, CardHeader } from './ui/card';
+import { H2 } from './ui/h2';
+import { Button } from './ui/button';
+import BotaoComprarCarrinho from './ui/botao-comprar-card';
 
 interface Props {
   produto: IProduto;
@@ -12,12 +13,14 @@ interface Props {
 
 function CardProduto({ produto }: Props): React.ReactNode {
   return (
-    <Link
-      prefetch={false}
-      className='hover:scale-105 duration-300'
-      href={`/produto/${generateUrl(`${produto.nome}-${produto.sku}`)}`}
+    <Card
+      className='h-fit relative group hover:scale-105 duration-300'
+      key={produto.id}
     >
-      <Card className='h-fit' key={produto.id}>
+      <Link
+        prefetch={false}
+        href={`/produto/${generateUrl(`${produto.nome}-${produto.sku}`)}`}
+      >
         <CardHeader>
           <Image
             width={214}
@@ -36,19 +39,20 @@ function CardProduto({ produto }: Props): React.ReactNode {
             src={`/imgs/marcas/${produto.marca.toUpperCase()}.png`}
           />
           <div>
-            <H2 className='!text-base break-words limitaTexto2Linhas'>
+            <H2 className='!text-base break-words line-clamp-2'>
               Produto {produto.nome}
             </H2>
-            <p className='text-muted-foreground text-sm break-words limitaTexto'>
+            <p className='text-muted-foreground text-sm break-words line-clamp-1'>
               sku: {produto.sku}
             </p>
-            <p className='text-muted-foreground text-sm break-words limitaTexto'>
+            <p className='text-muted-foreground text-sm break-words line-clamp-1'>
               {produto.codigos.join(', ')}
             </p>
           </div>
         </CardContent>
-      </Card>
-    </Link>
+      </Link>
+      <BotaoComprarCarrinho produto={produto}>Comprar</BotaoComprarCarrinho>
+    </Card>
   );
 }
 

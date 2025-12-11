@@ -10,10 +10,10 @@ function BotoesCarrinho(): React.ReactNode {
   if (carrinho.length === 0) return null;
 
   return (
-    <div className='flex justify-end gap-3'>
+    <div className='flex flex-col-reverse md:flex-row justify-end gap-3'>
       <Button
         asChild
-        className='flex-1 w-full md:flex-none md:w-fit'
+        className='w-full md:flex-none md:w-fit border border-green-600 text-green-600 hover:bg-green-50 hover:text-green-600'
         variant={'outline'}
         size={'lg'}
       >
@@ -25,7 +25,7 @@ function BotoesCarrinho(): React.ReactNode {
           const url = `https://wa.me/5512996233750?text=${lista}`;
           window.open(url, '_blank');
         }}
-        className='flex-1 w-full md:flex-none md:w-fit'
+        className='w-full md:flex-none md:w-fit bg-green-600 hover:bg-green-700'
         size={'lg'}
       >
         Iniciar consulta

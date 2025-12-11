@@ -29,14 +29,14 @@ export default function TableCarrinho() {
   return (
     <div>
       {carrinho.length > 0 ? (
-        <Table>
+        <Table className='border-b border-muted'>
           <TableHeader className='bg-transparent w-full'>
             <TableRow className='hover:bg-transparent'>
               <TableHead className='w-2/3'>Produto</TableHead>
               <TableHead className='w-full hidden md:table-cell'>
                 Quantidade
               </TableHead>
-              <TableHead className='w-full'>Remover</TableHead>
+              <TableHead className='w-full'></TableHead>
             </TableRow>
           </TableHeader>
           <tbody aria-hidden='true' className='table-row h-2'></tbody>
@@ -54,11 +54,11 @@ export default function TableCarrinho() {
                     className='group flex gap-3 items-center'
                   >
                     <Image
-                      width={60}
-                      height={60}
-                      src='https://picsum.photos/200'
-                      alt=''
-                      className='h-14 w-14 object-cover object-center rounded-sm'
+                      width={55}
+                      height={55}
+                      src={`/imgs/produtos/${produto.item.id}.png`}
+                      alt={produto.item.nome}
+                      className='h-14 w-14 object-fit object-center rounded-sm border border-primary'
                     />
                     <div>
                       <p className='group-hover:underline'>
@@ -77,7 +77,7 @@ export default function TableCarrinho() {
                         alterarQuantidade(produto.item.id, value)
                       }
                     >
-                      <SelectTrigger>
+                      <SelectTrigger className='border border-primary/50'>
                         <SelectValue placeholder='Quantidade' />
                       </SelectTrigger>
                       <SelectContent>
@@ -106,7 +106,7 @@ export default function TableCarrinho() {
                       alterarQuantidade(produto.item.id, value)
                     }
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className='border border-primary/50'>
                       <SelectValue placeholder='Quantidade' />
                     </SelectTrigger>
                     <SelectContent>

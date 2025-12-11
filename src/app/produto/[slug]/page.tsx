@@ -13,7 +13,6 @@ import generateUrl from '@/utils/generateUrl';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import MarkdownToHtml from '@/components/ui/markdownToHtml';
-import CardProduto from '@/components/cardProduto';
 import Link from 'next/link';
 import BotaoAdicionaCarrinho from './botao-adiciona-carrinho';
 import Image from 'next/image';
@@ -28,6 +27,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
+import CardProduto from '@/components/card-produto';
 
 interface Props {
   params: Promise<{

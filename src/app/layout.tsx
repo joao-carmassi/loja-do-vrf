@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/header';
 import { Inter } from 'next/font/google';
+import { Toaster } from 'sonner';
 
 const geist = Inter({
   subsets: ['latin'],
@@ -32,6 +33,7 @@ export default function RootLayout({
   return (
     <html className={geist.className} lang='pt-BR'>
       <body>
+        <Toaster richColors position='bottom-right' />
         <Header />
         {children}
       </body>
@@ -40,9 +42,6 @@ export default function RootLayout({
 }
 
 /* TODO 
-  - Botao hover carrosel
-  - Card hover button
-  - Carrinho
   - Header e footer
   - Manuais
 
