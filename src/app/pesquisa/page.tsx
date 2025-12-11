@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import AsideProdutos from '../produtos/[categoria]/asideEProdutos';
+import AsideEProdutos from '../produtos/[categoria]/asideEProdutos';
 import getProdutos from '@/utils/getProdutos';
 import ContainerPesquisa from './containerPesquisa';
 import generateUrl from '@/utils/generateUrl';
@@ -35,7 +35,7 @@ async function PagePesquisa({ searchParams }: Props): Promise<React.ReactNode> {
     <main>
       <ContainerPesquisa q={q} />
       <Suspense>
-        <AsideProdutos marcas={marcas} produtosFiltrados={produtosFiltrados} />
+        <AsideEProdutos marcas={marcas} produtosFiltrados={produtosFiltrados} />
       </Suspense>
     </main>
   );

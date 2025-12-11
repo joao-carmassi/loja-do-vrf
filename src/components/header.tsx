@@ -30,7 +30,6 @@ export default function Header(): React.ReactNode {
   const { categorias, subcategorias: itens } = getProdutos;
   const navItens = ['placa', 'motor', 'compressor', 'sensor'];
 
-  // Estado para controlar qual dropdown está aberto
   const [openDropdown, setOpenDropdown] = React.useState<string | null>(null);
 
   return (
@@ -162,7 +161,7 @@ export default function Header(): React.ReactNode {
                                     <Link
                                       href={`/produtos/${generateUrl(
                                         categoria
-                                      )}?q=${generateUrl(subcat)}`}
+                                      )}?subcategoria=${generateUrl(subcat)}`}
                                     >
                                       {subcat}
                                     </Link>
@@ -192,7 +191,7 @@ export default function Header(): React.ReactNode {
                                 <Link
                                   href={`/produtos/${generateUrl(
                                     item
-                                  )}?q=${generateUrl(subcategoria)}`}
+                                  )}?subcategoria=${generateUrl(subcategoria)}`}
                                 >
                                   {subcategoria}
                                 </Link>

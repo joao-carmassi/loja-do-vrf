@@ -34,11 +34,11 @@ const Produtos = async ({ params }: Props) => {
 export async function generateMetadata({
   params,
 }: {
-  params: { marca: string };
+  params: Promise<{ marca: string }>;
 }): Promise<Metadata> {
   const { marca } = await params;
-  const title = `Chiller | Produtos da marca ${marca}`;
-  const description = `Veja todos os produtos da marca ${marca} disponíveis na Chiller. Peças originais, qualidade garantida e entrega para todo o Brasil.`;
+  const title = `Loja do VRF | Produtos da marca ${marca}`;
+  const description = `Veja todos os produtos da marca ${marca} disponíveis na Loja do VRF. Peças originais, qualidade garantida e entrega para todo o Brasil.`;
   return {
     title,
     description,

@@ -1,17 +1,21 @@
 import getProdutos from '@/utils/getProdutos';
-import AsideProdutos from './asideEProdutos';
+import AsideEProdutos from './asideEProdutos';
 import { Metadata } from 'next';
 import generateUrl from '@/utils/generateUrl';
 import { Suspense } from 'react';
 
 interface Props {
-  params: {
+  params: Promise<{
     categoria: string;
-  };
+  }>;
+  searchParams: Promise<{
+    subcategoria: string;
+  }>;
 }
 
-const ProdutosPage = async ({ params }: Props) => {
+const ProdutosPage = async ({ params, searchParams }: Props) => {
   const { categoria } = await params;
+  const { subcategoria } = await searchParams;
 
   const produtosFiltrados = getProdutos.produtos.filter(
     (produto) => generateUrl(produto.categoria) === categoria
@@ -27,14 +31,13 @@ const ProdutosPage = async ({ params }: Props) => {
 
   return (
     <main>
-      <Suspense>
-        <AsideProdutos
-          subcategorias={subcategorias}
-          marcas={marcas}
-          categoria={categoria}
-          produtosFiltrados={produtosFiltrados}
-        />
-      </Suspense>
+      <AsideEProdutos
+        subcategorias={subcategorias}
+        marcas={marcas}
+        categoria={categoria}
+        produtosFiltrados={produtosFiltrados}
+        subcategoria={subcategoria}
+      />
     </main>
   );
 };
@@ -42,7 +45,7 @@ const ProdutosPage = async ({ params }: Props) => {
 export async function generateMetadata({
   params,
 }: {
-  params: { categoria: string };
+  params: Promise<{ categoria: string }>;
 }): Promise<Metadata> {
   const { categoria } = await params;
   const title = `Chiller | Produtos da categoria ${categoria.toLocaleLowerCase()}`;

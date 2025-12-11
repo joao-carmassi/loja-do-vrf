@@ -112,7 +112,7 @@ const Produtos = async ({ params }: Props) => {
               <BreadcrumbLink
                 href={`/produtos/${generateUrl(produto.categoria)}${
                   produto.subcategoria &&
-                  `?q=${generateUrl(produto.subcategoria)}`
+                  `?subcategoria=${generateUrl(produto.subcategoria)}`
                 }`}
               >
                 {produto.categoria}

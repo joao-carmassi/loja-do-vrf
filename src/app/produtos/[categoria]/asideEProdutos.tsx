@@ -1,6 +1,14 @@
 'use client';
 
 import CardProduto from '@/components/cardProduto';
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  BreadcrumbPage,
+} from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { H1 } from '@/components/ui/h1';
@@ -26,18 +34,19 @@ interface Props {
   marcas: string[];
   categoria?: string;
   produtosFiltrados: IProduto[];
+  subcategoria?: string | null;
 }
 
-function AsideProdutos({
+function AsideEProdutos({
   subcategorias,
   marcas,
   categoria,
   produtosFiltrados,
+  subcategoria,
 }: Props): React.ReactNode {
   const [subcategoriaSelecionada, setSubcategoriaSelecionada] = useState('');
   const [marcaSelecionada, setMarcaSelecionada] = useState('');
   const router = useRouter();
-  const q = useSearchParams().get('q');
 
   const handleSubcategoriaChange = (subcategoria: string) => {
     setSubcategoriaSelecionada((prev) =>
@@ -60,11 +69,11 @@ function AsideProdutos({
   });
 
   useEffect(() => {
-    if (q && categoria && subcategorias) {
+    if (subcategoria && categoria && subcategorias) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setSubcategoriaSelecionada(q);
+      setSubcategoriaSelecionada(subcategoria);
     }
-  }, [q, router, categoria, subcategorias]);
+  }, [subcategoria, router, categoria, subcategorias]);
 
   return (
     <section className='mx-auto max-w-[120rem] p-6 md:pl-0'>
@@ -136,7 +145,18 @@ function AsideProdutos({
           </>
         </aside>
         <div className='w-full space-y-3'>
-          <H1 className='capitalize'>{categoria}</H1>
+          <Breadcrumb className='col-span-2'>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href='/'>Inicio</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>{categoria}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+          <H1 className='capitalize hidden'>{categoria}</H1>
           <div className='flex justify-end'>
             <Sheet>
               <SheetTrigger asChild>
@@ -254,4 +274,4 @@ function AsideProdutos({
   );
 }
 
-export default AsideProdutos;
+export default AsideEProdutos;

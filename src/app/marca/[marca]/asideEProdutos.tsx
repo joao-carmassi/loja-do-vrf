@@ -1,6 +1,14 @@
 'use client';
 
 import CardProduto from '@/components/cardProduto';
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  BreadcrumbPage,
+} from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { H1 } from '@/components/ui/h1';
@@ -14,8 +22,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import generateUrl from '@/utils/generateUrl';
 import { IProduto } from '@/utils/getProdutos';
 import { FilterIcon } from 'lucide-react';
+import Image from 'next/image';
 import { useState } from 'react';
 
 interface Props {
@@ -74,9 +84,27 @@ function AsideEProdutos({
           </div>
         </aside>
         <div className='w-full space-y-3'>
-          <H1 className='capitalize p-4 bg-secondary w-fit rounded-lg'>
+          <Breadcrumb className='col-span-2'>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href='/'>Inicio</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>{marca}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+          <H1 className='capitalize p-4 bg-secondary w-fit rounded-lg hidden'>
             {marca}
           </H1>
+          <Image
+            src={`/imgs/marcas/${marca}.png`}
+            alt={marca}
+            width={220}
+            height={90}
+            className='w-36 md:w-56'
+          />
           <div className='flex justify-end'>
             <Sheet>
               <SheetTrigger asChild>
