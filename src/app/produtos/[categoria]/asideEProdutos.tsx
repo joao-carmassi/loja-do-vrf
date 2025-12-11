@@ -16,7 +16,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import generateUrl from '@/utils/generateUrl';
-import { TProduto } from '@/utils/getProdutos';
+import { IProduto } from '@/utils/getProdutos';
 import { FilterIcon } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -25,7 +25,7 @@ interface Props {
   subcategorias?: string[];
   marcas: string[];
   categoria?: string;
-  produtosFiltrados: TProduto[];
+  produtosFiltrados: IProduto[];
 }
 
 function AsideProdutos({

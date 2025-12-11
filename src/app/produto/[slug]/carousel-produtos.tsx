@@ -7,16 +7,18 @@ import {
 } from './base-carousel-fotos-produto';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import { IProduto } from '@/utils/getProdutos';
 
-const ITEMS = new Array(4).fill(null).map((_, index) => index + 1);
+const ITEMS = new Array(1).fill(null).map((_, index) => index + 1);
 
 interface Props {
   className?: ReactNode;
+  produto: IProduto;
 }
 
-export function CarouselProdutos({ className }: Props) {
+export function CarouselProdutos({ className, produto }: Props) {
   const [index, setIndex] = useState(0);
-  const [isPc, setIsPc] = useState(false);
+  const [isPc, setIsPc] = useState(true);
 
   const thumbsPosition = isPc ? 'left' : 'bottom';
 
@@ -48,10 +50,10 @@ export function CarouselProdutos({ className }: Props) {
           {ITEMS.map((item) => (
             <CarouselItem key={item}>
               <Image
-                width={790}
-                height={790}
-                src='https://picsum.photos/200'
-                alt=''
+                width={750}
+                height={750}
+                src={`/imgs/produtos/${produto.id}.png`}
+                alt={produto.nome}
                 className='w-full h-full object-cover object-center border-zinc-200 dark:border-zinc-800'
               />
             </CarouselItem>
@@ -64,7 +66,7 @@ export function CarouselProdutos({ className }: Props) {
           'flex',
           thumbsPosition === 'left'
             ? 'flex-col lg:w-26 space-y-3'
-            : 'flex-row w-full justify-center space-x-3'
+            : 'flex-row w-full justify-start space-x-3'
         )}
       >
         {ITEMS.map((item) => (
@@ -73,14 +75,14 @@ export function CarouselProdutos({ className }: Props) {
             type='button'
             aria-label={`Go to slide ${item}`}
             onClick={() => setIndex(item - 1)}
-            className='aspect-square w-full border border-zinc-200 dark:border-zinc-800 flex items-center justify-center cursor-pointer'
+            className='aspect-square w-full border border-primary/50 rounded-md flex items-center justify-center cursor-pointer max-h-28 max-w-28'
           >
             <Image
               width={100}
               height={100}
-              src='https://picsum.photos/200'
-              alt=''
-              className='w-full h-full object-cover object-center'
+              src={`/imgs/produtos/${produto.id}.png`}
+              alt={produto.nome}
+              className='w-full h-full object-cover object-center rounded-md'
             />
           </button>
         ))}

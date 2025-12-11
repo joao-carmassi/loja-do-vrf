@@ -17,6 +17,17 @@ import CardProduto from '@/components/cardProduto';
 import Link from 'next/link';
 import BotaoAdicionaCarrinho from './botao-adiciona-carrinho';
 import Image from 'next/image';
+import { Truck } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
+import { H3 } from '@/components/ui/h3';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 
 interface Props {
   params: Promise<{
@@ -27,35 +38,39 @@ interface Props {
 const formasDeEnvio = [
   {
     nome: 'Azul Cargo Express',
-    img: '/imgs/formas-de-envio/cargo.png',
+    img: '/imgs/formas-de-envio/Azul_Cargo_Express_logo.png',
   },
   {
     nome: 'Correios',
-    img: '/imgs/formas-de-envio/correios.png',
+    img: '/imgs/formas-de-envio/correiosEnvio.png',
   },
   {
     nome: 'Latam Cargo',
-    img: '/imgs/formas-de-envio/latam.png',
+    img: '/imgs/formas-de-envio/LATAM_Cargo_logo.png',
+  },
+  {
+    nome: 'Jadlog',
+    img: '/imgs/formas-de-envio/jadlog.png',
   },
 ];
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
   const produto = getProdutos.produtos.find(
     (prod) => generateUrl(`${prod.nome}-${prod.sku}`) === slug
   );
   if (!produto) return {};
-  const title = `${produto.nome} | ${produto.marca} | Chiller`;
+  const title = `${produto.nome} | ${produto.marca} | Loja do VRF`;
   const description =
     produto.descricao
       ?.replace(/[#*\-]/g, '')
       .split('\n')[0]
       ?.trim() ||
-    `Compre ${produto.nome} da marca ${produto.marca} em Chiller.`;
+    `Compre ${produto.nome} da marca ${produto.marca} em Loja do VRF.`;
   const images: string[] = [];
   return {
     title,
@@ -87,12 +102,42 @@ const Produtos = async ({ params }: Props) => {
   return (
     <main>
       <section className='mx-auto p-6 md:p-12 max-w-[95rem] flex flex-col md:grid md:grid-cols-[1fr_33%] gap-6 md:gap-12'>
-        <CarouselProdutos />
+        <Breadcrumb className='col-span-2'>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href='/'>Inicio</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink
+                href={`/produtos/${generateUrl(produto.categoria)}${
+                  produto.subcategoria &&
+                  `?q=${generateUrl(produto.subcategoria)}`
+                }`}
+              >
+                {produto.categoria}
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbPage>{produto.nome}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+        <CarouselProdutos produto={produto} />
         <div className='space-y-3'>
-          <Link href={`/marca/${generateUrl(produto.marca)}`}>
-            <p>{produto.marca}</p>
+          <Link className='block' href={`/marca/${generateUrl(produto.marca)}`}>
+            <Image
+              className='h-fit w-28'
+              height={20}
+              width={112}
+              alt={produto.marca}
+              src={`/imgs/marcas/${produto.marca.toUpperCase()}.png`}
+            />
           </Link>
-          <H1>{produto.nome}</H1>
+          <H1 className='!text-2xl md:!text-3xl text-primary'>
+            {produto.nome}
+          </H1>
           <p className='text-primary text-sm border border-primary rounded-md w-fit p-1.5'>
             Códigos compatíveis: {produto.codigos.join(', ')}
           </p>
@@ -100,11 +145,15 @@ const Produtos = async ({ params }: Props) => {
           <p className='text-green-600 text-sm font-bold'>
             PARCELAMENTO EM ATÉ 12 VEZES
           </p>
-          <p className='text-green-600 text-sm font-bold'>
-            7% DE DESCONTO NO PIX
+          <p className='text-green-600 text-sm'>
+            <span className='font-bold'>7% DE DESCONTO</span> NO PIX pagando com
+            Pix
           </p>
           <BotaoAdicionaCarrinho produto={produto} />
-          <p className='text-green-600 text-sm font-bold'>4 - 14 DIAS ÚTEIS</p>
+          <p className='text-green-600 text-sm font-bold flex items-center gap-1.5'>
+            <Truck />
+            Consulte a Disponibilidade
+          </p>
           <p className='text-green-600 text-sm font-bold'>Formas de envio:</p>
           <div>
             <ul className='flex flex-wrap gap-4 justify-between'>
@@ -121,33 +170,46 @@ const Produtos = async ({ params }: Props) => {
             </ul>
           </div>
         </div>
-        <div className='md:col-span-2 space-y-3'>
-          <H2>Descricao:</H2>
+        <Separator className='bg-primary md:col-span-2' />
+        <div className='md:col-span-2'>
+          <H2 className='!text-lg'>Descricao:</H2>
           <MarkdownToHtml markdown={produto.descricao} />
+          <p className='font-bold pt-4 text-primary'>
+            Loja do VRF: Transformando desafios térmicos em soluções de
+            precisão!
+          </p>
         </div>
-        <Carousel
-          className='md:col-span-2'
-          opts={{
-            align: 'start',
-            loop: true,
-            dragFree: true,
-          }}
-        >
-          <CarouselContent>
-            {getProdutos.produtos
-              .filter((prod) => prod.categoria === produto.categoria)
-              .map((produto, i) => (
-                <CarouselItem
-                  className='basis-1/2 md:basis-1/3 lg:basis-1/5'
-                  key={i}
-                >
-                  <CardProduto produto={produto} />
-                </CarouselItem>
-              ))}
-          </CarouselContent>
-          <CarouselPrevious className='-left-5 md:-left-12' />
-          <CarouselNext className='-right-5 md:-right-12' />
-        </Carousel>
+        <Separator className='bg-primary md:col-span-2' />
+        <div className='md:col-span-2 space-y-6'>
+          <H3 className='block !text-2xl !text-primary'>
+            Produtos Semelhantes...
+          </H3>
+          <Carousel
+            opts={{
+              align: 'start',
+              loop: true,
+            }}
+          >
+            <CarouselContent>
+              {getProdutos.produtos
+                .filter(
+                  (prod) =>
+                    prod.categoria === produto.categoria &&
+                    prod.sku !== produto.sku
+                )
+                .map((produto, i) => (
+                  <CarouselItem
+                    className='basis-1/2 md:basis-1/3 lg:basis-1/5'
+                    key={i}
+                  >
+                    <CardProduto produto={produto} />
+                  </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious className='-left-5 md:-left-12 text-primary' />
+            <CarouselNext className='-right-5 md:-right-12 text-primary' />
+          </Carousel>
+        </div>
       </section>
     </main>
   );

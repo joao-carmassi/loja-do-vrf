@@ -34,6 +34,6 @@ getProdutos.categorias.forEach((categoria) => {
   };
 });
 
-export type TProduto = (typeof getProdutos.produtos)[0];
+export type IProduto = (typeof getProdutos.produtos)[0];
 
 export default getProdutos;

@@ -26,6 +26,9 @@ const MarkdownToHtml = ({ markdown }: Props) => {
           <h3 className='mt-5 text-primary font-bold' {...props} />
         ),
         p: (props: ReactMarkdownProps) => <p {...props} />,
+        strong: (props: ReactMarkdownProps) => (
+          <strong {...props} className='text-primary' />
+        ),
         a: (props: ReactMarkdownProps) => (
           <A
             href={(props.node?.properties?.href as string) || '#'}
@@ -33,8 +36,12 @@ const MarkdownToHtml = ({ markdown }: Props) => {
           />
         ),
         blockquote: (props: ReactMarkdownProps) => <Blockquote {...props} />,
-        ul: (props: ReactMarkdownProps) => <Ul {...props} />,
-        ol: (props: ReactMarkdownProps) => <Ol {...props} />,
+        ul: (props: ReactMarkdownProps) => (
+          <Ul className='marker:text-primary' {...props} />
+        ),
+        ol: (props: ReactMarkdownProps) => (
+          <Ol className='marker:text-primary' {...props} />
+        ),
         hr: () => <Separator />,
         table: (props: ReactMarkdownProps) => (
           <div className='w-full overflow-x-auto'>

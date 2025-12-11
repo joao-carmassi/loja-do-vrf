@@ -14,14 +14,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { TProduto } from '@/utils/getProdutos';
+import { IProduto } from '@/utils/getProdutos';
 import { FilterIcon } from 'lucide-react';
 import { useState } from 'react';
 
 interface Props {
   categorias: string[];
   marca: string;
-  produtos: TProduto[];
+  produtos: IProduto[];
 }
 
 function AsideEProdutos({

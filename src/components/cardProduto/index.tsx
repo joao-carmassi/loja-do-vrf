@@ -1,5 +1,5 @@
 import './cardProduto.css';
-import { TProduto } from '@/utils/getProdutos';
+import { IProduto } from '@/utils/getProdutos';
 import { Card, CardContent, CardHeader } from '../ui/card';
 import { H2 } from '../ui/h2';
 import Link from 'next/link';
@@ -7,7 +7,7 @@ import generateUrl from '@/utils/generateUrl';
 import Image from 'next/image';
 
 interface Props {
-  produto: TProduto;
+  produto: IProduto;
 }
 
 function CardProduto({ produto }: Props): React.ReactNode {
