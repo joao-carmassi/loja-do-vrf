@@ -99,7 +99,7 @@ function AsideEProdutos({
             {marca}
           </H1>
           <Image
-            src={`/imgs/marcas/${marca}.png`}
+            src={`/imgs/marcas/${marca.toUpperCase()}.png`}
             alt={marca}
             width={220}
             height={90}

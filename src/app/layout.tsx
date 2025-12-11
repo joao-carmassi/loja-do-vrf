@@ -39,4 +39,13 @@ export default function RootLayout({
   );
 }
 
-// TODO: METADATA E H1
+/* TODO 
+  - Botao hover carrosel
+  - Card hover button
+  - Carrinho
+  - Header e footer
+  - Manuais
+
+  - SEO
+  - ANALYTICS
+*/
