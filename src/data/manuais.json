@@ -1,0 +1,160 @@
+{
+  "data": [
+    {
+      "marca": "TOSHIBA",
+      "tipo": "EVAPORADORA",
+      "modelo": "MMK",
+      "documento": "Manual de Peças - MMK"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "EVAPORADORA",
+      "modelo": "ATOM",
+      "documento": "Manual de Projeto - Atom Evaporadora"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "ATOM",
+      "documento": "Manual de Projeto - Atom"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V4",
+      "documento": "Manual de Projeto - MDV4+ Mini"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V6",
+      "documento": "Manual de Projeto - Mini V6 Dura"
+    },
+    {
+      "marca": "TOSHIBA",
+      "tipo": "CONDENSADORA",
+      "modelo": "MMY",
+      "documento": "Manual de Projeto - MMY 2"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V4",
+      "documento": "Manual de Projeto - V4+ ÁGUA"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V5",
+      "documento": "Manual de Projeto - V5X"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V6",
+      "documento": "Manual de Projeto - V6 - 220V"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V6",
+      "documento": "Manual de Projeto - V6 - 380V"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V6",
+      "documento": "Manual de Projeto - V6 - Side Discharge"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V6",
+      "documento": "Manual de Projeto - V6 e VC"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V6",
+      "documento": "Manual de Projeto - V6-i"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V6",
+      "documento": "Manual de Projeto - V6R"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V8",
+      "documento": "Manual de Projeto - V8 Easy Fit"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V8",
+      "documento": "Manual de Projeto - V8"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "VC",
+      "documento": "Manual de Projeto - V8S Side Discharge"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "VC",
+      "documento": "Manual de Projeto - VC MAX"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V4",
+      "documento": "Manual de Projeto - VC Plus"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V4",
+      "documento": "Manual de Projeto V4+i"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V8",
+      "documento": "Manual de Projeto V8 220V"
+    },
+    {
+      "marca": "MIDEA",
+      "tipo": "CONDENSADORA",
+      "modelo": "V8",
+      "documento": "Manual de Projeto V8 380V"
+    },
+    {
+      "marca": "TOSHIBA",
+      "tipo": "EVAPORADORA",
+      "modelo": "MMU - MMD - MML - MMC - MML - MMF",
+      "documento": "Manual de Serviços - Evaporadoras MMU - MMD - MML - MMC - MML - MMF"
+    },
+    {
+      "marca": "TOSHIBA",
+      "tipo": "EVAPORADORA",
+      "modelo": "MMK",
+      "documento": "Manual de Serviços - MMK"
+    },
+    {
+      "marca": "TOSHIBA",
+      "tipo": "CONDENSADORA",
+      "modelo": "MMY",
+      "documento": "Manual de Serviços - MMY"
+    },
+    {
+      "marca": "TOSHIBA",
+      "tipo": "CONDENSADORA",
+      "modelo": "MMY",
+      "documento": "Manual de Serviços e Peças - MMY"
+    }
+  ]
+}

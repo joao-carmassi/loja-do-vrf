@@ -16,14 +16,12 @@ const CarouselMarcasHome = () => {
 
   return (
     <section className='md:px-12 mx-auto max-w-[95rem]'>
-      <div className='bg-blue-100 md:rounded-lg p-3 md:p-6 space-y-3 md:space-y-6'>
+      <div className='bg-accent md:rounded-lg p-3 md:p-6 space-y-3 md:space-y-6'>
         <H2 className='w-fit mx-auto'>Escolha pela marca</H2>
         <Carousel
-          className=''
           opts={{
             align: 'start',
             loop: true,
-            dragFree: true,
           }}
         >
           <CarouselContent>
@@ -32,25 +30,23 @@ const CarouselMarcasHome = () => {
                 className='basis-1/2 md:basis-1/3 lg:basis-1/4 grid place-items-center'
                 key={marca}
               >
-                <div className='bg-muted aspect-square w-40 md:w-52 lg:w-60 rounded-full grid place-items-center'>
-                  <Link
-                    className='w-full h-full'
-                    href={`/marca/${generateUrl(marca)}`}
-                  >
-                    <Image
-                      width={240}
-                      height={240}
-                      src='https://picsum.photos/200'
-                      alt=''
-                      className='w-full h-full object-cover object-center rounded-full'
-                    />
-                  </Link>
-                </div>
+                <Link
+                  className='bg-card aspect-square w-40 md:w-52 lg:w-60 rounded-full flex items-center justify-center'
+                  href={`/marca/${generateUrl(marca)}`}
+                >
+                  <Image
+                    width={160}
+                    height={47}
+                    src={`/imgs/marcas/${marca.toUpperCase()}.png`}
+                    alt={`Marca ${marca}`}
+                    className='w-32 md:w-40 h-fit'
+                  />
+                </Link>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className='left-0' />
-          <CarouselNext className='right-0' />
+          <CarouselPrevious className='left-0 text-primary' />
+          <CarouselNext className='right-0 text-primary' />
         </Carousel>
       </div>
     </section>

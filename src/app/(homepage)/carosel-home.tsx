@@ -63,8 +63,8 @@ const CarouselHome = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className='left-6' />
-        <CarouselNext className='right-6' />
+        <CarouselPrevious className='left-6 text-primary' />
+        <CarouselNext className='right-6 text-primary' />
       </Carousel>
     </section>
   );

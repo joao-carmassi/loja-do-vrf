@@ -22,13 +22,19 @@ function CardProduto({ produto }: Props): React.ReactNode {
           <Image
             width={214}
             height={214}
-            src='https://picsum.photos/200'
-            alt=''
-            className='w-full h-full object-cover object-center aspect-square rounded-md border border-secondary'
+            src={`/imgs/produtos/${produto.id}.png`}
+            alt={produto.nome}
+            className='w-full h-full object-cover object-center aspect-square rounded-md border border-primary'
           />
         </CardHeader>
-        <CardContent className=''>
-          <p>{produto.marca}</p>
+        <CardContent className='space-y-2'>
+          <Image
+            height={10}
+            width={44}
+            className='h-fit w-12'
+            alt={`Marca ${produto.marca}`}
+            src={`/imgs/marcas/${produto.marca.toUpperCase()}.png`}
+          />
           <div>
             <H2 className='!text-base break-words limitaTexto2Linhas'>
               Produto {produto.nome}

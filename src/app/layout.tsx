@@ -9,17 +9,17 @@ const geist = Inter({
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: `Chiller`,
-    description: `Peças para Chiller em um único lugar`,
+    title: `Loja do VRF`,
+    description: `Soluções em climatização VRF com qualidade e confiança`,
     openGraph: {
-      title: `Chiller`,
-      description: `Peças para Chiller em um único lugar`,
+      title: `Loja do VRF`,
+      description: `Soluções em climatização VRF com qualidade e confiança`,
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Chiller`,
-      description: `Peças para Chiller em um único lugar`,
+      title: `Loja do VRF`,
+      description: `Soluções em climatização VRF com qualidade e confiança`,
     },
   };
 };
