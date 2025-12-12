@@ -8,11 +8,14 @@ import BotaoComprarCarrinho from './ui/botao-comprar-card';
 
 interface Props {
   produto: IProduto;
+  cardOnMenu?: boolean;
 }
 
-function CardProduto({ produto }: Props): React.ReactNode {
+function CardProduto({ produto, cardOnMenu }: Props): React.ReactNode {
   return (
-    <div className='hover:scale-105 duration-300 md:p-3'>
+    <div
+      className={`hover:scale-105 duration-300 ${!cardOnMenu ? 'md:p-3' : ''}`}
+    >
       <Link
         prefetch={false}
         href={`/produto/${generateUrl(`${produto.nome}-${produto.sku}`)}`}
@@ -47,7 +50,11 @@ function CardProduto({ produto }: Props): React.ReactNode {
               </p>
             </div>
           </CardContent>
-          <BotaoComprarCarrinho produto={produto}>Comprar</BotaoComprarCarrinho>
+          {!cardOnMenu && (
+            <BotaoComprarCarrinho produto={produto}>
+              Comprar
+            </BotaoComprarCarrinho>
+          )}
         </Card>
       </Link>
     </div>

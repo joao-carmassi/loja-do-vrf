@@ -1,5 +1,4 @@
 'use client';
-
 import React from 'react';
 import Logo from '@/components/logo';
 import { Button } from '@/components/ui/button';
@@ -24,21 +23,32 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
 import BotaoCarrinho from './botaoCarrinho';
-import { ChevronRight } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
+import CardProduto from './card-produto';
+import Autoplay from 'embla-carousel-autoplay';
 
 export default function Header(): React.ReactNode {
-  const { categorias, subcategorias: itens } = getProdutos;
+  const { categorias, subcategorias: itens, produtos } = getProdutos;
+
   const navItens = ['placa', 'motor', 'compressor', 'sensor'];
 
-  const [openDropdown, setOpenDropdown] = React.useState<string | null>(null);
+  // const [openDropdown, setOpenDropdown] = React.useState<string | null>(null);
 
   return (
     <>
-      <header className='border-b w-full fixed top-0 left-0 bg-white z-50'>
+      <header className='border-b w-full fixed top-0 left-0 z-50 bg-primary'>
+        <div className='bg-black text-white'>
+          <p className='text-center'>
+            TODA LINHA DE PARTES E PEÇAS PARA VRF |PARCELAMENTO EM ATÉ 12 VEZES
+            | 7% DE DESCONTO NO PIX
+          </p>
+        </div>
         <div className='flex h-16 items-center justify-between gap-4 max-w-[95rem] mx-auto px-6'>
-          {/* Left side */}
-          <div className='flex items-center gap-2'>
+          <div className='flex-1 flex items-center gap-2'>
             {/* Mobile menu trigger */}
+            <Link href='/' className='text-primary hover:text-primary/90'>
+              <Logo />
+            </Link>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
@@ -85,146 +95,184 @@ export default function Header(): React.ReactNode {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
-            {/* Main nav */}
-            <div className='flex items-center gap-6'>
-              <Link href='/' className='text-primary hover:text-primary/90'>
-                <Logo />
-              </Link>
-              {/* Navigation menu */}
-              <NavigationMenu viewport={false} className='max-md:hidden'>
-                <NavigationMenuList className='gap-0'>
-                  <NavigationMenuItem>
-                    <NavigationMenuTrigger className='capitalize'>
-                      Categorias
-                    </NavigationMenuTrigger>
-                    <NavigationMenuContent>
-                      {categorias.map((categoria) =>
-                        itens[categoria as keyof typeof itens].subcategorias
-                          .length === 0 ? (
-                          <NavigationMenuLink
-                            className='text-nowrap capitalize'
-                            key={`${categoria}-desktop-categorias`}
-                            asChild
-                          >
-                            <Link href={`/produtos/${generateUrl(categoria)}`}>
-                              {categoria}
-                            </Link>
-                          </NavigationMenuLink>
-                        ) : (
-                          <DropdownMenu
-                            key={`${categoria}-dropdown`}
-                            open={openDropdown === categoria}
-                            onOpenChange={(open) => {
-                              if (!open) setOpenDropdown(null);
-                            }}
-                          >
-                            <DropdownMenuTrigger asChild>
-                              <Button
-                                className='font-normal w-full justify-between capitalize px-2'
-                                size={'sm'}
-                                variant={'ghost'}
-                                onMouseEnter={() => setOpenDropdown(categoria)}
-                                onMouseLeave={() => setOpenDropdown(null)}
-                                aria-haspopup='menu'
-                              >
-                                {categoria}{' '}
-                                <ChevronRight
-                                  className={`${
-                                    openDropdown === categoria
-                                      ? 'rotate-180'
-                                      : ''
-                                  } duration-300`}
-                                />
-                              </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent
-                              align='start'
-                              side='right'
-                              className='min-w-40'
-                              sideOffset={0}
-                              onMouseEnter={() => setOpenDropdown(categoria)}
-                              onMouseLeave={() => setOpenDropdown(null)}
-                            >
-                              {itens[
-                                categoria as keyof typeof itens
-                              ].subcategorias.map((subcat) => (
-                                <DropdownMenuItem
-                                  key={`${categoria}-${subcat}`}
-                                  asChild
-                                >
-                                  <Button
-                                    className='font-normal w-full justify-between capitalize px-2 hover:!ring-0'
-                                    size={'sm'}
-                                    variant={'ghost'}
-                                    asChild
-                                  >
-                                    <Link
-                                      href={`/produtos/${generateUrl(
-                                        categoria
-                                      )}?subcategoria=${generateUrl(subcat)}`}
-                                    >
-                                      {subcat}
-                                    </Link>
-                                  </Button>
-                                </DropdownMenuItem>
-                              ))}
-                            </DropdownMenuContent>
-                          </DropdownMenu>
-                        )
-                      )}
-                    </NavigationMenuContent>
-                  </NavigationMenuItem>
-                  {navItens.map((item) => {
-                    return itens[item].subcategorias.length > 0 ? (
-                      <NavigationMenuItem key={`${item}-desktop-unicos`}>
-                        <NavigationMenuTrigger className='capitalize'>
-                          {item}
-                        </NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                          {itens[item as keyof typeof itens]?.subcategorias.map(
-                            (subcategoria) => (
-                              <NavigationMenuLink
-                                className='text-nowrap capitalize'
-                                key={`${item}-${subcategoria}-desktop-unicos`}
-                                asChild
-                              >
-                                <Link
-                                  href={`/produtos/${generateUrl(
-                                    item
-                                  )}?subcategoria=${generateUrl(subcategoria)}`}
-                                >
-                                  {subcategoria}
-                                </Link>
-                              </NavigationMenuLink>
-                            )
-                          )}
-                        </NavigationMenuContent>
-                      </NavigationMenuItem>
-                    ) : (
-                      <NavigationMenuItem key={`${item}-desktop-unicos`}>
-                        <Button variant='ghost' asChild>
-                          <Link
-                            className='capitalize'
-                            href={`/produtos/${generateUrl(item)}`}
-                          >
-                            {item}
-                          </Link>
-                        </Button>
-                      </NavigationMenuItem>
-                    );
-                  })}
-                </NavigationMenuList>
-              </NavigationMenu>
-            </div>
           </div>
-          {/* Right side */}
-          <div className='flex items-center gap-2'>
+          <div className='flex-1 bg-secondary'>a</div>
+          <div className='flex-1 flex justify-end gap-2'>
             <DialogPesquisaProdutos />
             <BotaoCarrinho />
           </div>
+        </div>
+        <div className='flex-1 flex items-center justify-center gap-6 w-full bg-card relative'>
+          {/* Navigation menu */}
+          <NavigationMenu viewport={false} className='max-md:hidden'>
+            <NavigationMenuList className='gap-0'>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className='capitalize'>
+                  Categorias
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  {categorias.map((categoria) => (
+                    <NavigationMenuLink
+                      className='text-nowrap capitalize'
+                      key={`${categoria}-desktop-categorias`}
+                      asChild
+                    >
+                      <Link href={`/produtos/${generateUrl(categoria)}`}>
+                        {categoria}
+                      </Link>
+                    </NavigationMenuLink>
+                  ))}
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              {navItens.map((item) => {
+                return itens[item].subcategorias.length > 0 ? (
+                  <NavigationMenuItem
+                    className='!static'
+                    key={`${item}-desktop-unicos`}
+                  >
+                    <NavigationMenuTrigger className='capitalize'>
+                      {item}
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent className='grid grid-cols-2 gap-2 !w-[50rem] left-1/2 -translate-x-1/2'>
+                      <div className='grid grid-cols-2 h-fit gap-2'>
+                        {itens[item as keyof typeof itens]?.subcategorias.map(
+                          (subcategoria) => (
+                            <NavigationMenuLink
+                              className='text-nowrap capitalize h-fit'
+                              key={`${item}-${subcategoria}-desktop-unicos`}
+                              asChild
+                            >
+                              <Link
+                                href={`/produtos/${generateUrl(
+                                  item
+                                )}?subcategoria=${generateUrl(subcategoria)}`}
+                              >
+                                {subcategoria}
+                              </Link>
+                            </NavigationMenuLink>
+                          )
+                        )}
+                      </div>
+                      <div className='w-full'>
+                        <Carousel
+                          className='w-full'
+                          plugins={[
+                            Autoplay({
+                              delay: 3000,
+                            }),
+                          ]}
+                          opts={{
+                            align: 'start',
+                            loop: true,
+                          }}
+                        >
+                          <CarouselContent>
+                            {produtos
+                              .filter(
+                                (produto) =>
+                                  produto.categoria.toLowerCase() ===
+                                  item.toLowerCase()
+                              )
+                              .map((produto, i) => (
+                                <CarouselItem className='basis-1/2' key={i}>
+                                  <CardProduto produto={produto} cardOnMenu />
+                                </CarouselItem>
+                              ))
+                              .slice(0, 10)}
+                          </CarouselContent>
+                        </Carousel>
+                      </div>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                ) : (
+                  <NavigationMenuItem key={`${item}-desktop-unicos`}>
+                    <Button variant='ghost' asChild>
+                      <Link
+                        className='capitalize'
+                        href={`/produtos/${generateUrl(item)}`}
+                      >
+                        {item}
+                      </Link>
+                    </Button>
+                  </NavigationMenuItem>
+                );
+              })}
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
       </header>
       <div className='pt-16' />
     </>
   );
 }
+
+// itens[categoria as keyof typeof itens].subcategorias
+//                       .length === 0 ? (
+//                       <NavigationMenuLink
+//                         className='text-nowrap capitalize'
+//                         key={`${categoria}-desktop-categorias`}
+//                         asChild
+//                       >
+//                         <Link href={`/produtos/${generateUrl(categoria)}`}>
+//                           {categoria}
+//                         </Link>
+//                       </NavigationMenuLink>
+//                     ) : (
+//                       <DropdownMenu
+//                         key={`${categoria}-dropdown`}
+//                         open={openDropdown === categoria}
+//                         onOpenChange={(open) => {
+//                           if (!open) setOpenDropdown(null);
+//                         }}
+//                       >
+//                         <DropdownMenuTrigger asChild>
+//                           <Button
+//                             className='font-normal w-full justify-between capitalize px-2'
+//                             size={'sm'}
+//                             variant={'ghost'}
+//                             onMouseEnter={() => setOpenDropdown(categoria)}
+//                             onMouseLeave={() => setOpenDropdown(null)}
+//                             aria-haspopup='menu'
+//                           >
+//                             {categoria}{' '}
+//                             <ChevronRight
+//                               className={`${
+//                                 openDropdown === categoria ? 'rotate-180' : ''
+//                               } duration-300`}
+//                             />
+//                           </Button>
+//                         </DropdownMenuTrigger>
+//                         <DropdownMenuContent
+//                           align='start'
+//                           side='right'
+//                           className='min-w-40'
+//                           sideOffset={0}
+//                           onMouseEnter={() => setOpenDropdown(categoria)}
+//                           onMouseLeave={() => setOpenDropdown(null)}
+//                         >
+//                           {itens[
+//                             categoria as keyof typeof itens
+//                           ].subcategorias.map((subcat) => (
+//                             <DropdownMenuItem
+//                               key={`${categoria}-${subcat}`}
+//                               asChild
+//                             >
+//                               <Button
+//                                 className='font-normal w-full justify-between capitalize px-2 hover:!ring-0'
+//                                 size={'sm'}
+//                                 variant={'ghost'}
+//                                 asChild
+//                               >
+//                                 <Link
+//                                   href={`/produtos/${generateUrl(
+//                                     categoria
+//                                   )}?subcategoria=${generateUrl(subcat)}`}
+//                                 >
+//                                   {subcat}
+//                                 </Link>
+//                               </Button>
+//                             </DropdownMenuItem>
+//                           ))}
+//                         </DropdownMenuContent>
+//                       </DropdownMenu>
+//                     )
