@@ -44,6 +44,7 @@ export default function RootLayout({
 /* TODO 
   - Header e footer
   - Manuais
+  - Zap
 
   - SEO
   - ANALYTICS
