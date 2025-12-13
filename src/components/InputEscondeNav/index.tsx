@@ -3,7 +3,11 @@
 import './ContainerHeader.css';
 import { useEffect } from 'react';
 
-const InputEscondeProdutos = () => {
+interface Props {
+  setSwitchValue: (value: boolean) => void;
+}
+
+const InputEscondeProdutos = ({ setSwitchValue }: Props) => {
   useEffect(() => {
     const divInput = document.getElementById('idMenuBotao') as HTMLElement;
     window.addEventListener('scroll', () => {
@@ -22,6 +26,7 @@ const InputEscondeProdutos = () => {
         id='check-icon'
         name='check-icon'
         type='checkbox'
+        onChange={(e) => setSwitchValue(e.target.checked)}
       />
       <label className='icon-menu' htmlFor='check-icon'>
         <div className='bar bar--1'></div>

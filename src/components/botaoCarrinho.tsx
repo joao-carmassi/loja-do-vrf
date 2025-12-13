@@ -21,12 +21,12 @@ function BotaoCarrinho(): React.ReactNode {
     <Button
       asChild
       size='icon'
-      className='rounded-full relative border-2 border-card'
+      className='rounded-full aspect-square relative border-2 border-card'
     >
       <Link href='/carrinho'>
         <Badge
           variant={'default'}
-          className='h-5 min-w-5 rounded-full px-1 absolute -top-1.5 -right-1.5 bg-card text-foreground'
+          className='h-5 aspect-square min-w-5 rounded-full px-1 absolute -top-1.5 -right-1.5 bg-card text-foreground'
         >
           {mounted ? carrinho.length : 0}
         </Badge>

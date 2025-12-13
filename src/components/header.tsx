@@ -29,6 +29,10 @@ import BannerPix from './banner-pix';
 import { cn } from '@/lib/utils';
 import shuffleArray from '@/utils/shuffle-array';
 import itemsPerCategory from '@/utils/items-per-category';
+import InputEscondeProdutos from './InputEscondeNav';
+import { SearchIcon } from 'lucide-react';
+import { ButtonGroup } from './ui/button-group';
+import { Input } from './ui/input';
 
 const navItens = [
   {
@@ -52,7 +56,6 @@ const navItens = [
 export default function Header(): React.ReactNode {
   const { categorias, subcategorias: itens, produtos } = getProdutos;
   const [hidden, setHidden] = useState<string>('');
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [switchValue, setSwitchValue] = useState<boolean>(false);
 
   useEffect(() => {
@@ -76,7 +79,7 @@ export default function Header(): React.ReactNode {
       <header className='w-full fixed top-0 z-50 bg-primary'>
         <BannerPix />
         <div className='flex h-16 items-center justify-between gap-4 max-w-[95rem] mx-auto px-6 md:px-12'>
-          <div className='flex-1 flex items-center gap-2'>
+          <div className='flex-1 flex items-center justify-end gap-3'>
             {/* Mobile menu trigger */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -140,9 +143,52 @@ export default function Header(): React.ReactNode {
                 className='h-full'
               />
             </Link>
+            <InputEscondeProdutos setSwitchValue={setSwitchValue} />
           </div>
-          <div className='flex-1 bg-secondary'>a</div>
-          <div className='flex-1 flex justify-end gap-2'>
+          <ButtonGroup className='w-full max-w-[35%]'>
+            <Input
+              className='bg-card h-10'
+              placeholder='Digite o nome ou código da peça'
+            />
+            <Button variant='secondary' aria-label='Pesquisar'>
+              <SearchIcon />
+            </Button>
+          </ButtonGroup>
+          <div className='flex-1 flex gap-3'>
+            <Button className='!px-0' size={'sm'}>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 24 24'
+                fill='none'
+                stroke='currentColor'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='1.5'
+                className='text-white !size-7'
+              >
+                <path d='M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4'></path>
+              </svg>
+              <div>
+                <p className='text-start text-xs'>Contato</p>
+                <p className='font-semibold text-xs'>(11) 96918-9244</p>
+              </div>
+            </Button>
+            <Button className='!px-0 group' size={'sm'}>
+              <Image
+                src='/imgs/nav/manuais.webp'
+                alt='Manuais Técnicos'
+                width={33}
+                height={33}
+              />
+              <div>
+                <p className='text-start text-xs group-hover:underline'>
+                  Manuais
+                </p>
+                <p className='font-semibold text-xs group-hover:underline'>
+                  Técnicos
+                </p>
+              </div>
+            </Button>
             <BotaoCarrinho />
           </div>
         </div>
