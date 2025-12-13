@@ -27,7 +27,7 @@ function CardProduto({ produto, cardOnMenu }: Props): React.ReactNode {
               height={214}
               src={`/imgs/produtos/${produto.id}.png`}
               alt={produto.nome}
-              className='w-full h-full object-cover object-center aspect-square rounded-md border border-primary'
+              className='w-full h-full object-contain object-center aspect-square rounded-md border border-primary'
             />
           </CardHeader>
           <CardContent className='space-y-2'>

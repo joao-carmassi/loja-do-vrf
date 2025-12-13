@@ -28,6 +28,8 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
 import CardProduto from '@/components/card-produto';
+import shuffleArray from '@/utils/shuffle-array';
+import itemsPerCategory from '@/utils/items-per-category';
 
 interface Props {
   params: Promise<{
@@ -191,12 +193,13 @@ const Produtos = async ({ params }: Props) => {
             }}
           >
             <CarouselContent>
-              {getProdutos.produtos
+              {shuffleArray(getProdutos.produtos)
                 .filter(
                   (prod) =>
                     prod.categoria === produto.categoria &&
                     prod.sku !== produto.sku
                 )
+                .slice(0, itemsPerCategory)
                 .map((produto, i) => (
                   <CarouselItem
                     className='basis-1/2 md:basis-1/3 lg:basis-1/5'

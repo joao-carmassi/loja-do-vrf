@@ -15,7 +15,7 @@ const CarouselMarcasHome = () => {
   const { marcas } = getProdutos;
 
   return (
-    <section className='md:px-12 mx-auto max-w-[95rem]'>
+    <section className='md:pt-12 md:px-12 mx-auto max-w-[95rem]'>
       <div className='bg-accent md:rounded-lg p-3 md:p-6 space-y-3 md:space-y-6'>
         <H2 className='w-fit mx-auto'>Escolha pela marca</H2>
         <Carousel

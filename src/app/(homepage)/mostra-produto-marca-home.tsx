@@ -9,6 +9,8 @@ import {
 import { H2 } from '@/components/ui/h2';
 import { Separator } from '@/components/ui/separator';
 import getProdutos from '@/utils/getProdutos';
+import itemsPerCategory from '@/utils/items-per-category';
+import shuffleArray from '@/utils/shuffle-array';
 import Image from 'next/image';
 
 const marcasPermitidas = ['midea', 'toshiba'];
@@ -41,11 +43,12 @@ const MostraProdutoMarcaHome = () => {
               }}
             >
               <CarouselContent>
-                {produtos
+                {shuffleArray(produtos)
                   .filter(
                     (produto) =>
                       produto.categoria.toLowerCase() === produtoPermitido
                   )
+                  .slice(0, itemsPerCategory)
                   .map((produto, i) => (
                     <CarouselItem
                       className='basis-1/2 md:basis-1/3 lg:basis-1/5'
@@ -87,8 +90,9 @@ const MostraProdutoMarcaHome = () => {
               }}
             >
               <CarouselContent>
-                {produtos
+                {shuffleArray(produtos)
                   .filter((produto) => produto.marca.toLowerCase() === marca)
+                  .slice(0, itemsPerCategory)
                   .map((produto, i) => (
                     <CarouselItem
                       className='basis-1/2 md:basis-1/3 lg:basis-1/5'

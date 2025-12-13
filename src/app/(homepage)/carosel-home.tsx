@@ -50,14 +50,14 @@ const CarouselHome = () => {
                   alt={banner.alt}
                   height={400}
                   width={1800}
-                  className='hidden object-cover sm:block w-full'
+                  className='hidden object-cover lg:block w-full'
                 />
                 <Image
                   src={banner.srcMobile}
                   alt={banner.alt}
-                  height={260}
-                  width={390}
-                  className='block object-cover sm:hidden w-full'
+                  height={900}
+                  width={600}
+                  className='block object-cover lg:hidden w-full'
                 />
               </div>
             </CarouselItem>

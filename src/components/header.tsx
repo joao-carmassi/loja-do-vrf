@@ -1,6 +1,5 @@
 'use client';
-import React from 'react';
-import Logo from '@/components/logo';
+import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   NavigationMenu,
@@ -13,7 +12,6 @@ import {
 import generateUrl from '@/utils/generateUrl';
 import getProdutos from '@/utils/getProdutos';
 import Link from 'next/link';
-import DialogPesquisaProdutos from './botaoPesquisa';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,33 +24,64 @@ import BotaoCarrinho from './botaoCarrinho';
 import { Carousel, CarouselContent, CarouselItem } from './ui/carousel';
 import CardProduto from './card-produto';
 import Autoplay from 'embla-carousel-autoplay';
+import Image from 'next/image';
+import BannerPix from './banner-pix';
+import { cn } from '@/lib/utils';
+import shuffleArray from '@/utils/shuffle-array';
+import itemsPerCategory from '@/utils/items-per-category';
+
+const navItens = [
+  {
+    categoria: 'placa',
+    foto: '/imgs/nav/PLACAS.webp',
+  },
+  {
+    categoria: 'motor',
+    foto: '/imgs/nav/MOTORES-VENTILADORES.webp',
+  },
+  {
+    categoria: 'compressor',
+    foto: '/imgs/nav/COMPRESSORES.webp',
+  },
+  {
+    categoria: 'sensor',
+    foto: '/imgs/nav/SENSORES.webp',
+  },
+];
 
 export default function Header(): React.ReactNode {
   const { categorias, subcategorias: itens, produtos } = getProdutos;
+  const [hidden, setHidden] = useState<string>('');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [switchValue, setSwitchValue] = useState<boolean>(false);
 
-  const navItens = ['placa', 'motor', 'compressor', 'sensor'];
+  useEffect(() => {
+    const scrolled = () => window.scrollY > 0;
+    const onScroll = () => {
+      if (scrolled()) {
+        setHidden('hidden');
+      } else {
+        setHidden('');
+      }
+    };
+    onScroll();
+    document.addEventListener('scroll', onScroll);
+    return () => document.removeEventListener('scroll', onScroll);
+  }, []);
 
   // const [openDropdown, setOpenDropdown] = React.useState<string | null>(null);
 
   return (
     <>
-      <header className='border-b w-full fixed top-0 left-0 z-50 bg-primary'>
-        <div className='bg-black text-white'>
-          <p className='text-center'>
-            TODA LINHA DE PARTES E PEÇAS PARA VRF |PARCELAMENTO EM ATÉ 12 VEZES
-            | 7% DE DESCONTO NO PIX
-          </p>
-        </div>
-        <div className='flex h-16 items-center justify-between gap-4 max-w-[95rem] mx-auto px-6'>
+      <header className='w-full fixed top-0 z-50 bg-primary'>
+        <BannerPix />
+        <div className='flex h-16 items-center justify-between gap-4 max-w-[95rem] mx-auto px-6 md:px-12'>
           <div className='flex-1 flex items-center gap-2'>
             {/* Mobile menu trigger */}
-            <Link href='/' className='text-primary hover:text-primary/90'>
-              <Logo />
-            </Link>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
-                  className='group size-8 md:hidden'
+                  className='group size-8 md:hidden text-card'
                   variant='ghost'
                   size='icon'
                 >
@@ -95,22 +124,50 @@ export default function Header(): React.ReactNode {
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
+            <Link className='flex gap-3 items-center' href='/'>
+              <Image
+                src='/imgs/logos/favicon.ico'
+                alt='Logo'
+                width={40}
+                height={40}
+                className='border-2 border-secondary p-1.5 rounded-full aspect-square h-full'
+              />
+              <Image
+                src='/imgs/logos/logo.webp'
+                alt='Loja do VRF'
+                width={180}
+                height={21}
+                className='h-full'
+              />
+            </Link>
           </div>
           <div className='flex-1 bg-secondary'>a</div>
           <div className='flex-1 flex justify-end gap-2'>
-            <DialogPesquisaProdutos />
             <BotaoCarrinho />
           </div>
         </div>
-        <div className='flex-1 flex items-center justify-center gap-6 w-full bg-card relative'>
+        {/* Produtos */}
+        <div
+          className={cn(
+            'flex-1 flex items-center justify-center gap-6 w-full bg-card relative',
+            switchValue ? '' : hidden
+          )}
+        >
           {/* Navigation menu */}
           <NavigationMenu viewport={false} className='max-md:hidden'>
             <NavigationMenuList className='gap-0'>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className='capitalize'>
+              <NavigationMenuItem className='!static'>
+                <NavigationMenuTrigger className='uppercase text-primary text-[0.95rem] font-semibold flex items-center gap-1'>
+                  <Image
+                    src='/imgs/nav/categoria.webp'
+                    alt='Menu Categoria'
+                    width={20}
+                    height={20}
+                    className='h-4 w-fit'
+                  />
                   Categorias
                 </NavigationMenuTrigger>
-                <NavigationMenuContent>
+                <NavigationMenuContent className='!top-[2.2rem]'>
                   {categorias.map((categoria) => (
                     <NavigationMenuLink
                       className='text-nowrap capitalize'
@@ -125,33 +182,40 @@ export default function Header(): React.ReactNode {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               {navItens.map((item) => {
-                return itens[item].subcategorias.length > 0 ? (
+                return itens[item.categoria].subcategorias.length > 0 ? (
                   <NavigationMenuItem
                     className='!static'
-                    key={`${item}-desktop-unicos`}
+                    key={`${item.categoria}-desktop-unicos`}
                   >
-                    <NavigationMenuTrigger className='capitalize'>
-                      {item}
+                    <NavigationMenuTrigger className='uppercase text-primary text-[0.95rem] font-semibold flex items-center gap-1'>
+                      <Image
+                        src={item.foto}
+                        alt={item.categoria}
+                        width={20}
+                        height={20}
+                        className='h-6 w-fit'
+                      />
+                      {item.categoria}
                     </NavigationMenuTrigger>
-                    <NavigationMenuContent className='grid grid-cols-2 gap-2 !w-[50rem] left-1/2 -translate-x-1/2'>
+                    <NavigationMenuContent className='grid grid-cols-2 gap-2 !w-[50rem] left-1/2 -translate-x-1/2 !top-[2.2rem]'>
                       <div className='grid grid-cols-2 h-fit gap-2'>
-                        {itens[item as keyof typeof itens]?.subcategorias.map(
-                          (subcategoria) => (
-                            <NavigationMenuLink
-                              className='text-nowrap capitalize h-fit'
-                              key={`${item}-${subcategoria}-desktop-unicos`}
-                              asChild
+                        {itens[
+                          item.categoria as keyof typeof itens
+                        ]?.subcategorias.map((subcategoria) => (
+                          <NavigationMenuLink
+                            className='text-nowrap capitalize h-fit'
+                            key={`${item.categoria}-${subcategoria}-desktop-unicos`}
+                            asChild
+                          >
+                            <Link
+                              href={`/produtos/${generateUrl(
+                                item.categoria
+                              )}?subcategoria=${generateUrl(subcategoria)}`}
                             >
-                              <Link
-                                href={`/produtos/${generateUrl(
-                                  item
-                                )}?subcategoria=${generateUrl(subcategoria)}`}
-                              >
-                                {subcategoria}
-                              </Link>
-                            </NavigationMenuLink>
-                          )
-                        )}
+                              {subcategoria}
+                            </Link>
+                          </NavigationMenuLink>
+                        ))}
                       </div>
                       <div className='w-full'>
                         <Carousel
@@ -167,12 +231,13 @@ export default function Header(): React.ReactNode {
                           }}
                         >
                           <CarouselContent>
-                            {produtos
+                            {shuffleArray(produtos)
                               .filter(
                                 (produto) =>
                                   produto.categoria.toLowerCase() ===
-                                  item.toLowerCase()
+                                  item.categoria.toLowerCase()
                               )
+                              .slice(0, itemsPerCategory)
                               .map((produto, i) => (
                                 <CarouselItem className='basis-1/2' key={i}>
                                   <CardProduto produto={produto} cardOnMenu />
@@ -188,10 +253,17 @@ export default function Header(): React.ReactNode {
                   <NavigationMenuItem key={`${item}-desktop-unicos`}>
                     <Button variant='ghost' asChild>
                       <Link
-                        className='capitalize'
-                        href={`/produtos/${generateUrl(item)}`}
+                        className='uppercase text-primary text-[0.95rem] font-semibold flex items-center gap-1'
+                        href={`/produtos/${generateUrl(item.categoria)}`}
                       >
-                        {item}
+                        <Image
+                          src={item.foto}
+                          alt={item.categoria}
+                          width={20}
+                          height={20}
+                          className='h-6 w-fit'
+                        />
+                        {item.categoria}
                       </Link>
                     </Button>
                   </NavigationMenuItem>
@@ -201,7 +273,8 @@ export default function Header(): React.ReactNode {
           </NavigationMenu>
         </div>
       </header>
-      <div className='pt-16' />
+      <div className='py-3.5' />
+      <div className='py-13' />
     </>
   );
 }
