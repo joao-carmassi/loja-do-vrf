@@ -32,11 +32,7 @@ const CarouselHome = () => {
   return (
     <section>
       <Carousel
-        plugins={[
-          Autoplay({
-            delay: 3000,
-          }),
-        ]}
+        plugins={[Autoplay({ delay: 5000 })]}
         opts={{
           loop: true,
         }}

@@ -1,3 +1,10 @@
+'use client';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '@/components/ui/carousel';
+import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -24,10 +31,16 @@ const cards = [
 
 const MiniCards = () => {
   return (
-    <section className='flex md:gap-6 md:p-12 max-w-[95rem] mx-auto'>
-      {cards.map((card, index) => (
-        <div key={index} className='flex-1'>
-          <Link href={card.link} target={card.target} rel='noopener noreferrer'>
+    <section className='md:p-12 max-w-[95rem] mx-auto'>
+      <div className='md:gap-6 hidden md:flex'>
+        {cards.map((card, index) => (
+          <Link
+            className='flex-1'
+            key={index}
+            href={card.link}
+            target={card.target}
+            rel='noopener noreferrer'
+          >
             <Image
               src={card.src}
               alt={card.alt}
@@ -36,8 +49,40 @@ const MiniCards = () => {
               className='w-full h-auto hover:scale-105 transition-transform duration-300'
             />
           </Link>
-        </div>
-      ))}
+        ))}
+      </div>
+      <div className='md:hidden space-y-1 py-6'>
+        <h2 className='text-lg font-semibold px-6'>Aqui temos:</h2>
+        <Carousel
+          opts={{
+            loop: true,
+            align: 'start',
+          }}
+          plugins={[Autoplay({ delay: 5000 })]}
+          className='pl-6'
+        >
+          <CarouselContent>
+            {cards.map((card, index) => (
+              <CarouselItem className='basis-2/3' key={index}>
+                <Link
+                  className='flex-1'
+                  href={card.link}
+                  target={card.target}
+                  rel='noopener noreferrer'
+                >
+                  <Image
+                    src={card.src}
+                    alt={card.alt}
+                    width={450}
+                    height={230}
+                    className='w-full h-auto'
+                  />
+                </Link>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
     </section>
   );
 };
