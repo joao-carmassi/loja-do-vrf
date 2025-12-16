@@ -20,7 +20,7 @@ const InputEscondeProdutos = ({ setSwitchValue }: Props) => {
   }, []);
 
   return (
-    <div id='idMenuBotao' className='hidden lg:block'>
+    <div id='idMenuBotao' className='hidden'>
       <input
         className='check-icon hidden'
         id='check-icon'

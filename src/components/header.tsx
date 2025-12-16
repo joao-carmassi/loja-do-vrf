@@ -16,7 +16,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu';
@@ -30,10 +29,24 @@ import { cn } from '@/lib/utils';
 import shuffleArray from '@/utils/shuffle-array';
 import itemsPerCategory from '@/utils/items-per-category';
 import InputEscondeProdutos from './InputEscondeNav';
-import { SearchIcon } from 'lucide-react';
+import { MessageSquareText, SearchIcon } from 'lucide-react';
 import { ButtonGroup } from './ui/button-group';
 import { Input } from './ui/input';
 import MenuContato from './menu-contato';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from './ui/sheet';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from './ui/accordion';
+import { Separator } from './ui/separator';
 
 const navItens = [
   {
@@ -82,8 +95,8 @@ export default function Header(): React.ReactNode {
         <div className='flex h-16 items-center justify-between gap-4 max-w-[95rem] mx-auto px-6 lg:px-12'>
           <div className='flex-1 flex items-center lg:justify-end gap-3'>
             {/* Mobile menu trigger */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
+            <Sheet>
+              <SheetTrigger asChild>
                 <Button
                   className='group size-10 lg:hidden text-card border border-card'
                   variant='ghost'
@@ -115,19 +128,98 @@ export default function Header(): React.ReactNode {
                     />
                   </svg>
                 </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className='lg:hidden translate-x-6'>
-                <DropdownMenuLabel>Categorias</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                {categorias.map((categoria) => (
-                  <DropdownMenuItem key={`${categoria}-celular`} asChild>
-                    <Link href={`/produtos/${categoria}`} className='w-full'>
-                      {categoria}
+              </SheetTrigger>
+              <SheetContent side='left' className='overflow-y-auto'>
+                <SheetHeader>
+                  <SheetTitle hidden>Menu</SheetTitle>
+                  <div className='flex flex-col gap-5 text-sm'>
+                    <Link href='/' className='flex gap-2 items-center'>
+                      <Image
+                        src='/imgs/logos/favicon.ico'
+                        alt='Logo'
+                        width={25}
+                        height={25}
+                        className='border-2 border-secondary p-1 rounded-full aspect-square'
+                      />
+                      <p className='font-bold text-primary text-lg'>
+                        Loja do VRF
+                      </p>
                     </Link>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+                    <Separator />
+                    <div className='flex flex-col gap-3'>
+                      <Link
+                        className='flex items-center gap-2'
+                        href='/manuais-tecnicos'
+                      >
+                        <Image
+                          src='/imgs/nav/logoManualCelular.webp'
+                          alt='Manuais Técnicos'
+                          width={15}
+                          height={15}
+                        />
+                        Manuais Técnicos
+                      </Link>
+                      <Link
+                        className='flex items-center gap-2'
+                        href='/manuais-tecnicos'
+                      >
+                        <MessageSquareText
+                          strokeWidth={1.5}
+                          size={18}
+                          className='text-[#004fa2]'
+                        />
+                        Central de Atendimento
+                      </Link>
+                    </div>
+                    <Separator />
+                    <div className='flex flex-col gap-3'>
+                      <h3 className='font-semibold'>Categorias:</h3>
+                      {categorias.map((categoria, i) => {
+                        const currentCategoria =
+                          itens[categoria as keyof typeof itens];
+                        return currentCategoria.subcategorias.length === 0 ? (
+                          <Link
+                            key={categoria + i}
+                            href={`/produtos/${generateUrl(categoria)}`}
+                            className='capitalize'
+                          >
+                            {categoria}
+                          </Link>
+                        ) : (
+                          <Accordion
+                            key={categoria + i}
+                            type='single'
+                            collapsible
+                          >
+                            <AccordionItem value='item-1'>
+                              <AccordionTrigger className='py-0 capitalize'>
+                                {categoria}
+                              </AccordionTrigger>
+                              <AccordionContent className='pt-3 flex flex-col gap-3'>
+                                {currentCategoria.subcategorias.map(
+                                  (subcat, i) => (
+                                    <Link
+                                      key={subcat + i}
+                                      href={`/produtos/${generateUrl(
+                                        categoria
+                                      )}?subcategoria=${generateUrl(subcat)}`}
+                                      className='capitalize'
+                                    >
+                                      {subcat}
+                                    </Link>
+                                  )
+                                )}
+                                <Separator />
+                              </AccordionContent>
+                            </AccordionItem>
+                          </Accordion>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
             <Link className='flex gap-3 items-center' href='/'>
               <Image
                 src='/imgs/logos/favicon.ico'
