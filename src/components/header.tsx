@@ -33,6 +33,7 @@ import InputEscondeProdutos from './InputEscondeNav';
 import { SearchIcon } from 'lucide-react';
 import { ButtonGroup } from './ui/button-group';
 import { Input } from './ui/input';
+import MenuContato from './menu-contato';
 
 const navItens = [
   {
@@ -78,13 +79,13 @@ export default function Header(): React.ReactNode {
     <>
       <header className='w-full fixed top-0 z-50 bg-primary'>
         <BannerPix />
-        <div className='flex h-16 items-center justify-between gap-4 max-w-[95rem] mx-auto px-6 md:px-12'>
-          <div className='flex-1 flex items-center justify-end gap-3'>
+        <div className='flex h-16 items-center justify-between gap-4 max-w-[95rem] mx-auto px-6 lg:px-12'>
+          <div className='flex-1 flex items-center lg:justify-end gap-3'>
             {/* Mobile menu trigger */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
-                  className='group size-8 md:hidden text-card'
+                  className='group size-10 lg:hidden text-card border border-card'
                   variant='ghost'
                   size='icon'
                 >
@@ -115,7 +116,7 @@ export default function Header(): React.ReactNode {
                   </svg>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className='md:hidden translate-x-6'>
+              <DropdownMenuContent className='lg:hidden translate-x-6'>
                 <DropdownMenuLabel>Categorias</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 {categorias.map((categoria) => (
@@ -133,61 +134,90 @@ export default function Header(): React.ReactNode {
                 alt='Logo'
                 width={40}
                 height={40}
-                className='border-2 border-secondary p-1.5 rounded-full aspect-square h-full'
+                className='border-2 border-secondary p-1.5 rounded-full aspect-square h-full hidden lg:block'
               />
               <Image
                 src='/imgs/logos/logo.webp'
                 alt='Loja do VRF'
                 width={180}
                 height={21}
-                className='h-full'
+                className='h-full hidden lg:block'
               />
             </Link>
             <InputEscondeProdutos setSwitchValue={setSwitchValue} />
           </div>
-          <ButtonGroup className='w-full max-w-[35%]'>
-            <Input
-              className='bg-card h-10'
-              placeholder='Digite o nome ou código da peça'
-            />
-            <Button variant='secondary' aria-label='Pesquisar'>
-              <SearchIcon />
-            </Button>
-          </ButtonGroup>
-          <div className='flex-1 flex gap-3'>
-            <Button className='!px-0' size={'sm'}>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 24 24'
-                fill='none'
-                stroke='currentColor'
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth='1.5'
-                className='text-white !size-7'
-              >
-                <path d='M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4'></path>
-              </svg>
-              <div>
-                <p className='text-start text-xs'>Contato</p>
-                <p className='font-semibold text-xs'>(11) 96918-9244</p>
-              </div>
-            </Button>
-            <Button className='!px-0 group' size={'sm'}>
-              <Image
-                src='/imgs/nav/manuais.webp'
-                alt='Manuais Técnicos'
-                width={33}
-                height={33}
+          <div className='w-full lg:max-w-[35%]'>
+            <ButtonGroup className='w-full hidden lg:flex'>
+              <Input
+                className='bg-card h-10'
+                placeholder='Digite o nome ou código da peça'
               />
-              <div>
-                <p className='text-start text-xs group-hover:underline'>
-                  Manuais
-                </p>
-                <p className='font-semibold text-xs group-hover:underline'>
-                  Técnicos
-                </p>
-              </div>
+              <Button variant='secondary' aria-label='Pesquisar'>
+                <SearchIcon />
+              </Button>
+            </ButtonGroup>
+            <Image
+              src='/imgs/logos/logo.webp'
+              alt='Loja do VRF'
+              width={500}
+              height={70}
+              className='h-full mx-auto lg:hidden'
+            />
+          </div>
+          <div className='flex-1 flex justify-end lg:justify-start gap-3'>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button className='!px-0 hidden lg:flex' size={'sm'}>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='currentColor'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
+                    strokeWidth='1.5'
+                    className='text-white !size-7'
+                  >
+                    <path d='M15 10l-4 4l6 6l4 -16l-18 7l4 2l2 6l3 -4'></path>
+                  </svg>
+                  <div>
+                    <p className='text-start text-xs'>Contato</p>
+                    <p className='font-semibold text-xs'>(11) 96918-9244</p>
+                  </div>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className='gap-0 p-0'>
+                <DropdownMenuItem className='p-0'>
+                  <MenuContato.Email />
+                </DropdownMenuItem>
+                <DropdownMenuSeparator className='my-0' />
+                <DropdownMenuItem className='p-0'>
+                  <MenuContato.Whatsapp />
+                </DropdownMenuItem>
+                <DropdownMenuSeparator className='my-0' />
+                <DropdownMenuItem className='p-0'>
+                  <MenuContato.HorarioAtendimento />
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <Button className='!px-0 group hidden lg:flex' size={'sm'} asChild>
+              <Link href='/manuais-tecnicos'>
+                <Image
+                  src='/imgs/nav/manuais.webp'
+                  alt='Manuais Técnicos'
+                  width={33}
+                  height={33}
+                />
+                <div>
+                  <p className='text-start text-xs group-hover:underline'>
+                    Manuais
+                  </p>
+                  <p className='font-semibold text-xs group-hover:underline'>
+                    Técnicos
+                  </p>
+                </div>
+              </Link>
             </Button>
             <BotaoCarrinho />
           </div>
@@ -195,7 +225,7 @@ export default function Header(): React.ReactNode {
         {/* Produtos */}
         <div
           className={cn(
-            'flex-1 flex items-center justify-center gap-6 w-full bg-card relative',
+            'flex-1 items-center justify-center gap-6 w-full bg-card relative hidden lg:flex',
             switchValue ? '' : hidden
           )}
         >
@@ -318,9 +348,20 @@ export default function Header(): React.ReactNode {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
+        <div className='bg-primary w-full lg:hidden px-6 py-3'>
+          <ButtonGroup className='w-full mx-auto'>
+            <Input
+              className='bg-card h-10'
+              placeholder='Digite o nome ou código da peça'
+            />
+            <Button variant='secondary' aria-label='Pesquisar'>
+              <SearchIcon />
+            </Button>
+          </ButtonGroup>
+        </div>
       </header>
-      <div className='py-3.5' />
-      <div className='py-13' />
+      <div className='py-3.5 hidden lg:block' />
+      <div className='py-16 lg:py-13' />
     </>
   );
 }

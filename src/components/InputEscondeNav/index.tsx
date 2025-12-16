@@ -12,15 +12,15 @@ const InputEscondeProdutos = ({ setSwitchValue }: Props) => {
     const divInput = document.getElementById('idMenuBotao') as HTMLElement;
     window.addEventListener('scroll', () => {
       if (window.scrollY === 0) {
-        divInput.classList.add('hidden');
+        divInput.classList.remove('lg:block');
       } else {
-        divInput.classList.remove('hidden');
+        divInput.classList.add('lg:block');
       }
     });
   }, []);
 
   return (
-    <div id='idMenuBotao' className='hidden'>
+    <div id='idMenuBotao' className='hidden lg:block'>
       <input
         className='check-icon hidden'
         id='check-icon'
