@@ -69,9 +69,15 @@ function MenuMobile(): React.ReactNode {
                 alt='Logo'
                 width={25}
                 height={25}
-                className='border-2 border-secondary p-1 rounded-full aspect-square'
+                className='border-1 border-secondary p-1 rounded-full aspect-square'
               />
-              <p className='font-bold text-primary text-lg'>Loja do VRF</p>
+              <Image
+                src='/imgs/logos/logo.webp'
+                alt='Loja do VRF'
+                width={120}
+                height={14}
+                className='invert'
+              />
             </Link>
             <Separator />
             <div className='flex flex-col gap-3'>

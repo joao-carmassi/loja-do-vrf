@@ -1,10 +1,23 @@
-const Email = () => (
+import { cn } from '@/lib/utils';
+
+interface Props {
+  footer?: boolean;
+}
+
+const Email = ({ footer }: Props) => (
   <a
     target='_blank'
     href='mailto:vendas@lojadovrf.com.br'
-    className='flex flex-col p-2 rounded-none rounded-t-md font-semibold gap-0 items-start tracking-wide'
+    className={cn(
+      'flex flex-col p-2 rounded-none rounded-t-md font-semibold gap-0 tracking-wide',
+      footer && 'items-center md:items-start'
+    )}
   >
-    <span className='block font-normal'>Envie um e-mail agora mesmo</span>
+    <span
+      className={cn('block font-normal', footer && 'font-bold text-primary')}
+    >
+      Envie um e-mail agora mesmo
+    </span>
     <div className='flex gap-1 items-center'>
       <svg
         className='inline'
@@ -26,13 +39,20 @@ const Email = () => (
   </a>
 );
 
-const Whatsapp = () => (
+const Whatsapp = ({ footer }: Props) => (
   <a
     target='_blank'
     href='https://wa.me/5511969189244?text=Olá!%0AVim através do site da loja do VRF e preciso de peças.'
-    className='flex flex-col p-2 rounded-none font-semibold gap-0 items-start tracking-wide'
+    className={cn(
+      'flex flex-col p-2 rounded-none font-semibold gap-0 tracking-wide',
+      footer && 'items-center md:items-start'
+    )}
   >
-    <span className='block font-normal'>Envie uma mensagem por Whatsapp</span>
+    <span
+      className={cn('block font-normal', footer && 'font-bold text-primary')}
+    >
+      Envie uma mensagem por Whatsapp
+    </span>
     <div className='flex gap-1 items-center'>
       <svg
         className='text-green-500 inline'
@@ -54,9 +74,18 @@ const Whatsapp = () => (
   </a>
 );
 
-const HorarioAtendimento = () => (
-  <div className='flex flex-col p-2 rounded-b-md rounded-none font-semibold gap-0 hover:bg-base-100 items-start tracking-wide'>
-    <span className='block font-normal'>Horário de atendimento:</span>
+const HorarioAtendimento = ({ footer }: Props) => (
+  <div
+    className={cn(
+      'flex flex-col p-2 rounded-b-md rounded-none font-semibold gap-0 hover:bg-base-100 tracking-wide',
+      footer && 'items-center md:items-start'
+    )}
+  >
+    <span
+      className={cn('block font-normal', footer && 'font-bold text-primary')}
+    >
+      Horário de atendimento:
+    </span>
     <div className='flex gap-1 items-center'>
       <svg
         className='inline'

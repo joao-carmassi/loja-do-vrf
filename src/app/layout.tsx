@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/components/header';
 import { Inter } from 'next/font/google';
 import { Toaster } from 'sonner';
+import Footer from '@/components/footer';
 
 const geist = Inter({
   subsets: ['latin'],
@@ -36,6 +37,7 @@ export default function RootLayout({
         <Toaster richColors position='bottom-right' />
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

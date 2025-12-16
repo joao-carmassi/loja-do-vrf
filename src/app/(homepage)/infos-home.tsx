@@ -11,7 +11,7 @@ import ClockSvg from '@/components/ui/clock-svg';
 
 const InfosHome = () => {
   return (
-    <section className='p-6 border-b border-border'>
+    <section className='py-6 md:p-6 border-b border-border'>
       <div className='max-w-[95rem] mx-auto '>
         {/* Desktop */}
         <div className='hidden md:grid md:grid-cols-2 lg:grid-cols-4 place-items-center gap-6 pb-0'>
