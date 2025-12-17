@@ -43,7 +43,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const Carrinho = () => {
   return (
     <main>
-      <section className='mx-auto max-w-[95rem] p-6 md:p-12 space-y-3 md:space-y-6'>
+      <section className='mx-auto max-w-[95rem] p-6 md:p-12 space-y-3 md:space-y-6 min-h-container-mobile lg:min-h-container'>
         <Breadcrumb className='col-span-2'>
           <BreadcrumbList>
             <BreadcrumbItem>

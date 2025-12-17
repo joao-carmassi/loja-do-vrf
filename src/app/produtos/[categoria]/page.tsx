@@ -92,12 +92,4 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams() {
-  const { categorias } = getProdutos;
-
-  return categorias.map((categoria) => ({
-    categoria: generateUrl(categoria),
-  }));
-}
-
 export default ProdutosPage;

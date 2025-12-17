@@ -54,7 +54,7 @@ export function CarouselProdutos({ className, produto }: Props) {
                 height={750}
                 src={`/imgs/produtos/${produto.id}.png`}
                 alt={produto.nome}
-                className='w-full h-full object-cover object-center border-zinc-200 dark:border-zinc-800'
+                className='w-full aspect-square object-contain object-center border-zinc-200 dark:border-zinc-800'
               />
             </CarouselItem>
           ))}

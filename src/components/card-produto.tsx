@@ -16,11 +16,11 @@ function CardProduto({ produto, cardOnMenu }: Props): React.ReactNode {
     <div
       className={`hover:scale-105 duration-300 ${!cardOnMenu ? 'md:p-3' : ''}`}
     >
-      <Link
-        prefetch={false}
-        href={`/produto/${generateUrl(`${produto.nome}-${produto.sku}`)}`}
-      >
-        <Card className='h-fit relative group' key={produto.id}>
+      <Card className='h-fit relative group' key={produto.id}>
+        <Link
+          prefetch={false}
+          href={`/produto/${generateUrl(`${produto.nome}-${produto.sku}`)}`}
+        >
           <CardHeader>
             <Image
               width={214}
@@ -50,13 +50,11 @@ function CardProduto({ produto, cardOnMenu }: Props): React.ReactNode {
               </p>
             </div>
           </CardContent>
-          {!cardOnMenu && (
-            <BotaoComprarCarrinho produto={produto}>
-              Comprar
-            </BotaoComprarCarrinho>
-          )}
-        </Card>
-      </Link>
+        </Link>
+        {!cardOnMenu && (
+          <BotaoComprarCarrinho produto={produto}>Comprar</BotaoComprarCarrinho>
+        )}
+      </Card>
     </div>
   );
 }

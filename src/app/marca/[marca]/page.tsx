@@ -89,10 +89,4 @@ export async function generateMetadata({
   };
 }
 
-export function generateStaticParams() {
-  const { marcas } = getProdutos;
-
-  return marcas.map((marca) => ({ marca: generateUrl(marca) }));
-}
-
 export default Produtos;

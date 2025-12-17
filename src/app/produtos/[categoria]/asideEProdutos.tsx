@@ -76,7 +76,7 @@ function AsideEProdutos({
   }, [subcategoria, router, categoria, subcategorias]);
 
   return (
-    <section className='mx-auto max-w-[120rem] p-6 md:pl-0'>
+    <section className='mx-auto max-w-[120rem] p-6 md:pl-0 min-h-container-mobile lg:min-h-container'>
       <div className='flex'>
         <aside className='px-8 min-w-64 space-y-6 sticky top-[5.75rem] h-fit hidden md:block'>
           {subcategorias && subcategorias.length > 1 && (
