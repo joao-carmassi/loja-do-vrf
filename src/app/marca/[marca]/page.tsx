@@ -68,6 +68,14 @@ export async function generateMetadata({
     alternates: {
       canonical: `/marca/${marca}`,
     },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
     openGraph: {
       title,
       description,

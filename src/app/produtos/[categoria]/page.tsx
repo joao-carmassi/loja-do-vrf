@@ -79,6 +79,14 @@ export async function generateMetadata({
     alternates: {
       canonical: `/produtos/${categoria}`,
     },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
     openGraph: { title, description, type: 'website' },
     twitter: { card: 'summary_large_image', title, description },
   };

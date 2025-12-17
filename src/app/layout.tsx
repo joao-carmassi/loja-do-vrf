@@ -17,6 +17,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
     alternates: {
       canonical: '/',
     },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
     openGraph: {
       title: `Loja do VRF`,
       description: `Soluções em climatização VRF com qualidade e confiança`,
