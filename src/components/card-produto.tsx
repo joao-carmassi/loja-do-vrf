@@ -14,7 +14,9 @@ interface Props {
 function CardProduto({ produto, cardOnMenu }: Props): React.ReactNode {
   return (
     <div
-      className={`hover:scale-105 duration-300 ${!cardOnMenu ? 'md:p-3' : ''}`}
+      className={`lg:hover:scale-105 duration-300 ${
+        !cardOnMenu ? 'lg:p-3' : ''
+      }`}
     >
       <Card className='h-fit relative group' key={produto.id}>
         <Link

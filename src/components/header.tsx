@@ -29,11 +29,9 @@ import { cn } from '@/lib/utils';
 import shuffleArray from '@/utils/shuffle-array';
 import itemsPerCategory from '@/utils/items-per-category';
 import InputEscondeProdutos from './InputEscondeNav';
-import { SearchIcon } from 'lucide-react';
-import { ButtonGroup } from './ui/button-group';
-import { Input } from './ui/input';
 import MenuContato from './menu-contato';
 import MenuMobile from './menu-mobile';
+import InputPesquisaProduto from './input-pesquisa';
 
 const navItens = [
   {
@@ -102,15 +100,7 @@ export default function Header(): React.ReactNode {
             <InputEscondeProdutos setSwitchValue={setSwitchValue} />
           </div>
           <div className='w-full lg:max-w-[35%]'>
-            <ButtonGroup className='w-full hidden lg:flex'>
-              <Input
-                className='bg-card h-10'
-                placeholder='Digite o nome ou código da peça'
-              />
-              <Button variant='secondary' aria-label='Pesquisar'>
-                <SearchIcon />
-              </Button>
-            </ButtonGroup>
+            <InputPesquisaProduto />
             <Link href='/'>
               <Image
                 src='/imgs/logos/logo.webp'
@@ -306,15 +296,7 @@ export default function Header(): React.ReactNode {
           </NavigationMenu>
         </div>
         <div className='bg-primary w-full lg:hidden px-6 py-3'>
-          <ButtonGroup className='w-full mx-auto'>
-            <Input
-              className='bg-card h-10'
-              placeholder='Digite o nome ou código da peça'
-            />
-            <Button variant='secondary' aria-label='Pesquisar'>
-              <SearchIcon />
-            </Button>
-          </ButtonGroup>
+          <InputPesquisaProduto mobile />
         </div>
       </header>
       <div className='py-3.5 hidden lg:block' />
