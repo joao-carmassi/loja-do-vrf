@@ -21,7 +21,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import { IProduto } from '@/utils/getProdutos';
+import { IProduto } from '@/utils/get-produtos';
 import { FilterIcon } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';

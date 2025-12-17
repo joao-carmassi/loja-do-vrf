@@ -6,8 +6,8 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { H2 } from '@/components/ui/h2';
-import generateUrl from '@/utils/generateUrl';
-import getProdutos from '@/utils/getProdutos';
+import generateUrl from '@/utils/generate-url';
+import getProdutos from '@/utils/get-produtos';
 import Image from 'next/image';
 import Link from 'next/link';
 

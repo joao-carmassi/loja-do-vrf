@@ -19,7 +19,7 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import storeCarrinho from '@/store/carrinho';
-import generateUrl from '@/utils/generateUrl';
+import generateUrl from '@/utils/generate-url';
 import Image from 'next/image';
 import Link from 'next/link';
 

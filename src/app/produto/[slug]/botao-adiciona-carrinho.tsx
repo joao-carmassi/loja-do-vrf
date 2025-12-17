@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import storeCarrinho from '@/store/carrinho';
-import { IProduto } from '@/utils/getProdutos';
+import { IProduto } from '@/utils/get-produtos';
 import { ShoppingCart } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 

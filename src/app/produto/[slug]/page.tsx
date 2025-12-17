@@ -8,8 +8,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import getProdutos from '@/utils/getProdutos';
-import generateUrl from '@/utils/generateUrl';
+import getProdutos from '@/utils/get-produtos';
+import generateUrl from '@/utils/generate-url';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import MarkdownToHtml from '@/components/ui/markdownToHtml';

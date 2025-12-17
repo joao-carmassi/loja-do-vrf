@@ -101,5 +101,6 @@ export default function RootLayout({
 }
 
 /* TODO 
-  - Manuais
+  - Favicon
+  - Menu de busca
 */

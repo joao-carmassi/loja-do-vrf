@@ -1,7 +1,7 @@
-import getProdutos from '@/utils/getProdutos';
+import getProdutos from '@/utils/get-produtos';
 import AsideEProdutos from './asideEProdutos';
 import type { Metadata } from 'next';
-import generateUrl from '@/utils/generateUrl';
+import generateUrl from '@/utils/generate-url';
 
 interface Props {
   params: Promise<{

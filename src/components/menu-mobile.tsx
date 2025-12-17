@@ -1,4 +1,4 @@
-import getProdutos from '@/utils/getProdutos';
+import getProdutos from '@/utils/get-produtos';
 import {
   Sheet,
   SheetContent,
@@ -7,7 +7,7 @@ import {
   SheetTrigger,
 } from './ui/sheet';
 import { Button } from './ui/button';
-import generateUrl from '@/utils/generateUrl';
+import generateUrl from '@/utils/generate-url';
 import Image from 'next/image';
 import { Separator } from './ui/separator';
 import {

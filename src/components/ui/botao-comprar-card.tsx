@@ -1,6 +1,6 @@
 'use client';
 
-import { IProduto } from '@/utils/getProdutos';
+import { IProduto } from '@/utils/get-produtos';
 import { Button } from './button';
 import storeCarrinho from '@/store/carrinho';
 import { toast } from 'sonner';

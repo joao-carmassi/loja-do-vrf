@@ -9,8 +9,8 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
-import generateUrl from '@/utils/generateUrl';
-import getProdutos from '@/utils/getProdutos';
+import generateUrl from '@/utils/generate-url';
+import getProdutos from '@/utils/get-produtos';
 import Link from 'next/link';
 import {
   DropdownMenu,
@@ -63,7 +63,7 @@ export default function Header(): React.ReactNode {
     const scrolled = () => window.scrollY > 0;
     const onScroll = () => {
       if (scrolled()) {
-        setHidden('hidden');
+        setHidden('lg:hidden');
       } else {
         setHidden('');
       }

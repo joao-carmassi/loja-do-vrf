@@ -23,8 +23,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet';
-import generateUrl from '@/utils/generateUrl';
-import { IProduto } from '@/utils/getProdutos';
+import generateUrl from '@/utils/generate-url';
+import { IProduto } from '@/utils/get-produtos';
 import { FilterIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';

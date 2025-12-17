@@ -7,7 +7,7 @@ import {
 } from './base-carousel-fotos-produto';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import { IProduto } from '@/utils/getProdutos';
+import { IProduto } from '@/utils/get-produtos';
 
 const ITEMS = new Array(1).fill(null).map((_, index) => index + 1);
 

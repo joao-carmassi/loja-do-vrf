@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/carousel';
 import { H2 } from '@/components/ui/h2';
 import { Separator } from '@/components/ui/separator';
-import getProdutos from '@/utils/getProdutos';
+import getProdutos from '@/utils/get-produtos';
 import itemsPerCategory from '@/utils/items-per-category';
 import shuffleArray from '@/utils/shuffle-array';
 import Image from 'next/image';

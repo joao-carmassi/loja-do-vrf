@@ -1,4 +1,4 @@
-import getProdutos, { IProduto } from '@/utils/getProdutos';
+import getProdutos, { IProduto } from '@/utils/get-produtos';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 

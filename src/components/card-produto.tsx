@@ -1,6 +1,6 @@
-import { IProduto } from '@/utils/getProdutos';
+import { IProduto } from '@/utils/get-produtos';
 import Link from 'next/link';
-import generateUrl from '@/utils/generateUrl';
+import generateUrl from '@/utils/generate-url';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader } from './ui/card';
 import { H2 } from './ui/h2';
