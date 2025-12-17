@@ -104,30 +104,32 @@ const Produtos = async ({ params }: Props) => {
   return (
     <main>
       <section className='mx-auto p-6 md:p-12 max-w-[95rem] flex flex-col md:grid md:grid-cols-[1fr_33%] gap-6 md:gap-12'>
-        <Breadcrumb className='col-span-2'>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href='/'>Inicio</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbLink
-                href={`/produtos/${generateUrl(produto.categoria)}${
-                  produto.subcategoria &&
-                  `?subcategoria=${generateUrl(produto.subcategoria)}`
-                }`}
-              >
-                {produto.categoria}
-              </BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>{produto.nome}</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
         <CarouselProdutos produto={produto} />
-        <div className='space-y-3'>
+        <div className='space-y-4'>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbPage>
+                  {produto.nome.toLocaleLowerCase()}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className='rotate-180' />
+              <BreadcrumbItem>
+                <BreadcrumbLink
+                  href={`/produtos/${generateUrl(produto.categoria)}${
+                    produto.subcategoria &&
+                    `?subcategoria=${generateUrl(produto.subcategoria)}`
+                  }`}
+                >
+                  {produto.categoria.toLocaleLowerCase()}
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator className='rotate-180' />
+              <BreadcrumbItem>
+                <BreadcrumbLink href='/'>Inicio</BreadcrumbLink>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
           <Link className='block' href={`/marca/${generateUrl(produto.marca)}`}>
             <Image
               className='h-fit w-28'
@@ -145,11 +147,10 @@ const Produtos = async ({ params }: Props) => {
           </p>
           <p className='text-sm text-muted-foreground'>sku: {produto.sku}</p>
           <p className='text-green-600 text-sm font-bold'>
-            PARCELAMENTO EM ATÉ 12 VEZES
+            Em até 12x no cartão de crédito
           </p>
           <p className='text-green-600 text-sm'>
-            <span className='font-bold'>7% DE DESCONTO</span> NO PIX pagando com
-            Pix
+            <span className='font-bold'>7% DE DESCONTO</span> pagando com Pix
           </p>
           <BotaoAdicionaCarrinho produto={produto} />
           <p className='text-green-600 text-sm font-bold flex items-center gap-1.5'>
