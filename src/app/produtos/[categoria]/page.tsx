@@ -28,8 +28,31 @@ const ProdutosPage = async ({ params, searchParams }: Props) => {
     new Set(produtosFiltrados.map((produto) => produto.marca))
   );
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Início',
+        item: 'https://lojadovrf.com.br',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: categoria,
+        item: `https://lojadovrf.com.br/produtos/${categoria}`,
+      },
+    ],
+  };
+
   return (
     <main>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <AsideEProdutos
         subcategorias={subcategorias}
         marcas={marcas}

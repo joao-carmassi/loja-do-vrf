@@ -104,8 +104,74 @@ const Produtos = async ({ params }: Props) => {
 
   if (!produto) notFound();
 
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: produto.nome,
+    description:
+      produto.descricao
+        ?.replace(/[#*\-]/g, '')
+        .split('\n')[0]
+        ?.trim() || `${produto.nome} - ${produto.marca}`,
+    brand: {
+      '@type': 'Brand',
+      name: produto.marca,
+    },
+    sku: produto.sku,
+    category: produto.categoria,
+    offers: {
+      '@type': 'Offer',
+      availability: 'https://schema.org/PreOrder',
+      priceCurrency: 'BRL',
+      priceValidUntil: new Date(
+        new Date().setFullYear(new Date().getFullYear() + 1)
+      )
+        .toISOString()
+        .split('T')[0],
+      seller: {
+        '@type': 'Organization',
+        name: 'Loja do VRF',
+      },
+    },
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Início',
+        item: 'https://lojadovrf.com.br',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: produto.categoria,
+        item: `https://lojadovrf.com.br/produtos/${generateUrl(
+          produto.categoria
+        )}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: produto.nome,
+        item: `https://lojadovrf.com.br/produto/${slug}`,
+      },
+    ],
+  };
+
   return (
     <main>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <section className='mx-auto p-6 md:p-12 max-w-[95rem] flex flex-col md:grid md:grid-cols-[1fr_33%] gap-6 md:gap-12'>
         <CarouselProdutos produto={produto} />
         <div className='space-y-4'>
