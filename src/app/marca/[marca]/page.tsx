@@ -42,6 +42,9 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: {
+      canonical: `/marca/${marca}`,
+    },
     openGraph: {
       title,
       description,

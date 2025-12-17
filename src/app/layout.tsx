@@ -13,6 +13,10 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: `Loja do VRF`,
     description: `Soluções em climatização VRF com qualidade e confiança`,
+    metadataBase: new URL('https://lojadovrf.com.br'),
+    alternates: {
+      canonical: '/',
+    },
     openGraph: {
       title: `Loja do VRF`,
       description: `Soluções em climatização VRF com qualidade e confiança`,

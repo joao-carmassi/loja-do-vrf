@@ -16,6 +16,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return {
     title: `Loja do VRF | Carrinho de Compras`,
     description: `Veja e gerencie os produtos adicionados ao seu carrinho de compras na Loja do VRF. Finalize sua compra com segurança e agilidade.`,
+    alternates: {
+      canonical: '/carrinho',
+    },
     openGraph: {
       title: `Loja do VRF | Carrinho de Compras`,
       description: `Veja e gerencie os produtos adicionados ao seu carrinho de compras na Loja do VRF. Finalize sua compra com segurança e agilidade.`,
