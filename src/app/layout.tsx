@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 import { Toaster } from 'sonner';
 import Footer from '@/components/footer';
 import Script from 'next/script';
+import WhatsButton from '@/components/whats-button';
 
 const geist = Inter({
   subsets: ['latin'],
@@ -94,6 +95,7 @@ export default function RootLayout({
         <Toaster richColors position='bottom-right' />
         <Header />
         {children}
+        <WhatsButton />
         <Footer />
       </body>
     </html>
