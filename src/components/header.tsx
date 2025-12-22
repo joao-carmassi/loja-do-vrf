@@ -101,7 +101,7 @@ export default function Header(): React.ReactNode {
           </div>
           <div className='w-full lg:max-w-[35%]'>
             <InputPesquisaProduto />
-            <Link href='/'>
+            <Link aria-label='Homepage' href='/'>
               <Image
                 src='/imgs/logos/logo.webp'
                 alt='Loja do VRF'
@@ -147,7 +147,6 @@ export default function Header(): React.ReactNode {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-
             <Button className='!px-0 group hidden lg:flex' size={'sm'} asChild>
               <Link href='/manuais-tecnicos'>
                 <Image
@@ -187,6 +186,7 @@ export default function Header(): React.ReactNode {
                     width={20}
                     height={20}
                     className='h-4 w-fit'
+                    aria-hidden
                   />
                   Categorias
                 </NavigationMenuTrigger>
@@ -217,6 +217,7 @@ export default function Header(): React.ReactNode {
                         width={20}
                         height={20}
                         className='h-6 w-fit'
+                        aria-hidden
                       />
                       {item.categoria}
                     </NavigationMenuTrigger>

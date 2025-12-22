@@ -1,6 +1,6 @@
 'use client';
 import { Button } from '@/components/ui/button';
-import { H3 } from '@/components/ui/h3';
+import { H2 } from '@/components/ui/h2';
 import {
   Select,
   SelectContent,
@@ -53,13 +53,14 @@ export default function TableCarrinho() {
                     )}`}
                     className='group flex gap-3 items-center'
                   >
-                    <Image
-                      width={55}
-                      height={55}
-                      src={`/imgs/produtos/${produto.item.id}.png`}
-                      alt={produto.item.nome}
-                      className='h-14 w-14 object-fit object-center rounded-sm border border-primary'
-                    />
+                    <div className='relative h-14 w-14'>
+                      <Image
+                        src={`/imgs/produtos/${produto.item.id}.png`}
+                        alt={produto.item.nome}
+                        className='object-fit object-center rounded-sm border border-primary'
+                        fill
+                      />
+                    </div>
                     <div>
                       <p className='group-hover:underline'>
                         {produto.item.nome}
@@ -77,7 +78,10 @@ export default function TableCarrinho() {
                         alterarQuantidade(produto.item.id, value)
                       }
                     >
-                      <SelectTrigger className='border border-primary/50'>
+                      <SelectTrigger
+                        aria-label='Select quantidade'
+                        className='border border-primary/50'
+                      >
                         <SelectValue placeholder='Quantidade' />
                       </SelectTrigger>
                       <SelectContent>
@@ -106,7 +110,10 @@ export default function TableCarrinho() {
                       alterarQuantidade(produto.item.id, value)
                     }
                   >
-                    <SelectTrigger className='border border-primary/50'>
+                    <SelectTrigger
+                      aria-label='Select quantidade'
+                      className='border border-primary/50'
+                    >
                       <SelectValue placeholder='Quantidade' />
                     </SelectTrigger>
                     <SelectContent>
@@ -142,7 +149,7 @@ export default function TableCarrinho() {
         </Table>
       ) : (
         <div className='flex items-center flex-col gap-3 min-h-96 justify-center'>
-          <H3 className='text-center'>Seu carrinho está vazio.</H3>
+          <H2 className='text-center'>Seu carrinho está vazio.</H2>
           <Button asChild>
             <Link href='/'>Ver mais produtos</Link>
           </Button>

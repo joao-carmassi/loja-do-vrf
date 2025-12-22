@@ -44,8 +44,8 @@ const MiniCards = () => {
             <Image
               src={card.src}
               alt={card.alt}
-              width={450}
-              height={230}
+              width={458}
+              height={229}
               className='w-full h-auto hover:scale-105 transition-transform duration-300'
             />
           </Link>
@@ -73,8 +73,8 @@ const MiniCards = () => {
                   <Image
                     src={card.src}
                     alt={card.alt}
-                    width={450}
-                    height={230}
+                    width={458}
+                    height={229}
                     className='w-full h-auto'
                   />
                 </Link>

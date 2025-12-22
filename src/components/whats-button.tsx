@@ -48,6 +48,7 @@ function WhatsButton(): React.ReactNode {
             'absolute -top-2 -left-2 w-4.5 h-4.5 rounded-full',
             !isOpen && 'hidden'
           )}
+          aria-label='Fechar botão do WhatsApp'
         >
           <X className='!size-2.5' />
         </Button>
