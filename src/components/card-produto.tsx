@@ -43,7 +43,7 @@ function CardProduto({ produto, cardOnMenu }: Props): React.ReactNode {
             />
             <div>
               <H2 className='!text-base break-words line-clamp-2'>
-                Produto {produto.nome}
+                {produto.nome}
               </H2>
               <p className='text-muted-foreground text-sm break-words line-clamp-1'>
                 sku: {produto.sku}
