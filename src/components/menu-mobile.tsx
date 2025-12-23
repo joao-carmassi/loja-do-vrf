@@ -19,6 +19,14 @@ import {
 import Link from 'next/link';
 import { MessageSquareText } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from './ui/dialog';
+import MenuContato from './menu-contato';
 
 function MenuMobile(): React.ReactNode {
   const { categorias, subcategorias: itens } = getProdutos;
@@ -93,17 +101,28 @@ function MenuMobile(): React.ReactNode {
                 />
                 Manuais Técnicos
               </Link>
-              <Link
-                className='flex items-center gap-2'
-                href='/manuais-tecnicos'
-              >
-                <MessageSquareText
-                  strokeWidth={1.5}
-                  size={18}
-                  className='text-[#004fa2]'
-                />
-                Central de Atendimento
-              </Link>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className='flex items-center gap-2'>
+                    <MessageSquareText
+                      strokeWidth={1.5}
+                      size={18}
+                      className='text-[#004fa2]'
+                    />
+                    Central de Atendimento
+                  </button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Central de Atendimento</DialogTitle>
+                    <div>
+                      <MenuContato.Email />
+                      <MenuContato.Whatsapp />
+                      <MenuContato.HorarioAtendimento />
+                    </div>
+                  </DialogHeader>
+                </DialogContent>
+              </Dialog>
             </div>
             <Separator />
             <div className='flex flex-col gap-3'>
