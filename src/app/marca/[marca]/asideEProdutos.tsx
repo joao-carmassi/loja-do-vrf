@@ -41,7 +41,7 @@ function AsideEProdutos({
 
   const produtosFiltrados = selectedCategorias
     ? produtos.filter((produto) =>
-        produto.categoria.toLowerCase().includes(selectedCategorias)
+        produto.categoria.includes(selectedCategorias)
       )
     : produtos;
 
@@ -58,9 +58,7 @@ function AsideEProdutos({
                   checked={selectedCategorias === ''}
                   onCheckedChange={() => setSelectedCategorias('')}
                 />
-                <Label className='capitalize' htmlFor='todas'>
-                  Todas
-                </Label>
+                <Label htmlFor='todas'>Todas</Label>
               </li>
               {categorias.map((categoria) => (
                 <li key={categoria} className='flex items-center gap-2'>
@@ -73,9 +71,7 @@ function AsideEProdutos({
                       )
                     }
                   />
-                  <Label className='capitalize' htmlFor={categoria}>
-                    {categoria.toLocaleLowerCase()}
-                  </Label>
+                  <Label htmlFor={categoria}>{categoria}</Label>
                 </li>
               ))}
             </ul>
@@ -141,11 +137,8 @@ function AsideEProdutos({
                                 )
                               }
                             />
-                            <Label
-                              className='capitalize'
-                              htmlFor={categoria + 'Celular'}
-                            >
-                              {categoria.toLocaleLowerCase()}
+                            <Label htmlFor={categoria + 'Celular'}>
+                              {categoria}
                             </Label>
                           </li>
                         ))}

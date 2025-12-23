@@ -103,7 +103,7 @@ function AsideEProdutos({
                         onCheckedChange={() => handleSubcategoriaChange(id)}
                       />
                       <Label className='capitalize' htmlFor={id}>
-                        {subcategoria.toLocaleLowerCase()}
+                        {subcategoria}
                       </Label>
                     </li>
                   );
@@ -156,7 +156,7 @@ function AsideEProdutos({
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <H1 className='capitalize hidden'>{categoria}</H1>
+          <H1 className='hidden'>{categoria}</H1>
           <div className='flex justify-end'>
             <Sheet>
               <SheetTrigger asChild>
@@ -206,7 +206,7 @@ function AsideEProdutos({
                                     className='capitalize'
                                     htmlFor={id + 'Celular'}
                                   >
-                                    {subcategoria.toLocaleLowerCase()}
+                                    {subcategoria}
                                   </Label>
                                 </li>
                               );

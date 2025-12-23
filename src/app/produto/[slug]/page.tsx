@@ -186,11 +186,9 @@ const Produtos = async ({ params }: Props) => {
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
-                <BreadcrumbPage>
-                  {produto.nome.toLocaleLowerCase()}
-                </BreadcrumbPage>
+                <BreadcrumbLink href='/'>Inicio</BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator className='rotate-180' />
+              <BreadcrumbSeparator />
               <BreadcrumbItem>
                 <BreadcrumbLink
                   href={`/produtos/${generateUrl(produto.categoria)}${
@@ -198,12 +196,12 @@ const Produtos = async ({ params }: Props) => {
                     `?subcategoria=${generateUrl(produto.subcategoria)}`
                   }`}
                 >
-                  {produto.categoria.toLocaleLowerCase()}
+                  {produto.categoria}
                 </BreadcrumbLink>
               </BreadcrumbItem>
-              <BreadcrumbSeparator className='rotate-180' />
+              <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbLink href='/'>Inicio</BreadcrumbLink>
+                <BreadcrumbPage>{produto.nome}</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
@@ -213,7 +211,7 @@ const Produtos = async ({ params }: Props) => {
               height={20}
               width={112}
               alt={produto.marca}
-              src={`/imgs/marcas/${produto.marca.toUpperCase()}.png`}
+              src={`/imgs/marcas/${produto.marca}.png`}
             />
           </Link>
           <H1 className='!text-2xl md:!text-3xl text-primary'>

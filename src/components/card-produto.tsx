@@ -20,6 +20,7 @@ function CardProduto({ produto, cardOnMenu }: Props): React.ReactNode {
     >
       <Card className='h-fit relative group' key={produto.id}>
         <Link
+          className='flex flex-col gap-2'
           prefetch={false}
           href={`/produto/${generateUrl(`${produto.nome}-${produto.sku}`)}`}
         >
@@ -38,7 +39,7 @@ function CardProduto({ produto, cardOnMenu }: Props): React.ReactNode {
               width={44}
               className='h-fit w-12'
               alt={`Marca ${produto.marca}`}
-              src={`/imgs/marcas/${produto.marca.toUpperCase()}.png`}
+              src={`/imgs/marcas/${produto.marca}.png`}
             />
             <div>
               <H2 className='!text-base break-words line-clamp-2'>

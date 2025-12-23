@@ -14,7 +14,7 @@ import shuffleArray from '@/utils/shuffle-array';
 import Image from 'next/image';
 
 const marcasPermitidas = ['midea', 'toshiba'];
-const produtosPermitidos = ['compressor'];
+const produtosPermitidos = ['compressores'];
 
 const MostraProdutoMarcaHome = () => {
   const { produtos } = getProdutos;

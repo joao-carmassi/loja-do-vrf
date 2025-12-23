@@ -35,19 +35,19 @@ import InputPesquisaProduto from './input-pesquisa';
 
 const navItens = [
   {
-    categoria: 'placa',
+    categoria: 'Placas',
     foto: '/imgs/nav/PLACAS.webp',
   },
   {
-    categoria: 'motor',
+    categoria: 'Motores',
     foto: '/imgs/nav/MOTORES-VENTILADORES.webp',
   },
   {
-    categoria: 'compressor',
+    categoria: 'Compressores',
     foto: '/imgs/nav/COMPRESSORES.webp',
   },
   {
-    categoria: 'sensor',
+    categoria: 'Sensores',
     foto: '/imgs/nav/SENSORES.webp',
   },
 ];
@@ -179,7 +179,7 @@ export default function Header(): React.ReactNode {
           <NavigationMenu viewport={false} className='max-md:hidden'>
             <NavigationMenuList className='gap-0'>
               <NavigationMenuItem className='!static'>
-                <NavigationMenuTrigger className='uppercase text-primary text-[0.95rem] font-semibold flex items-center gap-1'>
+                <NavigationMenuTrigger className='text-primary text-[0.95rem] font-semibold flex items-center gap-1'>
                   <Image
                     src='/imgs/nav/categoria.webp'
                     alt='Menu Categoria'
@@ -193,7 +193,7 @@ export default function Header(): React.ReactNode {
                 <NavigationMenuContent className='!top-[2.2rem]'>
                   {categorias.map((categoria) => (
                     <NavigationMenuLink
-                      className='text-nowrap capitalize'
+                      className='text-nowrap'
                       key={`${categoria}-desktop-categorias`}
                       asChild
                     >
@@ -210,7 +210,7 @@ export default function Header(): React.ReactNode {
                     className='!static'
                     key={`${item.categoria}-desktop-unicos`}
                   >
-                    <NavigationMenuTrigger className='uppercase text-primary text-[0.95rem] font-semibold flex items-center gap-1'>
+                    <NavigationMenuTrigger className='text-primary text-[0.95rem] font-semibold flex items-center gap-1'>
                       <Image
                         src={item.foto}
                         alt={item.categoria}
@@ -227,7 +227,7 @@ export default function Header(): React.ReactNode {
                           item.categoria as keyof typeof itens
                         ]?.subcategorias.map((subcategoria) => (
                           <NavigationMenuLink
-                            className='text-nowrap capitalize h-fit'
+                            className='text-nowrap h-fit'
                             key={`${item.categoria}-${subcategoria}-desktop-unicos`}
                             asChild
                           >
@@ -277,7 +277,7 @@ export default function Header(): React.ReactNode {
                   <NavigationMenuItem key={`${item}-desktop-unicos`}>
                     <Button variant='ghost' asChild>
                       <Link
-                        className='uppercase text-primary text-[0.95rem] font-semibold flex items-center gap-1'
+                        className='text-primary text-[0.95rem] font-semibold flex items-center gap-1'
                         href={`/produtos/${generateUrl(item.categoria)}`}
                       >
                         <Image
@@ -286,6 +286,7 @@ export default function Header(): React.ReactNode {
                           width={20}
                           height={20}
                           className='h-6 w-fit'
+                          aria-hidden
                         />
                         {item.categoria}
                       </Link>
@@ -309,7 +310,7 @@ export default function Header(): React.ReactNode {
 // itens[categoria as keyof typeof itens].subcategorias
 //                       .length === 0 ? (
 //                       <NavigationMenuLink
-//                         className='text-nowrap capitalize'
+//                         className='text-nowrap'
 //                         key={`${categoria}-desktop-categorias`}
 //                         asChild
 //                       >
@@ -327,7 +328,7 @@ export default function Header(): React.ReactNode {
 //                       >
 //                         <DropdownMenuTrigger asChild>
 //                           <Button
-//                             className='font-normal w-full justify-between capitalize px-2'
+//                             className='font-normal w-full justify-between px-2'
 //                             size={'sm'}
 //                             variant={'ghost'}
 //                             onMouseEnter={() => setOpenDropdown(categoria)}
@@ -358,7 +359,7 @@ export default function Header(): React.ReactNode {
 //                               asChild
 //                             >
 //                               <Button
-//                                 className='font-normal w-full justify-between capitalize px-2 hover:!ring-0'
+//                                 className='font-normal w-full justify-between px-2 hover:!ring-0'
 //                                 size={'sm'}
 //                                 variant={'ghost'}
 //                                 asChild

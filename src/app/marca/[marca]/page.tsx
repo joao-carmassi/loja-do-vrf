@@ -17,7 +17,7 @@ const Produtos = async ({ params }: Props) => {
   );
 
   const categorias = Array.from(
-    new Set(produtosFiltrados.map((produto) => produto.categoria.toLowerCase()))
+    new Set(produtosFiltrados.map((produto) => produto.categoria))
   );
 
   const breadcrumbSchema = {

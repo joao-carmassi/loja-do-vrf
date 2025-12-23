@@ -5,12 +5,8 @@ const getProdutos = {
     ...produto,
     codigos: produto.id.split('_'),
   })),
-  marcas: [
-    ...new Set(produtos.data.map((produto) => produto.marca.toLowerCase())),
-  ],
-  categorias: [
-    ...new Set(produtos.data.map((produto) => produto.categoria.toLowerCase())),
-  ],
+  marcas: [...new Set(produtos.data.map((produto) => produto.marca))],
+  categorias: [...new Set(produtos.data.map((produto) => produto.categoria))],
   subcategorias: {} as {
     [categoria: string]: {
       categoria: string;
@@ -25,10 +21,8 @@ getProdutos.categorias.forEach((categoria) => {
     subcategorias: [
       ...new Set(
         getProdutos.produtos
-          .filter(
-            (produto) => produto.categoria.toLocaleLowerCase() === categoria
-          )
-          .map((produto) => produto.subcategoria.toLocaleLowerCase())
+          .filter((produto) => produto.categoria === categoria)
+          .map((produto) => produto.subcategoria)
       ),
     ].filter(Boolean),
   };
