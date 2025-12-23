@@ -66,7 +66,7 @@ export async function generateMetadata({
     (prod) => generateUrl(`${prod.nome}-${prod.sku}`) === slug
   );
   if (!produto) return {};
-  const title = `${produto.nome} | ${produto.marca} | Loja do VRF`;
+  const title = `${produto.nome} ${produto.marca} Loja do VRF`;
   const description =
     produto.descricao
       ?.replace(/[#*\-]/g, '')

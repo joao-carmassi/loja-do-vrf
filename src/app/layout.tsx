@@ -12,9 +12,12 @@ const geist = Inter({
 });
 
 export const generateMetadata = async (): Promise<Metadata> => {
+  const title = `Loja do VRF`;
+  const description = `Soluções em climatização VRF com qualidade e confiança`;
+
   return {
-    title: `Loja do VRF`,
-    description: `Soluções em climatização VRF com qualidade e confiança`,
+    title,
+    description,
     metadataBase: new URL('https://lojadovrf.com.br'),
     alternates: {
       canonical: '/',
@@ -28,14 +31,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
       },
     },
     openGraph: {
-      title: `Loja do VRF`,
-      description: `Soluções em climatização VRF com qualidade e confiança`,
+      title,
+      description,
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Loja do VRF`,
-      description: `Soluções em climatização VRF com qualidade e confiança`,
+      title,
+      description,
     },
   };
 };

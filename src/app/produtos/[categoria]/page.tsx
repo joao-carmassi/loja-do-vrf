@@ -70,7 +70,7 @@ export async function generateMetadata({
   params: Promise<{ categoria: string }>;
 }): Promise<Metadata> {
   const { categoria } = await params;
-  const title = `Loja do VRF | Produtos da categoria ${categoria}`;
+  const title = `${categoria}: Modelos e Preços Oficiais`;
   const description = `Veja todos os produtos da categoria ${categoria} disponíveis na Loja do VRF. Peças originais, qualidade garantida e entrega para todo o Brasil.`;
 
   return {
