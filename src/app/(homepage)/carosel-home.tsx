@@ -54,6 +54,7 @@ const CarouselHome = () => {
                   height={400}
                   width={1800}
                   className='hidden object-cover lg:block w-full'
+                  priority
                 />
                 <Image
                   src={banner.srcMobile}
@@ -61,6 +62,7 @@ const CarouselHome = () => {
                   height={900}
                   width={600}
                   className='block object-cover lg:hidden w-full'
+                  priority
                 />
               </div>
             </CarouselItem>
