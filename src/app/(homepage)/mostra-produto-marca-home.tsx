@@ -40,6 +40,7 @@ const MostraProdutoMarcaHome = () => {
               opts={{
                 align: 'start',
                 loop: true,
+                skipSnaps: true,
               }}
             >
               <CarouselContent>
@@ -87,6 +88,7 @@ const MostraProdutoMarcaHome = () => {
               opts={{
                 align: 'start',
                 loop: true,
+                skipSnaps: true,
               }}
             >
               <CarouselContent>

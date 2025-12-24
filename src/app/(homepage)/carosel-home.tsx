@@ -32,9 +32,16 @@ const CarouselHome = () => {
   return (
     <section>
       <Carousel
-        plugins={[Autoplay({ delay: 5000 })]}
+        plugins={[
+          Autoplay({
+            delay: 5000,
+            stopOnMouseEnter: true,
+            stopOnInteraction: false,
+          }),
+        ]}
         opts={{
           loop: true,
+          skipSnaps: true,
         }}
       >
         <CarouselContent>

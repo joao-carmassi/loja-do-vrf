@@ -56,9 +56,16 @@ const MiniCards = () => {
         <Carousel
           opts={{
             loop: true,
+            skipSnaps: true,
             align: 'start',
           }}
-          plugins={[Autoplay({ delay: 5000 })]}
+          plugins={[
+            Autoplay({
+              delay: 5000,
+              stopOnMouseEnter: true,
+              stopOnInteraction: false,
+            }),
+          ]}
           className='pl-6'
         >
           <CarouselContent>

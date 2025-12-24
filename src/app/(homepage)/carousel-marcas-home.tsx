@@ -22,6 +22,7 @@ const CarouselMarcasHome = () => {
           opts={{
             align: 'start',
             loop: true,
+            skipSnaps: true,
           }}
         >
           <CarouselContent>
