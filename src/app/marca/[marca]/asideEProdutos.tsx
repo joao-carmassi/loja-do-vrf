@@ -22,9 +22,10 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet';
 import { IProduto } from '@/utils/get-produtos';
+import { itemsPorPagina } from '@/utils/items-per-category';
 import { FilterIcon } from 'lucide-react';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface Props {
   categorias: string[];
@@ -38,12 +39,32 @@ function AsideEProdutos({
   produtos,
 }: Props): React.ReactNode {
   const [selectedCategorias, setSelectedCategorias] = useState<string>('');
+  const refUltimoItem = useRef<HTMLDivElement | null>(null);
+  const [quantidadeItems, setQuantidadeItems] =
+    useState<number>(itemsPorPagina);
 
   const produtosFiltrados = selectedCategorias
     ? produtos.filter((produto) =>
         produto.categoria.includes(selectedCategorias)
       )
     : produtos;
+
+  useEffect(() => {
+    if (!refUltimoItem.current) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (
+          entries[0].isIntersecting &&
+          quantidadeItems < produtosFiltrados.length
+        ) {
+          setQuantidadeItems((prev) => prev + itemsPorPagina);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(refUltimoItem.current);
+    return () => observer.disconnect();
+  }, [produtosFiltrados.length, quantidadeItems]);
 
   return (
     <section className='mx-auto max-w-[120rem] p-6 md:pl-0 min-h-container-mobile lg:min-h-container'>
@@ -150,9 +171,16 @@ function AsideEProdutos({
             </Sheet>
           </div>
           <div className='grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-5'>
-            {produtosFiltrados.map((produto) => (
-              <CardProduto produto={produto} key={produto.id} />
-            ))}
+            {produtosFiltrados.slice(0, quantidadeItems).map((produto, i) => {
+              const ultimoItem = i === quantidadeItems - 1;
+              return (
+                <CardProduto
+                  ref={ultimoItem ? refUltimoItem : undefined}
+                  key={produto.id}
+                  produto={produto}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

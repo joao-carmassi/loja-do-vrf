@@ -25,9 +25,10 @@ import {
 } from '@/components/ui/sheet';
 import generateUrl from '@/utils/generate-url';
 import { IProduto } from '@/utils/get-produtos';
+import { itemsPorPagina } from '@/utils/items-per-category';
 import { FilterIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface Props {
   subcategorias?: string[];
@@ -46,6 +47,9 @@ function AsideEProdutos({
 }: Props): React.ReactNode {
   const [subcategoriaSelecionada, setSubcategoriaSelecionada] = useState('');
   const [marcaSelecionada, setMarcaSelecionada] = useState('');
+  const refUltimoItem = useRef<HTMLDivElement | null>(null);
+  const [quantidadeItems, setQuantidadeItems] =
+    useState<number>(itemsPorPagina);
   const router = useRouter();
 
   const handleSubcategoriaChange = (subcategoria: string) => {
@@ -74,6 +78,23 @@ function AsideEProdutos({
       setSubcategoriaSelecionada(subcategoria);
     }
   }, [subcategoria, router, categoria, subcategorias]);
+
+  useEffect(() => {
+    if (!refUltimoItem.current) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (
+          entries[0].isIntersecting &&
+          quantidadeItems < produtosFiltradosFinal.length
+        ) {
+          setQuantidadeItems((prev) => prev + itemsPorPagina);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(refUltimoItem.current);
+    return () => observer.disconnect();
+  }, [produtosFiltradosFinal.length, quantidadeItems]);
 
   return (
     <section className='mx-auto max-w-[120rem] p-6 md:pl-0 min-h-container-mobile lg:min-h-container'>
@@ -259,9 +280,18 @@ function AsideEProdutos({
           </div>
           <div className='grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-5'>
             {produtosFiltradosFinal.length > 0 ? (
-              produtosFiltradosFinal.map((produto) => (
-                <CardProduto key={produto.id} produto={produto} />
-              ))
+              produtosFiltradosFinal
+                .slice(0, quantidadeItems)
+                .map((produto, i) => {
+                  const ultimoItem = i === quantidadeItems - 1;
+                  return (
+                    <CardProduto
+                      ref={ultimoItem ? refUltimoItem : undefined}
+                      key={produto.id}
+                      produto={produto}
+                    />
+                  );
+                })
             ) : (
               <P className='w-full'>
                 Nenhum produto encontrado para os filtros selecionados.

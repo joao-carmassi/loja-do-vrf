@@ -1,3 +1,5 @@
-const itemsPerCategory = 20;
+const itensPorCarrosel = 15;
+const itemsPorPagina = 20;
 
-export default itemsPerCategory;
+export default itensPorCarrosel;
+export { itemsPorPagina };

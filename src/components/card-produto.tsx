@@ -9,11 +9,13 @@ import BotaoComprarCarrinho from './ui/botao-comprar-card';
 interface Props {
   produto: IProduto;
   cardOnMenu?: boolean;
+  ref?: React.Ref<HTMLDivElement> | undefined;
 }
 
-function CardProduto({ produto, cardOnMenu }: Props): React.ReactNode {
+function CardProduto({ produto, cardOnMenu, ref }: Props): React.ReactNode {
   return (
     <div
+      ref={ref}
       className={`lg:hover:scale-105 duration-300 ${
         !cardOnMenu ? 'lg:p-3' : ''
       }`}

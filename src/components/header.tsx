@@ -27,7 +27,7 @@ import Image from 'next/image';
 import BannerPix from './banner-pix';
 import { cn } from '@/lib/utils';
 import shuffleArray from '@/utils/shuffle-array';
-import itemsPerCategory from '@/utils/items-per-category';
+import itensPorCarrosel from '@/utils/items-per-category';
 import InputEscondeProdutos from './InputEscondeNav';
 import MenuContato from './menu-contato';
 import MenuMobile from './menu-mobile';
@@ -261,7 +261,7 @@ export default function Header(): React.ReactNode {
                                   produto.categoria.toLowerCase() ===
                                   item.categoria.toLowerCase()
                               )
-                              .slice(0, itemsPerCategory)
+                              .slice(0, itensPorCarrosel)
                               .map((produto, i) => (
                                 <CarouselItem className='basis-1/2' key={i}>
                                   <CardProduto produto={produto} cardOnMenu />
