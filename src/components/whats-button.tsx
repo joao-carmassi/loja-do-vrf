@@ -12,7 +12,7 @@ function WhatsButton(): React.ReactNode {
   return (
     <div
       className={cn(
-        'fixed right-3 bottom-3 bg-green-600 text-white  shadow-lg hover:bg-green-700 transition-colors cursor-pointer z-50 rounded-full',
+        'fixed right-3 bottom-3 bg-green-700 text-white  shadow-lg hover:bg-green-800 transition-colors cursor-pointer z-50 rounded-full',
         isOpen && 'rounded-lg'
       )}
     >
