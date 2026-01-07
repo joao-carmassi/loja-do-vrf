@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 import CardProduto from '@/components/card-produto';
 import {
   Carousel,
@@ -7,11 +8,9 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { H2 } from '@/components/ui/h2';
-import { Separator } from '@/components/ui/separator';
 import getProdutos from '@/utils/get-produtos';
 import itensPorCarrosel from '@/utils/items-per-category';
 import shuffleArray from '@/utils/shuffle-array';
-import Image from 'next/image';
 
 const marcasPermitidas = ['midea', 'toshiba'];
 const produtosPermitidos = ['compressores'];
@@ -20,21 +19,18 @@ const MostraProdutoMarcaHome = () => {
   const { produtos } = getProdutos;
 
   return (
-    <section className='space-y-3 md:space-y-12'>
+    <section className='space-y-3 md:space-y-6'>
       {produtosPermitidos.map((produtoPermitido) => (
         <div
           key={produtoPermitido}
-          className='mx-auto max-w-[95rem] px-6 md:px-12 border-b border-primary md:border-b-0 last:border-b-0'
+          className='mx-auto max-w-[95rem] px-6 md:px-12 py-6'
         >
-          <div className='md:bg-accent p-3 md:p-6 md:px-15 md:rounded-md space-y-6 md:space-y-9 '>
-            <div className='flex items-center justify-center flex-col space-y-3 capitalize'>
-              <H2 className='!text-3xl md:!text-4xl !text-foreground !font-bold'>
+          <div className='space-y-6'>
+            <div className='flex items-center justify-between bg-linear-to-r from-primary to-secondary px-5 py-4 rounded-lg'>
+              <div className='text-card font-bold text-xl md:text-2xl'>///</div>
+              <H2 className='!text-2xl md:!text-3xl lg:!text-4xl !text-card !font-bold capitalize'>
                 {produtoPermitido}
               </H2>
-              <Separator
-                className='bg-primary max-w-20 pt-1'
-                orientation='horizontal'
-              />
             </div>
             <Carousel
               opts={{
@@ -68,21 +64,14 @@ const MostraProdutoMarcaHome = () => {
       {marcasPermitidas.map((marca) => (
         <div
           key={marca}
-          className='mx-auto max-w-[95rem] px-6 md:px-12 border-b md:border-b-0 border-primary last:border-b-0'
+          className='mx-auto max-w-[95rem] px-6 md:px-12 pb-6 nth-last-[1]:pb-12 md:pb-6'
         >
-          <div className='md:bg-accent p-3 md:p-6 md:px-15 rounded-md space-y-6 md:space-y-9'>
-            <div className='flex items-center justify-center flex-col space-y-3'>
-              <Image
-                height={50}
-                width={250}
-                alt={`Marca ${marca}`}
-                src={`/imgs/marcas/${marca.toUpperCase()}.png`}
-                className='w-32 md:w-56 h-fit'
-              />
-              <Separator
-                className='bg-primary max-w-20 pt-1'
-                orientation='horizontal'
-              />
+          <div className='space-y-6'>
+            <div className='flex items-center justify-between bg-linear-to-r from-primary to-secondary px-5 py-4 rounded-lg'>
+              <div className='text-card font-bold text-xl md:text-2xl'>///</div>
+              <H2 className='!text-2xl md:!text-3xl lg:!text-4xl !text-card !font-bold capitalize'>
+                {marca}
+              </H2>
             </div>
             <Carousel
               opts={{

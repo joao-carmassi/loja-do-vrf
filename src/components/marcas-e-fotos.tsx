@@ -16,7 +16,7 @@ const MarcasEFotos = () => {
   const { marcas } = getProdutos;
 
   return (
-    <section className='md:space-y-12 md:py-12 lg:pb-24'>
+    <section className='md:space-y-12 md:py-6 lg:pb-24'>
       <div>
         <Link
           target='_blank'

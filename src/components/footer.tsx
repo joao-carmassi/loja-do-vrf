@@ -23,7 +23,7 @@ const formasDeEnvio = [
 
 function Footer(): React.ReactNode {
   return (
-    <div className='border-t-2 border-secondary'>
+    <div className='md:border-t-2 border-secondary'>
       <div className='mx-auto max-w-[95rem] p-6 md:p-12 space-y-6'>
         <div className='flex flex-col md:flex-row items-center justify-center gap-6'>
           <Link className='flex gap-3 items-center' href='/'>
