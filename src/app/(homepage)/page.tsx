@@ -1,8 +1,6 @@
 import CarouselHome from './carosel-home';
-import CarouselMarcasHome from './carousel-marcas-home';
 import InfosHome from './infos-home';
 import MostraProdutoMarcaHome from './mostra-produto-marca-home';
-import CardsImgHome from './cards-img-home';
 import { Separator } from '@/components/ui/separator';
 import MiniCards from './mini-cards';
 
@@ -52,8 +50,6 @@ export default function Home(): React.ReactNode {
       <InfosHome />
       <MiniCards />
       <MostraProdutoMarcaHome />
-      <CarouselMarcasHome />
-      <CardsImgHome />
     </main>
   );
 }
