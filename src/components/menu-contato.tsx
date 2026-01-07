@@ -10,11 +10,15 @@ const Email = ({ footer }: Props) => (
     href='mailto:vendas@lojadovrf.com.br'
     className={cn(
       'flex flex-col p-2 rounded-none rounded-t-md font-semibold gap-0 tracking-wide',
-      footer && 'items-center md:items-start'
+      footer && 'items-center md:items-start text-primary'
     )}
   >
     <span
-      className={cn('block font-normal', footer && 'font-bold text-primary')}
+      className={cn(
+        'block font-normal',
+        footer && 'text-sm',
+        !footer && 'text-nowrap'
+      )}
     >
       Envie um e-mail agora mesmo
     </span>
@@ -34,7 +38,17 @@ const Email = ({ footer }: Props) => (
         <path d='M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z'></path>
         <path d='M3 7l9 6l9 -6'></path>
       </svg>
-      <p>vendas@lojadovrf.com.br</p>
+      <div>
+        <p
+          className={cn(
+            'text-foreground',
+            footer && 'text-sm',
+            !footer && 'text-nowrap'
+          )}
+        >
+          vendas@lojadovrf.com.br
+        </p>
+      </div>
     </div>
   </a>
 );
@@ -45,11 +59,15 @@ const Whatsapp = ({ footer }: Props) => (
     href='https://wa.me/5511969189244?text=Olá!%0AVim através do site da loja do VRF e preciso de peças.'
     className={cn(
       'flex flex-col p-2 rounded-none font-semibold gap-0 tracking-wide',
-      footer && 'items-center md:items-start'
+      footer && 'items-center md:items-start text-primary'
     )}
   >
     <span
-      className={cn('block font-normal', footer && 'font-bold text-primary')}
+      className={cn(
+        'block font-normal',
+        footer && 'text-sm',
+        !footer && 'text-nowrap'
+      )}
     >
       Envie uma mensagem por Whatsapp
     </span>
@@ -69,7 +87,17 @@ const Whatsapp = ({ footer }: Props) => (
         <path d='M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9'></path>
         <path d='M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1'></path>
       </svg>
-      <p>(11) 96918-9244</p>
+      <div>
+        <p
+          className={cn(
+            'text-foreground',
+            footer && 'text-sm',
+            !footer && 'text-nowrap'
+          )}
+        >
+          (11) 96918-9244
+        </p>
+      </div>
     </div>
   </a>
 );
@@ -78,11 +106,15 @@ const HorarioAtendimento = ({ footer }: Props) => (
   <div
     className={cn(
       'flex flex-col p-2 rounded-b-md rounded-none font-semibold gap-0 hover:bg-base-100 tracking-wide',
-      footer && 'items-center md:items-start'
+      footer && 'items-center md:items-start text-primary'
     )}
   >
     <span
-      className={cn('block font-normal', footer && 'font-bold text-primary')}
+      className={cn(
+        'block font-normal',
+        footer && 'text-sm',
+        !footer && 'text-nowrap'
+      )}
     >
       Horário de atendimento:
     </span>
@@ -104,7 +136,15 @@ const HorarioAtendimento = ({ footer }: Props) => (
         <path d='M12 7v5'></path>
       </svg>
       <div>
-        <p className='text-nowrap'>Segunda à Sexta - 9 às 17 horas</p>
+        <p
+          className={cn(
+            'text-foreground',
+            footer && 'text-sm',
+            !footer && 'text-nowrap'
+          )}
+        >
+          Segunda à Sexta - 9 às 17 horas
+        </p>
       </div>
     </div>
   </div>

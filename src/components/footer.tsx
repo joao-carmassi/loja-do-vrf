@@ -23,10 +23,10 @@ const formasDeEnvio = [
 
 function Footer(): React.ReactNode {
   return (
-    <div className='border-t-2 border-secondary'>
-      <div className='mx-auto max-w-[95rem] p-6 md:p-12 space-y-6'>
-        <div className='flex flex-col md:flex-row items-center justify-center gap-6'>
-          <Link className='flex gap-3 items-center' href='/'>
+    <div className='md:border-t-2 border-secondary'>
+      <div className='mx-auto max-w-[95rem] p-6 md:p-12 flex flex-col md:flex-row gap-6'>
+        <div className='flex flex-col justify-center gap-6'>
+          <Link className='flex gap-3 items-center mx-auto md:mx-0' href='/'>
             <Image
               src='/imgs/logos/favicon.ico'
               alt='Logo'
@@ -44,7 +44,6 @@ function Footer(): React.ReactNode {
               />
             </div>
           </Link>
-          <div className='h-32 bg-secondary w-1 hidden md:block' />
           <div className='space-y-3'>
             <p className='text-sm lg:text-base text-center md:text-start'>
               A Loja do VRF e um e-commerce especializado em oferecer uma ampla
@@ -60,27 +59,30 @@ function Footer(): React.ReactNode {
             </p>
           </div>
         </div>
-        <div className='border-y-2 border-border w-fit mx-auto py-1 flex flex-col md:flex-row items-center justify-center gap-3'>
-          <MenuContato.Email footer />
-          <MenuContato.Whatsapp footer />
-          <MenuContato.HorarioAtendimento footer />
-        </div>
-        <div className='w-full flex flex-col lg:flex-row items-center md:items-start justify-between'>
-          <div>
-            <h3 className='font-bold text-primary md:text-lg'>
-              Meios de envio:
-            </h3>
-            <div className='flex flex-wrap gap-5 items-center'>
-              {formasDeEnvio.map((forma) => (
-                <Image
-                  key={forma.nome}
-                  src={forma.img}
-                  alt={forma.nome}
-                  width={115}
-                  height={40}
-                  className='h-8 w-fit'
-                />
-              ))}
+        <div className='h-32 bg-secondary w-1 hidden md:block' />
+        <div className='w-full'>
+          <div className='border-y border-border w-full mx-auto py-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-3'>
+            <MenuContato.Email footer />
+            <MenuContato.Whatsapp footer />
+            <MenuContato.HorarioAtendimento footer />
+          </div>
+          <div className='w-full flex flex-col lg:flex-row items-center md:items-start justify-between border-b border-border py-3'>
+            <div className='w-full'>
+              <h3 className='font-bold text-primary md:text-lg'>
+                Meios de envio:
+              </h3>
+              <div className='flex justify-between items-center gap-5 flex-wrap w-full'>
+                {formasDeEnvio.map((forma) => (
+                  <Image
+                    key={forma.nome}
+                    src={forma.img}
+                    alt={forma.nome}
+                    width={115}
+                    height={40}
+                    className='h-8 w-fit'
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
