@@ -23,7 +23,7 @@ const formasDeEnvio = [
 
 function Footer(): React.ReactNode {
   return (
-    <div className='md:border-t-2 border-secondary'>
+    <footer className='md:border-t-2 border-secondary'>
       <div className='mx-auto max-w-[95rem] p-6 md:p-12 space-y-6'>
         <div className='flex flex-col md:flex-row items-center justify-center gap-6'>
           <Link className='flex gap-3 items-center' href='/'>
@@ -85,7 +85,10 @@ function Footer(): React.ReactNode {
           </div>
         </div>
       </div>
-    </div>
+      <div className='bg-primary w-full text-center p-5 text-card'>
+        Copyright © 2026 - Todos os direitos reservados a Loja do VRF
+      </div>
+    </footer>
   );
 }
 
