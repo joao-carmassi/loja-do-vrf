@@ -5,6 +5,7 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel';
 import Autoplay from 'embla-carousel-autoplay';
+import { Handbag } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -32,10 +33,15 @@ const cards = [
 const MiniCards = () => {
   return (
     <section className='md:p-12 max-w-[95rem] mx-auto'>
-      <div className='md:gap-6 hidden md:flex'>
+      <div className='hidden md:flex bg-primary p-12 rounded-4xl relative'>
+        <div className='py-2 px-5 bg-linear-to-r from-secondary to-primary text-card w-fit absolute -top-5 left-1/2 -translate-x-1/2 rounded-full font-medium shadow-md border border-background flex items-center gap-2'>
+          <Handbag />
+          Todo o site com{' '}
+          <span className='font-semibold'>7% DE DESCONTO NO PIX</span>
+        </div>
         {cards.map((card, index) => (
           <Link
-            className='flex-1'
+            className='flex-1 nth-[1]:scale-90 nth-last-[1]:scale-90'
             key={index}
             href={card.link}
             target={card.target}
@@ -46,7 +52,7 @@ const MiniCards = () => {
               alt={card.alt}
               width={458}
               height={229}
-              className='w-full h-auto hover:scale-105 transition-transform duration-300'
+              className='w-full h-auto hover:scale-105 transition-transform duration-300 rounded-2xl'
               priority
             />
           </Link>

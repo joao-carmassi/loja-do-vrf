@@ -23,8 +23,8 @@ const MarcasEFotos = () => {
           href='https://wa.me/5511969189244?text=Ol%C3%A1!%0AVim%20atrav%C3%A9s%20do%20site%20da%20loja%20do%20VRF%20e%20preciso%20de%20pe%C3%A7as.'
         >
           <Image
-            width={1420}
-            height={370}
+            width={1860}
+            height={490}
             src='/imgs/banners/contato.png'
             alt='Não encontrou a peça que procura? Fale conosco!'
             className='w-full object-cover object-center hidden md:block'
