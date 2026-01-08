@@ -12,6 +12,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import generateUrl from '@/utils/generate-url';
+import MarcasEFotos from '@/components/marcas-e-fotos';
 
 interface Props {
   params: Promise<{
@@ -206,6 +207,7 @@ const Manuais = async ({ params }: Props): Promise<React.ReactNode> => {
           </div>
         </div>
       </section>
+      <MarcasEFotos />
     </>
   );
 };

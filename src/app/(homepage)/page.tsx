@@ -3,6 +3,7 @@ import InfosHome from './infos-home';
 import MostraProdutoMarcaHome from './mostra-produto-marca-home';
 import { Separator } from '@/components/ui/separator';
 import MiniCards from './mini-cards';
+import MarcasEFotos from '@/components/marcas-e-fotos';
 
 export default function Home(): React.ReactNode {
   const organizationSchema = {
@@ -50,6 +51,7 @@ export default function Home(): React.ReactNode {
       <InfosHome />
       <MiniCards />
       <MostraProdutoMarcaHome />
+      <MarcasEFotos />
     </main>
   );
 }
