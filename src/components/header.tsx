@@ -252,6 +252,7 @@ export default function Header(): React.ReactNode {
                           opts={{
                             align: 'start',
                             loop: true,
+                            skipSnaps: true,
                           }}
                         >
                           <CarouselContent>
