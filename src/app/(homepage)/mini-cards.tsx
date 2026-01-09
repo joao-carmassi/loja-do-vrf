@@ -32,7 +32,7 @@ const cards = [
 
 const MiniCards = () => {
   return (
-    <section className='md:p-12 max-w-[95rem] mx-auto'>
+    <section className='md:p-12 md:pt-4 max-w-[95rem] mx-auto'>
       <div className='hidden md:flex bg-primary p-12 rounded-4xl relative'>
         <div className='py-2 px-5 bg-linear-to-r from-secondary to-primary text-card w-fit absolute -top-5 left-1/2 -translate-x-1/2 rounded-full font-medium shadow-md border border-background flex items-center gap-2'>
           <Handbag />
@@ -58,7 +58,7 @@ const MiniCards = () => {
           </Link>
         ))}
       </div>
-      <div className='md:hidden space-y-1 py-6'>
+      <div className='md:hidden space-y-1 pb-6'>
         <h2 className='text-lg font-semibold px-6'>Aqui temos:</h2>
         <Carousel
           opts={{

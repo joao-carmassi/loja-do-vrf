@@ -85,7 +85,7 @@ function Footer(): React.ReactNode {
           </div>
         </div>
       </div>
-      <div className='bg-primary w-full text-center p-5 text-card'>
+      <div className='bg-primary w-full text-center p-5 text-card text-xs md:text-sm'>
         Copyright © 2026 - Todos os direitos reservados a Loja do VRF
       </div>
     </footer>

@@ -1,8 +1,12 @@
+import { cn } from '@/lib/utils';
+import { ClassNameValue } from 'tailwind-merge';
+
 interface Props {
-  size: string;
+  size: number;
+  className?: ClassNameValue;
 }
 
-function TruckSvg({ size }: Props): React.ReactNode {
+function TruckSvg({ size, className }: Props): React.ReactNode {
   return (
     <svg
       width={size}
@@ -10,6 +14,7 @@ function TruckSvg({ size }: Props): React.ReactNode {
       viewBox='0 0 89 63'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      className={cn(className)}
     >
       <path
         d='M17.358 21.7303C16.3162 21.7303 15.5252 21.276 14.9939 20.3674C14.4581 19.4588 14.1913 18.2965 14.1913 16.8759C14.1913 15.4554 14.4328 14.3508 14.9134 13.403C15.3964 12.4575 16.1829 11.9847 17.2775 11.9847C18.3722 11.9847 19.1472 12.4506 19.6807 13.3845C20.2142 14.3162 20.4833 15.4946 20.4833 16.9128C20.4833 18.3311 20.2349 19.4265 19.7405 20.3466C19.246 21.269 18.4503 21.7303 17.3557 21.7303H17.358Z'

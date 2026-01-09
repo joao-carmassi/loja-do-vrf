@@ -1,18 +1,12 @@
 import { Separator } from '@/components/ui/separator';
 import getPdf from '@/utils/get-pdfs';
-import {
-  Breadcrumb,
-  BreadcrumbList,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbSeparator,
-  BreadcrumbPage,
-} from '@/components/ui/breadcrumb';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import generateUrl from '@/utils/generate-url';
 import MarcasEFotos from '@/components/marcas-e-fotos';
+import InfosHome from '@/app/(homepage)/infos-home';
+import MiniCards from '@/app/(homepage)/mini-cards';
 
 interface Props {
   params: Promise<{
@@ -136,75 +130,58 @@ const Manuais = async ({ params }: Props): Promise<React.ReactNode> => {
           alt={marcaNome}
           className='h-full w-full object-contain object-center'
         />
-        <div className='container p-6 md:p-12 mx-auto max-w-[95rem]'>
-          <div className='flex flex-col gap-12'>
-            <Breadcrumb className='col-span-2'>
-              <BreadcrumbList>
-                <BreadcrumbItem>
-                  <BreadcrumbLink href='/'>Inicio</BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbLink href='/manuais-tecnicos'>
-                    Manuais Técnicos
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>{marcaNome}</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-            <h1 className='w-full text-center text-2xl font-medium md:text-3xl text-primary'>
-              Manuais Técnicos - {marcaNome}
-            </h1>
-            {listaPdfs.some((pdf) => pdf.tipo === 'CONDENSADORA') && (
-              <div className='flex flex-col gap-7'>
-                <h2 className='text-xl uppercase'>/ Unidade Condensadora</h2>
-                <div>
-                  {listaPdfs
-                    .filter((pdf) => pdf.tipo === 'CONDENSADORA')
-                    .map((pdf, idx) => (
-                      <div key={idx}>
-                        <Separator />
-                        <a
-                          href={`/pdfs/${pdf.documento}.pdf`}
-                          download={`${pdf.documento}.pdf`}
-                          className='my-2.5 grid gap-2.5 text-sm sm:grid-cols-3 hover:underline'
-                        >
-                          <p className='text-muted-foreground'>{pdf.marca}</p>
-                          <p>{pdf.documento}</p>
-                          <p className='text-muted-foreground'>{pdf.modelo}</p>
-                        </a>
-                      </div>
-                    ))}
-                </div>
+        <InfosHome />
+        <MiniCards />
+        <div className='flex flex-col gap-12 container p-6 md:p-12 md:pt-0 mx-auto max-w-[95rem]'>
+          <h1 className='w-full text-center text-2xl font-medium md:text-3xl text-primary'>
+            Manuais Técnicos - {marcaNome}
+          </h1>
+          {listaPdfs.some((pdf) => pdf.tipo === 'CONDENSADORA') && (
+            <div className='flex flex-col gap-7'>
+              <h2 className='text-xl uppercase'>/ Unidade Condensadora</h2>
+              <div>
+                {listaPdfs
+                  .filter((pdf) => pdf.tipo === 'CONDENSADORA')
+                  .map((pdf, idx) => (
+                    <div key={idx}>
+                      <Separator />
+                      <a
+                        href={`/pdfs/${pdf.documento}.pdf`}
+                        download={`${pdf.documento}.pdf`}
+                        className='my-2.5 grid gap-2.5 text-sm sm:grid-cols-3 hover:underline'
+                      >
+                        <p className='text-muted-foreground'>{pdf.marca}</p>
+                        <p>{pdf.documento}</p>
+                        <p className='text-muted-foreground'>{pdf.modelo}</p>
+                      </a>
+                    </div>
+                  ))}
               </div>
-            )}
-            {listaPdfs.some((pdf) => pdf.tipo === 'EVAPORADORA') && (
-              <div className='flex flex-col gap-7'>
-                <h2 className='text-xl uppercase'>/ Unidade Evaporadora</h2>
-                <div>
-                  {listaPdfs
-                    .filter((pdf) => pdf.tipo === 'EVAPORADORA')
-                    .map((pdf, idx) => (
-                      <div key={idx}>
-                        <Separator />
-                        <a
-                          href={`/pdfs/${pdf.documento}.pdf`}
-                          download={`${pdf.documento}.pdf`}
-                          className='my-2.5 grid gap-2.5 text-sm sm:grid-cols-3 hover:underline'
-                        >
-                          <p className='text-muted-foreground'>{pdf.marca}</p>
-                          <p>{pdf.documento}</p>
-                          <p className='text-muted-foreground'>{pdf.modelo}</p>
-                        </a>
-                      </div>
-                    ))}
-                </div>
+            </div>
+          )}
+          {listaPdfs.some((pdf) => pdf.tipo === 'EVAPORADORA') && (
+            <div className='flex flex-col gap-7'>
+              <h2 className='text-xl uppercase'>/ Unidade Evaporadora</h2>
+              <div>
+                {listaPdfs
+                  .filter((pdf) => pdf.tipo === 'EVAPORADORA')
+                  .map((pdf, idx) => (
+                    <div key={idx}>
+                      <Separator />
+                      <a
+                        href={`/pdfs/${pdf.documento}.pdf`}
+                        download={`${pdf.documento}.pdf`}
+                        className='my-2.5 grid gap-2.5 text-sm sm:grid-cols-3 hover:underline'
+                      >
+                        <p className='text-muted-foreground'>{pdf.marca}</p>
+                        <p>{pdf.documento}</p>
+                        <p className='text-muted-foreground'>{pdf.modelo}</p>
+                      </a>
+                    </div>
+                  ))}
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </section>
       <MarcasEFotos />

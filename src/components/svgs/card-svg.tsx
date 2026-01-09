@@ -1,8 +1,12 @@
+import { cn } from "@/lib/utils";
+import { ClassNameValue } from "tailwind-merge";
+
 interface Props {
-  size: string;
+  size: number;
+  className?: ClassNameValue;
 }
 
-function CardSvg({ size }: Props): React.ReactNode {
+function CardSvg({ size, className  }: Props): React.ReactNode {
   return (
     <svg
       width={size}
@@ -10,6 +14,7 @@ function CardSvg({ size }: Props): React.ReactNode {
       viewBox='0 0 83 64'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
+      className={cn(className)}
     >
       <path
         d='M65.0023 0H7.47172C3.35208 0 0 3.34992 0 7.46691V39.8545C0 43.9714 3.35208 47.3214 7.47172 47.3214H42.3432C43.0157 47.3214 43.5598 46.7764 43.5598 46.1055C43.5598 45.4346 43.0145 44.8896 42.3432 44.8896H7.47172C4.6936 44.8896 2.43444 42.6308 2.43444 39.8556V20.7452H70.0396V24.4386C70.0396 25.1107 70.5849 25.6545 71.2563 25.6545C71.9276 25.6545 72.4729 25.1095 72.4729 24.4386V7.46691C72.4729 3.34992 69.1208 0 65.0012 0H65.0023ZM2.43444 9.71203V7.46691C2.43444 4.69058 4.69474 2.43287 7.47172 2.43287H65.0023C67.7805 2.43287 70.0396 4.69172 70.0396 7.46691V9.71203H2.43444Z'

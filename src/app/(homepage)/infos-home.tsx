@@ -5,19 +5,21 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel';
 import { H3 } from '@/components/ui/h3';
-import { CreditCard, Shield, Truck } from 'lucide-react';
 import Autoplay from 'embla-carousel-autoplay';
-import ClockSvg from '@/components/ui/clock-svg';
+import GearSvg from '@/components/svgs/gear-svg';
+import TruckSvg from '@/components/svgs/truck-svg';
+import BoxSvg from '@/components/svgs/box-svg';
+import CardSvg from '@/components/svgs/card-svg';
 
 const InfoTecnicos = () => (
   <div className='lg:col-span-1 flex items-center gap-3'>
-    <Shield className='text-primary' size={35} />
+    <GearSvg className='text-primary' size={45} />
     <div>
-      <H3 className='!text-base !font-normal'>
+      <H3 className='!text-base !font-normal leading-4.5'>
         <span className='text-primary font-semibold block'>
-          ESPECIALISTAS TÉCNICOS
+          TÉCNICOS CERTIFICADOS
         </span>{' '}
-        EM VRF
+        <span className='text-xs'>EM VRF</span>
       </H3>
     </div>
   </div>
@@ -25,11 +27,11 @@ const InfoTecnicos = () => (
 
 const InfoFreteGratis = () => (
   <div className='flex items-center gap-3'>
-    <Truck className='text-primary' size={35} />
+    <TruckSvg className='text-primary' size={55} />
     <div>
-      <H3 className='!text-base !font-normal'>
+      <H3 className='!text-base !font-normal leading-4.5'>
         <span className='text-primary font-semibold block'>FRETE GRÁTIS</span>{' '}
-        PARA TODO BRASIL
+        <span className='text-xs'>PARA TODO BRASIL</span>
       </H3>
     </div>
   </div>
@@ -37,13 +39,13 @@ const InfoFreteGratis = () => (
 
 const InfoPrazoEntrega = () => (
   <div className='flex items-center gap-3'>
-    <ClockSvg />
+    <BoxSvg className='text-primary' size={45} />
     <div>
-      <H3 className='!text-base !font-normal'>
+      <H3 className='!text-base !font-normal leading-4.5'>
         <span className='text-primary font-semibold block'>
           MELHOR PRAZO DE ENTREGA
         </span>{' '}
-        DO BRASIL EM PEÇAS MIDEA
+        <span className='text-xs'>DO BRASIL EM PEÇAS MIDEA E TOSHIBA</span>
       </H3>
     </div>
   </div>
@@ -51,13 +53,13 @@ const InfoPrazoEntrega = () => (
 
 const InfoParcelamento = () => (
   <div className='flex items-center gap-3'>
-    <CreditCard className='text-primary' size={35} />
+    <CardSvg className='text-primary' size={45} />
     <div>
-      <H3 className='!text-base !font-normal'>
+      <H3 className='!text-base !font-normal leading-4.5'>
         <span className='text-primary font-semibold block'>
           PARCELAMOS EM ATÉ 12X
         </span>{' '}
-        NO CARTÃO DE CRÉDITO
+        <span className='text-xs'>NO CARTÃO DE CRÉDITO</span>
       </H3>
     </div>
   </div>
@@ -65,7 +67,7 @@ const InfoParcelamento = () => (
 
 const InfosHome = () => {
   return (
-    <section className='py-6 md:p-6 border-b border-border'>
+    <section className='py-6 md:p-9'>
       <div className='max-w-[95rem] mx-auto '>
         {/* Desktop */}
         <div className='hidden md:grid md:grid-cols-2 lg:grid-cols-4 place-items-center gap-6 pb-0'>
