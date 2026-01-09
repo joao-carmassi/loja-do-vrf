@@ -123,7 +123,7 @@ export default function Header(): React.ReactNode {
         {/* Produtos */}
         <div
           className={cn(
-            'flex-1 items-center justify-center gap-6 w-full relative hidden lg:flex bg-primary pb-1',
+            'flex-1 items-center justify-center gap-6 w-full relative hidden lg:flex bg-primary py-1',
             switchValue ? '' : hidden
           )}
         >
