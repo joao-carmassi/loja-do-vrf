@@ -122,7 +122,7 @@ const Manuais = async ({ params }: Props): Promise<React.ReactNode> => {
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
       />
-      <section className='min-h-container-mobile lg:min-h-container'>
+      <section>
         <Image
           width={1860}
           height={650}
