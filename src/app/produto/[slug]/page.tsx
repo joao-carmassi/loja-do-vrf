@@ -179,9 +179,9 @@ const Produtos = async ({ params }: Props) => {
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <section className='mx-auto p-6 md:p-12 max-w-[95rem] flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-12'>
+      <section className='mx-auto p-6 md:p-12 max-w-[95rem] flex flex-col lg:grid lg:grid-cols-2 gap-6 lg:gap-12'>
         <CarouselProdutos produto={produto} />
-        <div className='space-y-4'>
+        <div className='space-y-4 lg:space-y-6'>
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -205,7 +205,7 @@ const Produtos = async ({ params }: Props) => {
             </BreadcrumbList>
           </Breadcrumb>
           <H1>{produto.nome}</H1>
-          <div className='flex items-center'>
+          <div className='flex flex-col-reverse md:flex-row gap-4'>
             <div className='space-y-1 flex-1'>
               <p className='text-xs border border-secondary rounded-full w-fit py-1.5 px-3'>
                 Códigos compatíveis: {produto.codigos.join(', ')}
@@ -237,8 +237,8 @@ const Produtos = async ({ params }: Props) => {
           <p className='text-sm'>
             *Necessário confirmação de disponibilidade no estoque
           </p>
-          <p className='text-sm font-bold'>Formas de envio:</p>
-          <div>
+          <div className='space-y-3'>
+            <p className='text-sm font-bold'>Formas de envio:</p>
             <ul className='flex flex-wrap gap-4'>
               {formasDeEnvio.map((forma) => (
                 <li key={forma.nome} title={forma.nome}>

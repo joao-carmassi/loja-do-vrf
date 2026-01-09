@@ -4,7 +4,7 @@ import { persist } from 'zustand/middleware';
 
 interface CarrinhoState {
   carrinho: Array<{ item: IProduto; quantidade: string }>;
-  adicionarAoCarrinho: (produto: IProduto) => void;
+  adicionarAoCarrinho: (produto: IProduto, quantidade?: number) => void;
   alterarQuantidade: (id: string, quantidade: string) => void;
   removerDoCarrinho: (id: string) => void;
   limparCarrinho: () => void;
@@ -18,13 +18,13 @@ const storeCarrinho = create<CarrinhoState>()(
   persist(
     (set, get) => ({
       carrinho: [] as Array<{ item: IProduto; quantidade: string }>,
-      adicionarAoCarrinho: (produto: IProduto) =>
+      adicionarAoCarrinho: (produto: IProduto, quantidade?: number) =>
         set((state) => ({
           carrinho: [
             ...state.carrinho.filter((item) => item.item.id !== produto.id),
             {
               item: produto,
-              quantidade: '1',
+              quantidade: quantidade ? quantidade.toString() : '1',
             },
           ],
         })),
