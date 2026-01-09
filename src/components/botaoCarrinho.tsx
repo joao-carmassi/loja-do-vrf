@@ -2,10 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Button } from './ui/button';
-import { ShoppingCart } from 'lucide-react';
-import { Badge } from './ui/badge';
 import storeCarrinho from '@/store/carrinho';
+import ShoppingCartSvg from './svgs/shoping-cart-svg';
 
 function BotaoCarrinho(): React.ReactNode {
   const { carrinho, checaCarrinho } = storeCarrinho();
@@ -18,21 +16,12 @@ function BotaoCarrinho(): React.ReactNode {
   }, [checaCarrinho]);
 
   return (
-    <Button
-      asChild
-      size='icon'
-      className='rounded-full aspect-square relative border-2 border-card'
-    >
-      <Link href='/carrinho'>
-        <Badge
-          variant={'default'}
-          className='h-5 aspect-square min-w-5 rounded-full px-1 absolute -top-1.5 -right-1.5 bg-card text-foreground'
-        >
-          {mounted ? carrinho.length : 0}
-        </Badge>
-        <ShoppingCart />
-      </Link>
-    </Button>
+    <Link className='relative' href='/carrinho'>
+      <p className='absolute -top-1.5 -right-3.5 text-card'>
+        {mounted ? carrinho.length : 0}
+      </p>
+      <ShoppingCartSvg size={35} className='text-secondary' />
+    </Link>
   );
 }
 

@@ -57,7 +57,7 @@ export default function TableCarrinho() {
                       <Image
                         src={`/imgs/produtos/${produto.item.id}.png`}
                         alt={produto.item.nome}
-                        className='object-fit object-center rounded-sm border border-primary'
+                        className='object-contain object-center rounded-sm border border-primary'
                         fill
                       />
                     </div>
