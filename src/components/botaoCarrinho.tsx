@@ -17,7 +17,7 @@ function BotaoCarrinho(): React.ReactNode {
 
   return (
     <Link className='relative' href='/carrinho'>
-      <p className='absolute -top-1.5 -right-3.5 text-card'>
+      <p className='absolute -top-1.5 -right-3 text-card text-sm'>
         {mounted ? carrinho.length : 0}
       </p>
       <ShoppingCartSvg size={35} className='text-secondary' />

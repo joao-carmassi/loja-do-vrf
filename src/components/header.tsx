@@ -115,12 +115,11 @@ export default function Header(): React.ReactNode {
             </div>
           </div>
         </div>
-        <Separator
-          className={cn(
-            'max-w-[90rem] mx-auto bg-secondary hidden lg:block',
-            switchValue ? '' : hidden
-          )}
-        />
+        <div className='max-w-[95rem] px-6 lg:px-12 mx-auto hidden lg:block'>
+          <Separator
+            className={cn('bg-secondary w-full', switchValue ? '' : hidden)}
+          />
+        </div>
         {/* Produtos */}
         <div
           className={cn(
