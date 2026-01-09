@@ -45,7 +45,11 @@ export function CarouselProdutos({ className, produto }: Props) {
       )}
     >
       {/* carrosel */}
-      <Carousel index={index} onIndexChange={setIndex} className='flex-1'>
+      <Carousel
+        index={index}
+        onIndexChange={setIndex}
+        className='flex-1 shadow-lg inset-shadow-2xs rounded-4xl border border-secondary/5'
+      >
         <CarouselContent className='relative'>
           {ITEMS.map((item) => (
             <CarouselItem key={item}>
@@ -54,14 +58,14 @@ export function CarouselProdutos({ className, produto }: Props) {
                 height={750}
                 src={`/imgs/produtos/${produto.id}.png`}
                 alt={produto.nome}
-                className='w-full aspect-square object-contain object-center border-zinc-200 dark:border-zinc-800'
+                className='w-full aspect-square object-contain object-center border-zinc-200 rounded-4xl bg-card dark:border-zinc-800'
               />
             </CarouselItem>
           ))}
         </CarouselContent>
       </Carousel>
       {/* miniaturas */}
-      <div
+      {/* <div
         className={cn(
           'flex',
           thumbsPosition === 'left'
@@ -82,11 +86,11 @@ export function CarouselProdutos({ className, produto }: Props) {
               height={100}
               src={`/imgs/produtos/${produto.id}.png`}
               alt={produto.nome}
-              className='w-full h-full object-contain object-center rounded-md'
+              className='w-full h-full object-contain object-center rounded-md bg-card'
             />
           </button>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

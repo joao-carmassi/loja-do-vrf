@@ -16,6 +16,7 @@ function BotaoAdicionaCarrinho({ produto }: Props): React.ReactNode {
 
   return (
     <Button
+      variant={'success'}
       effect={'expandIcon'}
       iconPlacement='right'
       icon={ShoppingCart}

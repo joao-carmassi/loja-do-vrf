@@ -17,18 +17,16 @@ const MarkdownToHtml = ({ markdown }: Props) => {
       remarkPlugins={[remarkGfm]}
       components={{
         h1: (props: ReactMarkdownProps) => (
-          <h1 className='text-primary font-bold text-lg' {...props} />
+          <h1 className='font-bold text-lg' {...props} />
         ),
         h2: (props: ReactMarkdownProps) => (
-          <h2 className='mt-5 text-primary font-bold' {...props} />
+          <h2 className='mt-5 font-bold' {...props} />
         ),
         h3: (props: ReactMarkdownProps) => (
-          <h3 className='mt-5 text-primary font-bold' {...props} />
+          <h3 className='mt-5 font-bold' {...props} />
         ),
         p: (props: ReactMarkdownProps) => <p {...props} />,
-        strong: (props: ReactMarkdownProps) => (
-          <strong {...props} className='text-primary' />
-        ),
+        strong: (props: ReactMarkdownProps) => <strong {...props} />,
         a: (props: ReactMarkdownProps) => (
           <A
             href={(props.node?.properties?.href as string) || '#'}
@@ -36,12 +34,8 @@ const MarkdownToHtml = ({ markdown }: Props) => {
           />
         ),
         blockquote: (props: ReactMarkdownProps) => <Blockquote {...props} />,
-        ul: (props: ReactMarkdownProps) => (
-          <Ul className='marker:text-primary' {...props} />
-        ),
-        ol: (props: ReactMarkdownProps) => (
-          <Ol className='marker:text-primary' {...props} />
-        ),
+        ul: (props: ReactMarkdownProps) => <Ul {...props} />,
+        ol: (props: ReactMarkdownProps) => <Ol {...props} />,
         hr: () => <Separator />,
         table: (props: ReactMarkdownProps) => (
           <div className='w-full overflow-x-auto'>
