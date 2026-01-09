@@ -41,7 +41,7 @@ const MiniCards = () => {
         </div>
         {cards.map((card, index) => (
           <Link
-            className='flex-1 nth-[1]:scale-90 nth-last-[1]:scale-90'
+            className='flex-1 even:scale-90'
             key={index}
             href={card.link}
             target={card.target}

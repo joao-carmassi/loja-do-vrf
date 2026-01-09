@@ -1,7 +1,7 @@
 'use client';
 
 import { CreditCard, Settings } from 'lucide-react';
-import PixSvg from './ui/pix-svg';
+import PixSvg from './svgs/pix-svg';
 import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 
