@@ -22,7 +22,7 @@ function WhatsButton(): React.ReactNode {
           target='_blank'
         >
           <svg
-            className='text-green-700 bg-white rounded-full p-1 inline'
+            className='text-green-700 bg-white shadow-md rounded-full p-1 inline'
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 24 24'
             fill='none'
