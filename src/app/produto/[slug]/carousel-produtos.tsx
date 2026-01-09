@@ -48,14 +48,14 @@ export function CarouselProdutos({ className, produto }: Props) {
       <Carousel
         index={index}
         onIndexChange={setIndex}
-        className='flex-1 shadow-lg inset-shadow-2xs rounded-4xl border border-secondary/5'
+        className='flex-1 shadow-lg inset-shadow-2xs rounded-4xl border border-secondary/5 aspect-square'
       >
         <CarouselContent className='relative'>
           {ITEMS.map((item) => (
             <CarouselItem key={item}>
               <Image
-                width={750}
-                height={750}
+                width={686}
+                height={686}
                 src={`/imgs/produtos/${produto.id}.png`}
                 alt={produto.nome}
                 className='w-full aspect-square object-contain object-center border-zinc-200 rounded-4xl bg-card dark:border-zinc-800'
