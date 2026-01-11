@@ -17,7 +17,7 @@ const InfoTecnicos = () => (
     <div>
       <H3 className='!text-base !font-normal leading-4.5'>
         <span className='text-primary font-semibold block'>
-          TÉCNICOS CERTIFICADOS
+          ESPECIALISTAS TÉCNICOS EM VRF
         </span>{' '}
         <span className='text-xs'>EM VRF</span>
       </H3>

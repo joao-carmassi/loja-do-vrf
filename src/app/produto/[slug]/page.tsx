@@ -204,28 +204,25 @@ const Produtos = async ({ params }: Props) => {
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
+          <Link className='block' href={`/marca/${generateUrl(produto.marca)}`}>
+            <Image
+              className='h-fit w-28'
+              height={20}
+              width={112}
+              alt={produto.marca}
+              src={`/imgs/marcas/${produto.marca}.png`}
+            />
+          </Link>
           <H1>{produto.nome}</H1>
           <div className='flex flex-col-reverse md:flex-row gap-4'>
-            <div className='space-y-1 flex-1'>
+            <div className='space-y-1'>
               <p className='text-xs border border-secondary rounded-full w-fit py-1.5 px-3'>
                 Códigos compatíveis: {produto.codigos.join(', ')}
               </p>
-              <p className='text-sm text-muted-foreground'>
-                sku: {produto.sku}
+              <p className='text-sm text-muted-foreground ml-3.5'>
+                SKU: {produto.sku}
               </p>
             </div>
-            <Link
-              className='block flex-1'
-              href={`/marca/${generateUrl(produto.marca)}`}
-            >
-              <Image
-                className='h-fit w-28'
-                height={20}
-                width={112}
-                alt={produto.marca}
-                src={`/imgs/marcas/${produto.marca}.png`}
-              />
-            </Link>
           </div>
           <p className='text-sm'>
             PARCELAMENTO EM ATÉ <span className='font-bold'>12 VEZES</span>
@@ -255,7 +252,7 @@ const Produtos = async ({ params }: Props) => {
         </div>
         <Separator className='md:col-span-2 pb-1 bg-border' />
         <div className='md:col-span-2'>
-          <H2 className='!text-lg !text-foreground !font-bold'>Descricao:</H2>
+          <H2 className='!text-lg !text-foreground !font-bold'>Descrição:</H2>
           <MarkdownToHtml markdown={produto.descricao} />
           <p className='font-bold pt-4'>
             Loja do VRF: Transformando desafios térmicos em soluções de
