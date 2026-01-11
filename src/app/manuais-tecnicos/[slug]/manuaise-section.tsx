@@ -32,7 +32,7 @@ function ManuaisSection({ pdf, marca }: Props): React.ReactNode {
       <div className='grid md:grid-cols-2 gap-12'>
         {pdf.some((pdf) => pdf.tipo === 'CONDENSADORA') && (
           <div className='flex flex-col gap-7'>
-            <h2 className='text-xl uppercase'>/ Unidade Condensadora</h2>
+            <h2 className='text-xl'>Unidade Condensadora</h2>
             <div>
               {pdf
                 .filter((pdf) => pdf.tipo === 'CONDENSADORA')
@@ -54,7 +54,7 @@ function ManuaisSection({ pdf, marca }: Props): React.ReactNode {
         )}
         {pdf.some((pdf) => pdf.tipo === 'EVAPORADORA') && (
           <div className='flex flex-col gap-7'>
-            <h2 className='text-xl uppercase'>/ Unidade Evaporadora</h2>
+            <h2 className='text-xl'>Unidade Evaporadora</h2>
             <div>
               {pdf
                 .filter((pdf) => pdf.tipo === 'EVAPORADORA')
