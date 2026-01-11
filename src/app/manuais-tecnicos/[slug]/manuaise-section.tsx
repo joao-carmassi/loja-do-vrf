@@ -26,7 +26,7 @@ function ManuaisSection({ pdf, marca }: Props): React.ReactNode {
       ref={refContainer}
       className='flex flex-col gap-12 container p-6 md:p-12 md:pt-0 mx-auto max-w-[95rem]'
     >
-      <h1 className='w-full text-center text-2xl font-medium md:text-3xl text-primary'>
+      <h1 className='w-full text-center text-2xl font-bold md:text-3xl text-primary'>
         Manuais Técnicos - {marca}
       </h1>
       <div className='grid md:grid-cols-2 gap-12'>
