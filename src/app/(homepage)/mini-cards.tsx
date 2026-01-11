@@ -59,7 +59,6 @@ const MiniCards = () => {
         ))}
       </div>
       <div className='md:hidden space-y-1 pb-6'>
-        <h2 className='text-lg font-semibold px-6'>Aqui temos:</h2>
         <Carousel
           opts={{
             loop: true,
