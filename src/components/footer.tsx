@@ -21,20 +21,55 @@ const formasDeEnvio = [
   },
 ];
 
+const formasDePagamento = [
+  {
+    nome: 'Visa',
+    img: '/imgs/formas-de-pagamento/visa.svg',
+  },
+  {
+    nome: 'Mastercard',
+    img: '/imgs/formas-de-pagamento/mastercard.png',
+  },
+  {
+    nome: 'Dinners',
+    img: '/imgs/formas-de-pagamento/dinners.png',
+  },
+  {
+    nome: 'American Express',
+    img: '/imgs/formas-de-pagamento/american.png',
+  },
+  {
+    nome: 'Elo',
+    img: '/imgs/formas-de-pagamento/elo.png',
+  },
+  {
+    nome: 'Hipercard',
+    img: '/imgs/formas-de-pagamento/Hipercard.svg',
+  },
+  {
+    nome: 'Boleto',
+    img: '/imgs/formas-de-pagamento/boleto.png',
+  },
+  {
+    nome: 'Pix',
+    img: '/imgs/formas-de-pagamento/pix.png',
+  },
+];
+
 function Footer(): React.ReactNode {
   return (
     <div className='md:border-t-2 border-secondary'>
-      <div className='mx-auto max-w-[95rem] p-6 md:p-12 flex flex-col md:flex-row gap-6'>
+      <div className='mx-auto max-w-[95rem] p-6 md:p-12 grid lg:grid-cols-[3fr_5fr] gap-6 place-items-center'>
         <div className='flex flex-col justify-center gap-6'>
           <Link className='flex gap-3 items-center mx-auto md:mx-0' href='/'>
             <Image
               src='/imgs/logos/favicon.ico'
               alt='Logo'
-              className='border-3 lg:border-5 border-secondary p-1 rounded-full aspect-square size-12 lg:size-21'
+              className='border-3 lg:border-5 border-secondary p-1 rounded-full aspect-square size-12 lg:size-18'
               width={84}
               height={84}
             />
-            <div className='w-[12rem] lg:w-[23rem]'>
+            <div className='w-[12rem] lg:w-[20rem]'>
               <Image
                 src='/imgs/logos/logo.webp'
                 alt='Loja do VRF'
@@ -45,13 +80,13 @@ function Footer(): React.ReactNode {
             </div>
           </Link>
           <div className='space-y-3'>
-            <p className='text-sm lg:text-base text-center md:text-start'>
+            <p className='text-xs lg:text-sm text-center md:text-start'>
               A Loja do VRF e um e-commerce especializado em oferecer uma ampla
               linha de peças e componentes para LOJA DO VRF sistemas VRF. Nossa
               missão é proporcionar aos nossos clientes um atendimento ágil,
               1eficiente e de excelência.
             </p>
-            <p className='text-sm lg:text-base text-center md:text-start'>
+            <p className='text-xs lg:text-sm text-center md:text-start'>
               Nosso diferencial está em oferecer preços competitivos e o prazo
               de entrega mais curto do mercado, garantindo que nossos clientes
               tenham acesso rápido às soluções que precisam, com qualidade e
@@ -59,9 +94,8 @@ function Footer(): React.ReactNode {
             </p>
           </div>
         </div>
-        <div className='h-32 bg-secondary w-1 hidden md:block' />
-        <div className='w-full'>
-          <div className='border-y border-border w-full mx-auto py-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-3'>
+        <div className='w-full lg:border-l border-secondary lg:pl-6'>
+          <div className='border-y border-border w-full mx-auto py-1 flex flex-wrap justify-center md:justify-between items-center gap-3'>
             <MenuContato.Email footer />
             <MenuContato.Whatsapp footer />
             <MenuContato.HorarioAtendimento footer />
@@ -80,6 +114,21 @@ function Footer(): React.ReactNode {
                     width={115}
                     height={40}
                     className='h-8 w-fit'
+                  />
+                ))}
+              </div>
+              <h3 className='font-bold text-primary md:text-lg mt-6'>
+                Formas de pagamento:
+              </h3>
+              <div className='flex justify-between items-center gap-5 flex-wrap w-full mt-2'>
+                {formasDePagamento.map((forma) => (
+                  <Image
+                    key={forma.nome}
+                    src={forma.img}
+                    alt={forma.nome}
+                    width={60}
+                    height={40}
+                    className='h-7 w-fit'
                   />
                 ))}
               </div>

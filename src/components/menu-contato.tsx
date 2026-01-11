@@ -16,13 +16,13 @@ const Email = ({ footer }: Props) => (
     <span
       className={cn(
         'block font-normal',
-        footer && 'text-sm',
+        footer && 'text-xs',
         !footer && 'text-nowrap'
       )}
     >
       Envie um e-mail agora mesmo
     </span>
-    <div className='flex gap-1 items-center justify-center md:justify-start'>
+    <div className='flex gap-1 justify-center md:justify-start'>
       <svg
         className='inline'
         xmlns='http://www.w3.org/2000/svg'
@@ -42,7 +42,7 @@ const Email = ({ footer }: Props) => (
         <p
           className={cn(
             'text-foreground',
-            footer && 'text-sm',
+            footer && 'text-xs',
             !footer && 'text-nowrap'
           )}
         >
@@ -65,13 +65,13 @@ const Whatsapp = ({ footer }: Props) => (
     <span
       className={cn(
         'block font-normal',
-        footer && 'text-sm',
+        footer && 'text-xs',
         !footer && 'text-nowrap'
       )}
     >
       Envie uma mensagem por Whatsapp
     </span>
-    <div className='flex gap-1 items-center justify-center md:justify-start'>
+    <div className='flex gap-1 justify-center md:justify-start'>
       <svg
         className='text-green-500 inline'
         xmlns='http://www.w3.org/2000/svg'
@@ -91,7 +91,7 @@ const Whatsapp = ({ footer }: Props) => (
         <p
           className={cn(
             'text-foreground',
-            footer && 'text-sm',
+            footer && 'text-xs',
             !footer && 'text-nowrap'
           )}
         >
@@ -112,13 +112,13 @@ const HorarioAtendimento = ({ footer }: Props) => (
     <span
       className={cn(
         'block font-normal',
-        footer && 'text-sm',
+        footer && 'text-xs',
         !footer && 'text-nowrap'
       )}
     >
       Horário de atendimento:
     </span>
-    <div className='flex gap-1 items-center justify-center md:justify-start'>
+    <div className='flex gap-1 justify-center md:justify-start'>
       <svg
         className='inline'
         xmlns='http://www.w3.org/2000/svg'
@@ -139,7 +139,7 @@ const HorarioAtendimento = ({ footer }: Props) => (
         <p
           className={cn(
             'text-foreground',
-            footer && 'text-sm',
+            footer && 'text-xs',
             !footer && 'text-nowrap'
           )}
         >
