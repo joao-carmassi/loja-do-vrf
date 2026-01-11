@@ -22,7 +22,7 @@ const Email = ({ footer }: Props) => (
     >
       Envie um e-mail agora mesmo
     </span>
-    <div className='flex gap-1 justify-center md:justify-start'>
+    <div className='flex gap-1 justify-center md:justify-start items-center'>
       <svg
         className='inline'
         xmlns='http://www.w3.org/2000/svg'
@@ -71,7 +71,7 @@ const Whatsapp = ({ footer }: Props) => (
     >
       Envie uma mensagem por Whatsapp
     </span>
-    <div className='flex gap-1 justify-center md:justify-start'>
+    <div className='flex gap-1 justify-center md:justify-start items-center'>
       <svg
         className='text-green-500 inline'
         xmlns='http://www.w3.org/2000/svg'
@@ -118,7 +118,7 @@ const HorarioAtendimento = ({ footer }: Props) => (
     >
       Horário de atendimento:
     </span>
-    <div className='flex gap-1 justify-center md:justify-start'>
+    <div className='flex gap-1 justify-center md:justify-start items-center'>
       <svg
         className='inline'
         xmlns='http://www.w3.org/2000/svg'
