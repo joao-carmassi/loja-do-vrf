@@ -282,11 +282,12 @@ function AsideEProdutos({
             {produtosFiltradosFinal.length > 0 ? (
               produtosFiltradosFinal
                 .slice(0, quantidadeItems)
-                .map((produto, i) => {
-                  const ultimoItem = i === quantidadeItems - 1;
+                .map((produto, i, arr) => {
+                  // Aplica o ref nos 6 últimos itens do slice
+                  const isLastSix = i >= arr.length - 6;
                   return (
                     <CardProduto
-                      ref={ultimoItem ? refUltimoItem : undefined}
+                      ref={isLastSix ? refUltimoItem : undefined}
                       key={produto.id}
                       produto={produto}
                     />
