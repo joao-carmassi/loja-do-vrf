@@ -90,7 +90,7 @@ function AsideEProdutos({
           setQuantidadeItems((prev) => prev + itemsPorPagina);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0 }
     );
     observer.observe(refUltimoItem.current);
     return () => observer.disconnect();
