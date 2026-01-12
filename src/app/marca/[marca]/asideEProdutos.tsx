@@ -171,16 +171,19 @@ function AsideEProdutos({
             </Sheet>
           </div>
           <div className='grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-5'>
-            {produtosFiltrados.slice(0, quantidadeItems).map((produto, i) => {
-              const ultimoItem = i === quantidadeItems - 1;
-              return (
-                <CardProduto
-                  ref={ultimoItem ? refUltimoItem : undefined}
-                  key={produto.id}
-                  produto={produto}
-                />
-              );
-            })}
+            {produtosFiltrados
+              .slice(0, quantidadeItems)
+              .map((produto, i, arr) => {
+                // Aplica o ref nos 6 últimos itens do slice
+                const isLastSix = i >= arr.length - 6;
+                return (
+                  <CardProduto
+                    ref={isLastSix ? refUltimoItem : undefined}
+                    key={produto.id}
+                    produto={produto}
+                  />
+                );
+              })}
           </div>
         </div>
       </div>
