@@ -39,6 +39,8 @@ function CardProduto({ produto, cardOnMenu, ref }: Props): React.ReactNode {
               height={214}
               src={`/imgs/produtos/${produto.id}.png`}
               alt={produto.nome}
+              priority
+              loading='eager'
               className='w-full h-full object-contain object-center aspect-square rounded-md border border-primary'
             />
           </CardHeader>
