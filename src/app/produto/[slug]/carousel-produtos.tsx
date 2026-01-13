@@ -1,4 +1,5 @@
 'use client';
+
 import { ReactNode, useEffect, useState } from 'react';
 import {
   Carousel,
@@ -55,17 +56,18 @@ export function CarouselProdutos({ className, produto }: Props) {
             <CarouselItem key={item}>
               {i === 0 ? (
                 <Image
-                  width={686}
-                  height={686}
+                  width={500}
+                  height={500}
                   priority
+                  loading='eager'
                   src={`/imgs/produtos/${produto.id}.png`}
                   alt={produto.nome}
                   className='w-full aspect-square object-contain object-center border-zinc-200 rounded-4xl bg-card dark:border-zinc-800'
                 />
               ) : (
                 <Image
-                  width={686}
-                  height={686}
+                  width={500}
+                  height={500}
                   src={`/imgs/produtos/${produto.id}.png`}
                   alt={produto.nome}
                   loading='eager'
