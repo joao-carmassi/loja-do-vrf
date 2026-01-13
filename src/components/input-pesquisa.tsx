@@ -32,7 +32,8 @@ function InputPesquisaProduto({ mobile }: Props): React.ReactNode {
       const sku = generateUrl(produto.sku);
       const nome = generateUrl(produto.nome);
       const id = generateUrl(produto.id);
-      const combinado = `${sku} ${nome} ${id}`;
+      const marca = generateUrl(produto.marca);
+      const combinado = `${sku} ${nome} ${id} ${marca}`;
       return tokens.every((t) => combinado.includes(t));
     });
   };

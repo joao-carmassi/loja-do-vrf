@@ -4,15 +4,23 @@ const nextConfig: NextConfig = {
   /* config options here */
   trailingSlash: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'picsum.photos',
-      },
-    ],
+    qualities: [60],
   },
   experimental: {
     typedEnv: true,
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "frame-ancestors 'none';",
+          },
+        ],
+      },
+    ];
   },
 };
 

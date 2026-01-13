@@ -51,15 +51,27 @@ export function CarouselProdutos({ className, produto }: Props) {
         className='flex-1 shadow-lg inset-shadow-2xs rounded-4xl border border-secondary/5 aspect-square'
       >
         <CarouselContent className='relative'>
-          {ITEMS.map((item) => (
+          {ITEMS.map((item, i) => (
             <CarouselItem key={item}>
-              <Image
-                width={686}
-                height={686}
-                src={`/imgs/produtos/${produto.id}.png`}
-                alt={produto.nome}
-                className='w-full aspect-square object-contain object-center border-zinc-200 rounded-4xl bg-card dark:border-zinc-800'
-              />
+              {i === 0 ? (
+                <Image
+                  width={686}
+                  height={686}
+                  priority
+                  src={`/imgs/produtos/${produto.id}.png`}
+                  alt={produto.nome}
+                  className='w-full aspect-square object-contain object-center border-zinc-200 rounded-4xl bg-card dark:border-zinc-800'
+                />
+              ) : (
+                <Image
+                  width={686}
+                  height={686}
+                  src={`/imgs/produtos/${produto.id}.png`}
+                  alt={produto.nome}
+                  loading='eager'
+                  className='w-full aspect-square object-contain object-center border-zinc-200 rounded-4xl bg-card dark:border-zinc-800'
+                />
+              )}
             </CarouselItem>
           ))}
         </CarouselContent>
