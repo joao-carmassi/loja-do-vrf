@@ -1,3 +1,5 @@
+'use client';
+
 import { H1 } from '@/components/ui/h1';
 import { CarouselProdutos } from './carousel-produtos';
 import { H2 } from '@/components/ui/h2';
@@ -10,8 +12,7 @@ import {
 } from '@/components/ui/carousel';
 import getProdutos from '@/utils/get-produtos';
 import generateUrl from '@/utils/generate-url';
-import { notFound } from 'next/navigation';
-import type { Metadata } from 'next';
+import { notFound, useParams } from 'next/navigation';
 import MarkdownToHtml from '@/components/ui/markdownToHtml';
 import Link from 'next/link';
 import BotaoAdicionaCarrinho from './botao-adiciona-carrinho';
@@ -29,12 +30,7 @@ import {
 import CardProduto from '@/components/card-produto';
 import shuffleArray from '@/utils/shuffle-array';
 import itensPorCarrosel from '@/utils/items-per-category';
-
-interface Props {
-  params: Promise<{
-    slug: string;
-  }>;
-}
+import { useMemo, useState, useEffect } from 'react';
 
 const formasDeEnvio = [
   {
@@ -55,61 +51,36 @@ const formasDeEnvio = [
   },
 ];
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const produto = getProdutos.produtos.find(
-    (prod) => generateUrl(`${prod.nome}-${prod.sku}`) === slug
-  );
-  if (!produto) return {};
-  const title = `${produto.nome} ${produto.marca} Loja do VRF`;
-  const description =
-    produto.descricao
-      ?.replace(/[#*\-]/g, '')
-      .split('\n')[0]
-      ?.trim() ||
-    `Compre ${produto.nome} da marca ${produto.marca} em Loja do VRF.`;
-  const images: string[] = [];
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `/produto/${slug}`,
-    },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-      },
-    },
-    openGraph: {
-      title,
-      description,
-      images,
-      type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images,
-    },
-  };
-}
+const Produtos = (): React.ReactNode => {
+  const params = useParams();
+  const slug = params.slug as string;
 
-const Produtos = async ({ params }: Props) => {
-  const { slug } = await params;
-
-  const produto = getProdutos.produtos.find(
-    (prod) => generateUrl(`${prod.nome}-${prod.sku}`) === slug
-  );
+  const produto = useMemo(() => {
+    return getProdutos.produtos.find(
+      (prod) => generateUrl(`${prod.nome}-${prod.sku}`) === slug
+    );
+  }, [slug]);
 
   if (!produto) notFound();
+
+  const [produtosRelacionados, setProdutosRelacionados] = useState(() => {
+    return getProdutos.produtos
+      .filter(
+        (prod) =>
+          prod.categoria === produto.categoria && prod.sku !== produto.sku
+      )
+      .slice(0, itensPorCarrosel);
+  });
+
+  useEffect(() => {
+    const produtosFiltrados = getProdutos.produtos.filter(
+      (prod) => prod.categoria === produto.categoria && prod.sku !== produto.sku
+    );
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setProdutosRelacionados(
+      shuffleArray(produtosFiltrados).slice(0, itensPorCarrosel)
+    );
+  }, [produto]);
 
   const productSchema = {
     '@context': 'https://schema.org',
@@ -170,7 +141,28 @@ const Produtos = async ({ params }: Props) => {
   };
 
   return (
-    <main>
+    <main
+      onContextMenu={(e) => e.preventDefault()}
+      onCopy={(e) => e.preventDefault()}
+      onCut={(e) => e.preventDefault()}
+      onDragStart={(e) => e.preventDefault()}
+      style={{
+        userSelect: 'none',
+        WebkitUserSelect: 'none',
+        MozUserSelect: 'none',
+      }}
+    >
+      <style>
+        {`
+          img {
+            pointer-events: none;
+            -webkit-user-drag: none;
+          }
+          * {
+            user-select: none !important;
+          }
+        `}
+      </style>
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
@@ -272,21 +264,14 @@ const Produtos = async ({ params }: Props) => {
             }}
           >
             <CarouselContent>
-              {shuffleArray(getProdutos.produtos)
-                .filter(
-                  (prod) =>
-                    prod.categoria === produto.categoria &&
-                    prod.sku !== produto.sku
-                )
-                .slice(0, itensPorCarrosel)
-                .map((produto, i) => (
-                  <CarouselItem
-                    className='basis-1/2 md:basis-1/3 lg:basis-1/5'
-                    key={i}
-                  >
-                    <CardProduto produto={produto} />
-                  </CarouselItem>
-                ))}
+              {produtosRelacionados.map((produto) => (
+                <CarouselItem
+                  className='basis-1/2 md:basis-1/3 lg:basis-1/5'
+                  key={produto.sku}
+                >
+                  <CardProduto produto={produto} />
+                </CarouselItem>
+              ))}
             </CarouselContent>
             <CarouselPrevious className='-left-5 md:-left-12 text-primary' />
             <CarouselNext className='-right-5 md:-right-12 text-primary' />
