@@ -13,7 +13,7 @@ const cards = [
   {
     src: '/imgs/banners/mini_banner1.png',
     alt: 'Equipamentos de diagnóstico',
-    link: '/produtos/diagnostico/',
+    link: '/produtos/equipamentos-de-diagnostico/',
     target: '_self',
   },
   {
@@ -25,7 +25,7 @@ const cards = [
   {
     src: '/imgs/banners/mini_banner3.png',
     alt: 'Manuais técnicos',
-    link: '/manuais',
+    link: '/manuais-tecnicos/',
     target: '_self',
   },
 ];

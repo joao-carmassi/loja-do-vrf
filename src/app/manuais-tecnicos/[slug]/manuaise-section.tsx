@@ -10,7 +10,7 @@ interface Props {
 }
 
 function ManuaisSection({ pdf, marca }: Props): React.ReactNode {
-  const refContainer = useRef<HTMLDivElement>(null);
+  const refContainer = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     setTimeout(() => {
@@ -18,15 +18,15 @@ function ManuaisSection({ pdf, marca }: Props): React.ReactNode {
         behavior: 'smooth',
         block: 'center',
       });
-    }, 1000);
+    }, 1250);
   }, []);
 
   return (
-    <div
-      ref={refContainer}
-      className='flex flex-col gap-12 container p-6 md:p-12 md:pt-0 mx-auto max-w-[95rem]'
-    >
-      <h1 className='w-full text-center text-2xl font-bold md:text-3xl text-primary'>
+    <div className='flex flex-col gap-12 container p-6 md:p-12 md:pt-0 mx-auto max-w-[95rem]'>
+      <h1
+        ref={refContainer}
+        className='w-full text-center text-2xl font-bold md:text-3xl text-primary'
+      >
         Manuais Técnicos - {marca}
       </h1>
       <div className='grid md:grid-cols-2 gap-12'>
