@@ -122,6 +122,7 @@ const ManuaisTecnicos = (): React.ReactNode => {
                     <Image
                       width={424}
                       height={283}
+                      loading='eager'
                       src={`/imgs/manuais/icons/${marca}.png`}
                       alt={marca}
                       className='aspect-3/2 h-full w-full object-contain object-center rounded-sm border border-border'

@@ -61,6 +61,8 @@ export async function generateMetadata({
   };
 }
 
+export const dynamic = 'force-static';
+
 const Manuais = async ({ params }: Props): Promise<React.ReactNode> => {
   const { slug } = await params;
   const { pdfs, marcas } = getPdf();
@@ -124,10 +126,11 @@ const Manuais = async ({ params }: Props): Promise<React.ReactNode> => {
       />
       <section>
         <Image
-          width={1860}
-          height={650}
+          width={1864}
+          height={420}
           src={`/imgs/manuais/capas/${marcaKey}.png`}
           alt={marcaNome}
+          priority
           className='h-full w-full object-contain object-center'
         />
         <InfosHome />
