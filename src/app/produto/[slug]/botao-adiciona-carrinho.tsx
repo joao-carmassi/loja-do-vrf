@@ -26,13 +26,13 @@ function BotaoAdicionaCarrinho({ produto }: Props): React.ReactNode {
           onClick={() => {
             if (inputValue > 1) setInputValue((prev) => prev - 1);
           }}
-          className='border-primary rounded-full !border-r-none'
+          className='border-primary rounded-full border-r-0'
           variant={'outline'}
         >
           -
         </Button>
         <Input
-          className='border-primary h-full text-center !focus-visible:ring-none !focus-visible:outline-none'
+          className='border-primary h-full text-center !focus-visible:ring-none !focus-visible:outline-none border-r-0'
           value={inputValue}
           readOnly
           key={pathname}
