@@ -105,7 +105,7 @@ function Footer(): React.ReactNode {
               <h3 className='font-bold text-primary md:text-lg'>
                 Meios de envio:
               </h3>
-              <div className='flex justify-between items-center gap-5 flex-wrap w-full'>
+              <div className='gap-5 grid grid-cols-4 place-items-center w-full'>
                 {formasDeEnvio.map((forma) => (
                   <Image
                     key={forma.nome}
@@ -113,14 +113,14 @@ function Footer(): React.ReactNode {
                     alt={forma.nome}
                     width={115}
                     height={40}
-                    className='h-8 w-fit'
+                    className='max-h-8 w-fit'
                   />
                 ))}
               </div>
               <h3 className='font-bold text-primary md:text-lg mt-6'>
                 Formas de pagamento:
               </h3>
-              <div className='flex justify-between items-center gap-5 flex-wrap w-full mt-2'>
+              <div className='gap-5 w-full mt-2 grid grid-cols-8 place-items-center'>
                 {formasDePagamento.map((forma) => (
                   <Image
                     key={forma.nome}
@@ -128,7 +128,7 @@ function Footer(): React.ReactNode {
                     alt={forma.nome}
                     width={60}
                     height={40}
-                    className='h-7 w-fit'
+                    className='h-fit w-full object-contain object-center max-h-8'
                   />
                 ))}
               </div>

@@ -110,13 +110,15 @@ const ManuaisTecnicos = (): React.ReactNode => {
               >
                 <Card>
                   <CardHeader>
-                    <Image
-                      width={194}
-                      height={42}
-                      src={`/imgs/marcas/${marca}.png`}
-                      alt={marca}
-                      className='h-10 w-fit mx-auto'
-                    />
+                    <div className='h-10 w-full'>
+                      <Image
+                        width={194}
+                        height={42}
+                        src={`/imgs/marcas/${marca}.png`}
+                        alt={marca}
+                        className='h-full w-fit mx-auto object-contain object-center'
+                      />
+                    </div>
                   </CardHeader>
                   <CardContent className='space-y-3'>
                     <Image

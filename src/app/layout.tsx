@@ -1,14 +1,15 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import Header from '@/components/header';
-import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import { Toaster } from 'sonner';
 import Footer from '@/components/footer';
 import Script from 'next/script';
 import WhatsButton from '@/components/whats-button';
 
-const geist = Inter({
+const poppins = Poppins({
   subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800', '900'],
 });
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -49,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className={geist.className} lang='pt-BR'>
+    <html className={poppins.className} lang='pt-BR'>
       <head>
         {/* validação Search Console */}
         <meta
