@@ -21,6 +21,7 @@ const MarcasEFotos = () => {
         <Link
           target='_blank'
           href='https://wa.me/5511969189244?text=Ol%C3%A1!%0AVim%20atrav%C3%A9s%20do%20site%20da%20loja%20do%20VRF%20e%20preciso%20de%20pe%C3%A7as.'
+          aria-label='Não encontrou oque procurava? Clique e fale com um especialista'
         >
           <Image
             width={1860}
@@ -78,7 +79,11 @@ const MarcasEFotos = () => {
         </Carousel>
       </div>
       <div className='mx-auto max-w-[95rem] md:px-12'>
-        <Link target='_blank' href='https://www.instagram.com/lojadovrf/'>
+        <Link
+          aria-label='Siga-nos nas redes sociais!'
+          target='_blank'
+          href='https://www.instagram.com/lojadovrf/'
+        >
           <Image
             width={1420}
             height={370}

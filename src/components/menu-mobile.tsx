@@ -39,6 +39,7 @@ function MenuMobile(): React.ReactNode {
           className='group size-10 lg:hidden text-card border border-card'
           variant='ghost'
           size='icon'
+          aria-label='Botão abre e fecha menu'
         >
           <svg
             className='pointer-events-none'
@@ -148,7 +149,7 @@ function MenuMobile(): React.ReactNode {
                           <Link
                             key={subcat + i}
                             href={`/produtos/${generateUrl(
-                              categoria
+                              categoria,
                             )}?subcategoria=${generateUrl(subcat)}`}
                             className='capitalize'
                           >

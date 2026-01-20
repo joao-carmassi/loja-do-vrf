@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
@@ -118,7 +119,7 @@ export default function Header(): React.ReactNode {
         <Separator
           className={cn(
             'bg-secondary w-full hidden lg:block',
-            switchValue ? '' : hidden
+            switchValue ? '' : hidden,
           )}
         />
         <div className='max-w-[95rem] px-6 lg:px-12 mx-auto hidden lg:block'></div>
@@ -126,7 +127,7 @@ export default function Header(): React.ReactNode {
         <div
           className={cn(
             'flex-1 items-center justify-center gap-6 w-full relative hidden lg:flex bg-primary py-1',
-            switchValue ? '' : hidden
+            switchValue ? '' : hidden,
           )}
         >
           {/* Navigation menu */}
@@ -170,13 +171,13 @@ export default function Header(): React.ReactNode {
                             >
                               <Link
                                 href={`/produtos/${generateUrl(
-                                  item
+                                  item,
                                 )}?subcategoria=${generateUrl(subcategoria)}`}
                               >
                                 {subcategoria}
                               </Link>
                             </NavigationMenuLink>
-                          )
+                          ),
                         )}
                       </div>
                       <div className='w-full'>
@@ -198,7 +199,7 @@ export default function Header(): React.ReactNode {
                               .filter(
                                 (produto) =>
                                   produto.categoria.toLowerCase() ===
-                                  item.toLowerCase()
+                                  item.toLowerCase(),
                               )
                               .slice(0, itensPorCarrosel)
                               .map((produto, i) => (
