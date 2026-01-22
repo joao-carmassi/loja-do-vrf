@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // URLs estáticas
   const staticUrls: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
+      url: baseUrl as string,
       lastModified: new Date(),
       changeFrequency: 'daily',
       priority: 1,
