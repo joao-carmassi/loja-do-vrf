@@ -13,7 +13,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
-const title = 'Manuais Técnicos da Loja do VRF';
+const title = `Manuais Técnicos da ${process.env.NEXT_PUBLIC_SITE_NAME || ''}`;
 const description =
   'Acesse os manuais técnicos de todas as marcas de climatização. Documentação completa de unidades condensadoras e evaporadoras das principais fabricantes.';
 
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title,
     description,
     type: 'website',
-    url: 'https://lojadovrf.com.br/manuais-tecnicos',
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/manuais-tecnicos`,
   },
   twitter: {
     card: 'summary_large_image',
@@ -55,13 +55,13 @@ const ManuaisTecnicos = (): React.ReactNode => {
         '@type': 'ListItem',
         position: 1,
         name: 'Início',
-        item: 'https://lojadovrf.com.br',
+        item: process.env.NEXT_PUBLIC_SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Manuais Técnicos',
-        item: 'https://lojadovrf.com.br/manuais-tecnicos',
+        item: `${process.env.NEXT_PUBLIC_SITE_URL}/manuais-tecnicos`,
       },
     ],
   };
@@ -72,7 +72,7 @@ const ManuaisTecnicos = (): React.ReactNode => {
     name: 'Manuais Técnicos',
     description:
       'Acesse os manuais técnicos de todas as marcas de climatização.',
-    url: 'https://lojadovrf.com.br/manuais-tecnicos',
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/manuais-tecnicos`,
   };
 
   return (

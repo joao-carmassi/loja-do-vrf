@@ -72,7 +72,7 @@ function Footer(): React.ReactNode {
             <div className='w-[12rem] lg:w-[20rem]'>
               <Image
                 src='/imgs/logos/logo.webp'
-                alt='Loja do VRF'
+                alt={process.env.NEXT_PUBLIC_SITE_NAME || ''}
                 className='invert w-full'
                 width={302}
                 height={36}
@@ -81,10 +81,10 @@ function Footer(): React.ReactNode {
           </Link>
           <div className='space-y-3'>
             <p className='text-xs lg:text-sm text-center md:text-start'>
-              A Loja do VRF e um e-commerce especializado em oferecer uma ampla
-              linha de peças e componentes para LOJA DO VRF sistemas VRF. Nossa
-              missão é proporcionar aos nossos clientes um atendimento ágil,
-              1eficiente e de excelência.
+              A {process.env.NEXT_PUBLIC_SITE_NAME || ''} e um e-commerce
+              especializado em oferecer uma ampla linha de peças e componentes
+              para sistemas VRF. Nossa missão é proporcionar aos nossos clientes
+              um atendimento ágil, 1eficiente e de excelência.
             </p>
             <p className='text-xs lg:text-sm text-center md:text-start'>
               Nosso diferencial está em oferecer preços competitivos e o prazo
@@ -137,7 +137,8 @@ function Footer(): React.ReactNode {
         </div>
       </div>
       <div className='bg-primary w-full text-center p-5 text-card text-xs md:text-sm'>
-        Copyright © 2026 - Todos os direitos reservados a Loja do VRF
+        Copyright © 2026 - Todos os direitos reservados a{' '}
+        {process.env.NEXT_PUBLIC_SITE_NAME || ''}
       </div>
     </footer>
   );

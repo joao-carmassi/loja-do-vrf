@@ -13,13 +13,13 @@ const poppins = Poppins({
 });
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const title = `Loja do VRF`;
+  const title = process.env.NEXT_PUBLIC_SITE_NAME || '';
   const description = `Soluções em climatização VRF com qualidade e confiança`;
 
   return {
     title,
     description,
-    metadataBase: new URL('https://lojadovrf.com.br'),
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL as string),
     alternates: {
       canonical: '/',
     },

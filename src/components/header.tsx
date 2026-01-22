@@ -66,7 +66,7 @@ export default function Header(): React.ReactNode {
               />
               <Image
                 src='/imgs/logos/logo.webp'
-                alt='Loja do VRF'
+                alt={process.env.NEXT_PUBLIC_SITE_NAME || ''}
                 width={180}
                 height={21}
                 className='h-full hidden lg:block'
@@ -78,7 +78,7 @@ export default function Header(): React.ReactNode {
             <Link aria-label='Homepage' href='/'>
               <Image
                 src='/imgs/logos/logo.webp'
-                alt='Loja do VRF'
+                alt={process.env.NEXT_PUBLIC_SITE_NAME || ''}
                 width={500}
                 height={60}
                 className='h-full mx-auto lg:hidden'

@@ -57,7 +57,7 @@ const Produtos = (): React.ReactNode => {
 
   const produto = useMemo(() => {
     return getProdutos.produtos.find(
-      (prod) => generateUrl(`${prod.nome}-${prod.sku}`) === slug
+      (prod) => generateUrl(`${prod.nome}-${prod.sku}`) === slug,
     );
   }, [slug]);
 
@@ -67,18 +67,19 @@ const Produtos = (): React.ReactNode => {
     return getProdutos.produtos
       .filter(
         (prod) =>
-          prod.categoria === produto.categoria && prod.sku !== produto.sku
+          prod.categoria === produto.categoria && prod.sku !== produto.sku,
       )
       .slice(0, itensPorCarrosel);
   });
 
   useEffect(() => {
     const produtosFiltrados = getProdutos.produtos.filter(
-      (prod) => prod.categoria === produto.categoria && prod.sku !== produto.sku
+      (prod) =>
+        prod.categoria === produto.categoria && prod.sku !== produto.sku,
     );
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setProdutosRelacionados(
-      shuffleArray(produtosFiltrados).slice(0, itensPorCarrosel)
+      shuffleArray(produtosFiltrados).slice(0, itensPorCarrosel),
     );
   }, [produto]);
 
@@ -102,13 +103,13 @@ const Produtos = (): React.ReactNode => {
       availability: 'https://schema.org/PreOrder',
       priceCurrency: 'BRL',
       priceValidUntil: new Date(
-        new Date().setFullYear(new Date().getFullYear() + 1)
+        new Date().setFullYear(new Date().getFullYear() + 1),
       )
         .toISOString()
         .split('T')[0],
       seller: {
         '@type': 'Organization',
-        name: 'Loja do VRF',
+        name: process.env.NEXT_PUBLIC_SITE_NAME || '',
       },
     },
   };
@@ -121,21 +122,21 @@ const Produtos = (): React.ReactNode => {
         '@type': 'ListItem',
         position: 1,
         name: 'Início',
-        item: 'https://lojadovrf.com.br',
+        item: process.env.NEXT_PUBLIC_SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: produto.categoria,
-        item: `https://lojadovrf.com.br/produtos/${generateUrl(
-          produto.categoria
+        item: `${process.env.NEXT_PUBLIC_SITE_URL}/produtos/${generateUrl(
+          produto.categoria,
         )}`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: produto.nome,
-        item: `https://lojadovrf.com.br/produto/${slug}`,
+        item: `${process.env.NEXT_PUBLIC_SITE_URL}/produto/${slug}`,
       },
     ],
   };
@@ -247,8 +248,8 @@ const Produtos = (): React.ReactNode => {
           <H2 className='!text-lg !text-foreground !font-bold'>Descrição:</H2>
           <MarkdownToHtml markdown={produto.descricao} />
           <p className='font-bold pt-4'>
-            Loja do VRF: Transformando desafios térmicos em soluções de
-            precisão!
+            {process.env.NEXT_PUBLIC_SITE_NAME || ''}: Transformando desafios
+            térmicos em soluções de precisão!
           </p>
         </div>
         <Separator className='md:col-span-2 pb-1 bg-border' />

@@ -3,7 +3,7 @@ import produtosData from '@/data/produtos.json';
 import getPdf from '@/utils/get-pdfs';
 import generateUrl from '@/utils/generate-url';
 
-const baseUrl = 'https://lojadovrf.com.br';
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const produtos = produtosData.data;

@@ -10,14 +10,14 @@ const Email = ({ footer }: Props) => (
     href='mailto:vendas@lojadovrf.com.br'
     className={cn(
       'flex flex-col p-2 rounded-none rounded-t-md font-semibold gap-0 tracking-wide',
-      footer && 'items-center md:items-start text-primary'
+      footer && 'items-center md:items-start text-primary',
     )}
   >
     <span
       className={cn(
         'block font-normal',
         footer && 'text-xs',
-        !footer && 'text-nowrap'
+        !footer && 'text-nowrap',
       )}
     >
       Envie um e-mail agora mesmo
@@ -43,7 +43,7 @@ const Email = ({ footer }: Props) => (
           className={cn(
             'text-foreground',
             footer && 'text-xs',
-            !footer && 'text-nowrap'
+            !footer && 'text-nowrap',
           )}
         >
           vendas@lojadovrf.com.br
@@ -56,17 +56,17 @@ const Email = ({ footer }: Props) => (
 const Whatsapp = ({ footer }: Props) => (
   <a
     target='_blank'
-    href='https://wa.me/5511969189244?text=Olá!%0AVim através do site da loja do VRF e preciso de peças.'
+    href={`https://wa.me/5511969189244?text=Olá!%0AVim através do site da ${encodeURIComponent(process.env.NEXT_PUBLIC_SITE_NAME || '')} e preciso de peças.`}
     className={cn(
       'flex flex-col p-2 rounded-none font-semibold gap-0 tracking-wide',
-      footer && 'items-center md:items-start text-primary'
+      footer && 'items-center md:items-start text-primary',
     )}
   >
     <span
       className={cn(
         'block font-normal',
         footer && 'text-xs',
-        !footer && 'text-nowrap'
+        !footer && 'text-nowrap',
       )}
     >
       Envie uma mensagem por Whatsapp
@@ -92,7 +92,7 @@ const Whatsapp = ({ footer }: Props) => (
           className={cn(
             'text-foreground',
             footer && 'text-xs',
-            !footer && 'text-nowrap'
+            !footer && 'text-nowrap',
           )}
         >
           (11) 96918-9244
@@ -106,14 +106,14 @@ const HorarioAtendimento = ({ footer }: Props) => (
   <div
     className={cn(
       'flex flex-col p-2 rounded-b-md rounded-none font-semibold gap-0 hover:bg-base-100 tracking-wide',
-      footer && 'items-center md:items-start text-primary'
+      footer && 'items-center md:items-start text-primary',
     )}
   >
     <span
       className={cn(
         'block font-normal',
         footer && 'text-xs',
-        !footer && 'text-nowrap'
+        !footer && 'text-nowrap',
       )}
     >
       Horário de atendimento:
@@ -140,7 +140,7 @@ const HorarioAtendimento = ({ footer }: Props) => (
           className={cn(
             'text-foreground',
             footer && 'text-xs',
-            !footer && 'text-nowrap'
+            !footer && 'text-nowrap',
           )}
         >
           Segunda à Sexta - 9 às 17 horas

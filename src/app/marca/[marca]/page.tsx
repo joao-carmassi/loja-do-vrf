@@ -13,11 +13,11 @@ const Produtos = async ({ params }: Props) => {
   const { marca } = await params;
 
   const produtosFiltrados = getProdutos.produtos.filter(
-    (produto) => generateUrl(produto.marca) === marca
+    (produto) => generateUrl(produto.marca) === marca,
   );
 
   const categorias = Array.from(
-    new Set(produtosFiltrados.map((produto) => produto.categoria))
+    new Set(produtosFiltrados.map((produto) => produto.categoria)),
   );
 
   const breadcrumbSchema = {
@@ -28,13 +28,13 @@ const Produtos = async ({ params }: Props) => {
         '@type': 'ListItem',
         position: 1,
         name: 'Início',
-        item: 'https://lojadovrf.com.br',
+        item: process.env.NEXT_PUBLIC_SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: `Marca ${marca}`,
-        item: `https://lojadovrf.com.br/marca/${marca}`,
+        item: `${process.env.NEXT_PUBLIC_SITE_URL}/marca/${marca}`,
       },
     ],
   };
@@ -60,8 +60,8 @@ export async function generateMetadata({
   params: Promise<{ marca: string }>;
 }): Promise<Metadata> {
   const { marca } = await params;
-  const title = ` Produtos da marca ${marca} em Loja do VRF`;
-  const description = `Veja todos os produtos da marca ${marca} disponíveis na Loja do VRF. Peças originais, qualidade garantida e entrega para todo o Brasil.`;
+  const title = ` Produtos da marca ${marca} em ${process.env.NEXT_PUBLIC_SITE_NAME || ''}`;
+  const description = `Veja todos os produtos da marca ${marca} disponíveis na ${process.env.NEXT_PUBLIC_SITE_NAME || ''}. Peças originais, qualidade garantida e entrega para todo o Brasil.`;
   return {
     title,
     description,

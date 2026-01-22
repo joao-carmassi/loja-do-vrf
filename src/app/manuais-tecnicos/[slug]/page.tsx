@@ -30,7 +30,7 @@ export async function generateMetadata({
   const marcaNome =
     marcas.find((m) => generateUrl(m) === slug) || slug.replace(/-/g, ' ');
 
-  const title = `Manuais Técnicos ${marcaNome} | Loja do VRF`;
+  const title = `Manuais Técnicos ${marcaNome} | ${process.env.NEXT_PUBLIC_SITE_NAME || ''}`;
   const description = `Acesse os manuais técnicos de ${marcaNome}. Documentação completa de unidades condensadoras e evaporadoras.`;
 
   return {
@@ -51,7 +51,7 @@ export async function generateMetadata({
       title,
       description,
       type: 'website',
-      url: `https://lojadovrf.com.br/manuais-tecnicos/${slug}`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/manuais-tecnicos/${slug}`,
     },
     twitter: {
       card: 'summary_large_image',
@@ -85,19 +85,19 @@ const Manuais = async ({ params }: Props): Promise<React.ReactNode> => {
         '@type': 'ListItem',
         position: 1,
         name: 'Início',
-        item: 'https://lojadovrf.com.br',
+        item: process.env.NEXT_PUBLIC_SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: 'Manuais Técnicos',
-        item: 'https://lojadovrf.com.br/manuais-tecnicos',
+        item: `${process.env.NEXT_PUBLIC_SITE_URL}/manuais-tecnicos`,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: marcaNome,
-        item: `https://lojadovrf.com.br/manuais-tecnicos/${slug}`,
+        item: `${process.env.NEXT_PUBLIC_SITE_URL}/manuais-tecnicos/${slug}`,
       },
     ],
   };
@@ -107,7 +107,7 @@ const Manuais = async ({ params }: Props): Promise<React.ReactNode> => {
     '@type': 'CollectionPage',
     name: `Manuais Técnicos ${marcaNome}`,
     description: `Manuais técnicos de ${marcaNome} - Unidades condensadoras e evaporadoras`,
-    url: `https://lojadovrf.com.br/manuais-tecnicos/${slug}`,
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/manuais-tecnicos/${slug}`,
     about: {
       '@type': 'Brand',
       name: marcaNome,

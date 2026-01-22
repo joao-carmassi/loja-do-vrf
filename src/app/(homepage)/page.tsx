@@ -9,9 +9,9 @@ export default function Home(): React.ReactNode {
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Loja do VRF',
-    url: 'https://lojadovrf.com.br',
-    logo: 'https://lojadovrf.com.br/imgs/logos/logo.png',
+    name: process.env.NEXT_PUBLIC_SITE_NAME || '',
+    url: process.env.NEXT_PUBLIC_SITE_URL,
+    logo: `${process.env.NEXT_PUBLIC_SITE_URL}/imgs/logos/logo.png`,
     description: 'Soluções em climatização VRF com qualidade e confiança',
     contactPoint: {
       '@type': 'ContactPoint',
@@ -24,11 +24,11 @@ export default function Home(): React.ReactNode {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Loja do VRF',
-    url: 'https://lojadovrf.com.br',
+    name: process.env.NEXT_PUBLIC_SITE_NAME || '',
+    url: process.env.NEXT_PUBLIC_SITE_URL,
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://lojadovrf.com.br/produtos/{search_term_string}',
+      target: `${process.env.NEXT_PUBLIC_SITE_URL}/produtos/{search_term_string}`,
       'query-input': 'required name=search_term_string',
     },
   };
@@ -44,7 +44,8 @@ export default function Home(): React.ReactNode {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
       />
       <h1 className='hidden'>
-        Loja do VRF - Soluções em climatização VRF com qualidade e confiança
+        {process.env.NEXT_PUBLIC_SITE_NAME || ''} - Soluções em climatização VRF
+        com qualidade e confiança
       </h1>
       <CarouselHome />
       <Separator className='bg-primary pt-1' />

@@ -14,8 +14,8 @@ import type { Metadata } from 'next';
 
 export const generateMetadata = async (): Promise<Metadata> => {
   return {
-    title: `Loja do VRF | Carrinho de Compras`,
-    description: `Veja e gerencie os produtos adicionados ao seu carrinho de compras na Loja do VRF. Finalize sua compra com segurança e agilidade.`,
+    title: `${process.env.NEXT_PUBLIC_SITE_NAME || ''} | Carrinho de Compras`,
+    description: `Veja e gerencie os produtos adicionados ao seu carrinho de compras na ${process.env.NEXT_PUBLIC_SITE_NAME || ''}. Finalize sua compra com segurança e agilidade.`,
     alternates: {
       canonical: '/carrinho',
     },
@@ -28,14 +28,14 @@ export const generateMetadata = async (): Promise<Metadata> => {
       },
     },
     openGraph: {
-      title: `Loja do VRF | Carrinho de Compras`,
-      description: `Veja e gerencie os produtos adicionados ao seu carrinho de compras na Loja do VRF. Finalize sua compra com segurança e agilidade.`,
+      title: `${process.env.NEXT_PUBLIC_SITE_NAME || ''} | Carrinho de Compras`,
+      description: `Veja e gerencie os produtos adicionados ao seu carrinho de compras na ${process.env.NEXT_PUBLIC_SITE_NAME || ''}. Finalize sua compra com segurança e agilidade.`,
       type: 'website',
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Loja do VRF | Carrinho de Compras`,
-      description: `Veja e gerencie os produtos adicionados ao seu carrinho de compras na Loja do VRF. Finalize sua compra com segurança e agilidade.`,
+      title: `${process.env.NEXT_PUBLIC_SITE_NAME || ''} | Carrinho de Compras`,
+      description: `Veja e gerencie os produtos adicionados ao seu carrinho de compras na ${process.env.NEXT_PUBLIC_SITE_NAME || ''}. Finalize sua compra com segurança e agilidade.`,
     },
   };
 };

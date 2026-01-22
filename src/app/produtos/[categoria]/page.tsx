@@ -17,15 +17,15 @@ const ProdutosPage = async ({ params, searchParams }: Props) => {
   const { subcategoria } = await searchParams;
 
   const produtosFiltrados = getProdutos.produtos.filter(
-    (produto) => generateUrl(produto.categoria) === categoria
+    (produto) => generateUrl(produto.categoria) === categoria,
   );
 
   const subcategorias = Array.from(
-    new Set(produtosFiltrados.map((produto) => produto.subcategoria))
+    new Set(produtosFiltrados.map((produto) => produto.subcategoria)),
   );
 
   const marcas = Array.from(
-    new Set(produtosFiltrados.map((produto) => produto.marca))
+    new Set(produtosFiltrados.map((produto) => produto.marca)),
   );
 
   const breadcrumbSchema = {
@@ -36,13 +36,13 @@ const ProdutosPage = async ({ params, searchParams }: Props) => {
         '@type': 'ListItem',
         position: 1,
         name: 'Início',
-        item: 'https://lojadovrf.com.br',
+        item: process.env.NEXT_PUBLIC_SITE_URL,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: categoria,
-        item: `https://lojadovrf.com.br/produtos/${categoria}`,
+        item: `${process.env.NEXT_PUBLIC_SITE_URL}/produtos/${categoria}`,
       },
     ],
   };
@@ -71,7 +71,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { categoria } = await params;
   const title = `${categoria}: Modelos e Preços Oficiais`;
-  const description = `Veja todos os produtos da categoria ${categoria} disponíveis na Loja do VRF. Peças originais, qualidade garantida e entrega para todo o Brasil.`;
+  const description = `Veja todos os produtos da categoria ${categoria} disponíveis na ${process.env.NEXT_PUBLIC_SITE_NAME || ''}. Peças originais, qualidade garantida e entrega para todo o Brasil.`;
 
   return {
     title,

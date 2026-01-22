@@ -19,16 +19,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const produto = getProdutos.produtos.find(
-    (prod) => generateUrl(`${prod.nome}-${prod.sku}`) === slug
+    (prod) => generateUrl(`${prod.nome}-${prod.sku}`) === slug,
   );
   if (!produto) return {};
-  const title = `${produto.nome} ${produto.marca} Loja do VRF`;
+  const title = `${produto.nome} ${produto.marca} ${process.env.NEXT_PUBLIC_SITE_NAME || ''}`;
   const description =
     produto.descricao
       ?.replace(/[#*\-]/g, '')
       .split('\n')[0]
       ?.trim() ||
-    `Compre ${produto.nome} da marca ${produto.marca} em Loja do VRF.`;
+    `Compre ${produto.nome} da marca ${produto.marca} em ${process.env.NEXT_PUBLIC_SITE_NAME || ''}.`;
   const images: string[] = [];
   return {
     title,
@@ -66,7 +66,7 @@ const ProdutoLayout = async ({
   const { slug } = await params;
 
   const produto = getProdutos.produtos.find(
-    (prod) => generateUrl(`${prod.nome}-${prod.sku}`) === slug
+    (prod) => generateUrl(`${prod.nome}-${prod.sku}`) === slug,
   );
 
   if (!produto) notFound();

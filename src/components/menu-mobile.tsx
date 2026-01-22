@@ -82,7 +82,7 @@ function MenuMobile(): React.ReactNode {
               />
               <Image
                 src='/imgs/logos/logo.webp'
-                alt='Loja do VRF'
+                alt={process.env.NEXT_PUBLIC_SITE_NAME || ''}
                 width={120}
                 height={14}
                 className='invert'
