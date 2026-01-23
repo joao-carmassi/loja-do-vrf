@@ -1,4 +1,5 @@
 'use client';
+
 import CardProduto from '@/components/card-produto';
 import {
   Breadcrumb,
@@ -67,7 +68,7 @@ function AsideEProdutos({
   return (
     <section className='mx-auto max-w-[120rem] p-6 md:pl-0 min-h-container-mobile lg:min-h-container'>
       <div className='flex gap-3'>
-        <aside className='px-8 min-w-56 sticky top-[5.75rem] h-fit hidden md:block space-y-6 overflow-y-auto max-h-container pb-12'>
+        <aside className='px-8 min-w-48 sticky top-[5.75rem] h-fit hidden md:block space-y-6 overflow-y-auto max-h-container pb-12'>
           <div className='space-y-3 '>
             <p className='scroll-m-20 md:text-lg font-semibold'>Categoria:</p>
             <ul className='space-y-4'>
@@ -170,7 +171,7 @@ function AsideEProdutos({
               </SheetContent>
             </Sheet>
           </div>
-          <div className='grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-5'>
+          <div className='grid gap-6 lg:gap-x-0 2xl:gap-x-3 lg:gap-y-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-5'>
             {produtosFiltrados
               .slice(0, quantidadeItems)
               .map((produto, i, arr) => {

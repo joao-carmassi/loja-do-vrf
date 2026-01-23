@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 import {
   Carousel,
   CarouselContent,
@@ -19,30 +19,12 @@ interface Props {
 
 export function CarouselProdutos({ className, produto }: Props) {
   const [index, setIndex] = useState(0);
-  const [isPc, setIsPc] = useState(true);
-
-  const thumbsPosition = isPc ? 'left' : 'bottom';
-
-  useEffect(() => {
-    const verificaLargura = () => {
-      if (window.innerWidth >= 1024) {
-        setIsPc(true);
-      } else {
-        setIsPc(false);
-      }
-    };
-
-    verificaLargura();
-    window.addEventListener('resize', verificaLargura);
-    return () => window.removeEventListener('resize', verificaLargura);
-  }, []);
 
   return (
     <div
       className={cn(
-        'relative w-full',
-        thumbsPosition === 'left' ? 'flex flex-row-reverse gap-3' : 'space-y-3',
-        { className }
+        'relative space-y-3 lg:space-y-0 lg:flex lg:flex-row-reverse lg:gap-3 ',
+        { className },
       )}
     >
       {/* carrosel */}
@@ -81,10 +63,7 @@ export function CarouselProdutos({ className, produto }: Props) {
       {/* miniaturas */}
       {/* <div
         className={cn(
-          'flex',
-          thumbsPosition === 'left'
-            ? 'flex-col lg:w-26 space-y-3'
-            : 'flex-row w-full justify-start space-x-3'
+          'flex lg:flex-col flex-row w-full justify-start space-x-3 lg:w-26 lg:space-y-3 lg:space-x-0',
         )}
       >
         {ITEMS.map((item) => (

@@ -32,7 +32,7 @@ function CardProduto({ produto, cardOnMenu, ref }: Props): React.ReactNode {
           prefetch={false}
           href={`/produto/${generateUrl(`${produto.nome}-${produto.sku}`)}`}
         >
-          <CardHeader className='md:px-8'>
+          <CardHeader className='md:px-6'>
             <Image
               width={214}
               height={214}
@@ -42,9 +42,9 @@ function CardProduto({ produto, cardOnMenu, ref }: Props): React.ReactNode {
               className='w-full h-full object-contain object-center aspect-square rounded-md border border-primary'
             />
           </CardHeader>
-          <CardContent className='space-y-2 md:px-8'>
+          <CardContent className='space-y-2 md:px-6'>
             <div>
-              <h2 className='scroll-m-20 tracking-wide text-base md:text-lg text-foreground! font-bold break-words line-clamp-2'>
+              <h2 className='scroll-m-20 tracking-wide text-base lg:text-lg text-foreground! font-bold break-words line-clamp-2'>
                 {produto.nome}
               </h2>
               <p className='text-muted-foreground text-sm break-words line-clamp-1'>
