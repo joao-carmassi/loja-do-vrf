@@ -3,7 +3,6 @@ import Link from 'next/link';
 import generateUrl from '@/utils/generate-url';
 import Image from 'next/image';
 import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
-import { H2 } from './ui/h2';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
 
@@ -24,7 +23,7 @@ function CardProduto({ produto, cardOnMenu, ref }: Props): React.ReactNode {
       <Card
         className={cn(
           'h-fit rounded-none',
-          !cardOnMenu && 'border-none shadow-md inset-shadow-2xs'
+          !cardOnMenu && 'border-none shadow-md inset-shadow-2xs',
         )}
         key={produto.id}
       >
@@ -45,9 +44,9 @@ function CardProduto({ produto, cardOnMenu, ref }: Props): React.ReactNode {
           </CardHeader>
           <CardContent className='space-y-2 md:px-8'>
             <div>
-              <H2 className='!text-base md:!text-lg !text-foreground !font-bold break-words line-clamp-2'>
+              <h2 className='scroll-m-20 tracking-wide text-base md:text-lg text-foreground! font-bold break-words line-clamp-2'>
                 {produto.nome}
-              </H2>
+              </h2>
               <p className='text-muted-foreground text-sm break-words line-clamp-1'>
                 sku: {produto.sku}
               </p>

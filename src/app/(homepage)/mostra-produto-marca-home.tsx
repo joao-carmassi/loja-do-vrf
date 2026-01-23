@@ -7,7 +7,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { H2 } from '@/components/ui/h2';
 import getProdutos from '@/utils/get-produtos';
 import itensPorCarrosel from '@/utils/items-per-category';
 import shuffleArray from '@/utils/shuffle-array';
@@ -28,9 +27,9 @@ const MostraProdutoMarcaHome = () => {
           <div className='space-y-6'>
             <div className='flex items-center justify-between bg-linear-to-r from-primary to-secondary px-5 py-4 rounded-lg'>
               <div className='text-card font-bold text-xl md:text-2xl'>///</div>
-              <H2 className='!text-2xl md:!text-3xl lg:!text-4xl !text-card !font-bold capitalize'>
+              <h2 className='text-white text-2xl md:text-3xl lg:text-4xl font-bold capitalize'>
                 {produtoPermitido}
-              </H2>
+              </h2>
             </div>
             <Carousel
               opts={{
@@ -43,7 +42,7 @@ const MostraProdutoMarcaHome = () => {
                 {shuffleArray(produtos)
                   .filter(
                     (produto) =>
-                      produto.categoria.toLowerCase() === produtoPermitido
+                      produto.categoria.toLowerCase() === produtoPermitido,
                   )
                   .slice(0, itensPorCarrosel)
                   .map((produto, i) => (
@@ -69,9 +68,9 @@ const MostraProdutoMarcaHome = () => {
           <div className='space-y-6'>
             <div className='flex items-center justify-between bg-linear-to-r from-primary to-secondary px-5 py-4 rounded-lg'>
               <div className='text-card font-bold text-xl md:text-2xl'>///</div>
-              <H2 className='!text-2xl md:!text-3xl lg:!text-4xl !text-card !font-bold capitalize'>
+              <h2 className='text-white text-2xl md:text-3xl lg:text-4xl font-bold capitalize'>
                 {marca}
-              </H2>
+              </h2>
             </div>
             <Carousel
               opts={{

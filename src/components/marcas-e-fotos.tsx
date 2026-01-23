@@ -5,7 +5,6 @@ import {
   CarouselContent,
   CarouselItem,
 } from '@/components/ui/carousel';
-import { H2 } from '@/components/ui/h2';
 import generateUrl from '@/utils/generate-url';
 import getProdutos from '@/utils/get-produtos';
 import Image from 'next/image';
@@ -40,9 +39,9 @@ const MarcasEFotos = () => {
         </Link>
       </div>
       <div className='space-y-3 md:space-y-6 py-12 md:py-6 lg:py-12'>
-        <H2 className='w-fit mx-auto !text-foreground'>
+        <h2 className='scroll-m-20 text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wide w-fit mx-auto'>
           Está buscando as <br /> peças pela marca?
-        </H2>
+        </h2>
         <Carousel
           opts={{
             align: 'start',

@@ -1,8 +1,6 @@
 'use client';
 
-import { H1 } from '@/components/ui/h1';
 import { CarouselProdutos } from './carousel-produtos';
-import { H2 } from '@/components/ui/h2';
 import {
   Carousel,
   CarouselContent,
@@ -18,7 +16,6 @@ import Link from 'next/link';
 import BotaoAdicionaCarrinho from './botao-adiciona-carrinho';
 import Image from 'next/image';
 import { Separator } from '@/components/ui/separator';
-import { H3 } from '@/components/ui/h3';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -206,7 +203,9 @@ const Produtos = (): React.ReactNode => {
               src={`/imgs/marcas/${produto.marca}.png`}
             />
           </Link>
-          <H1>{produto.nome}</H1>
+          <h1 className='scroll-m-20 text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-wide'>
+            {produto.nome}
+          </h1>
           <div className='flex flex-col-reverse md:flex-row gap-4'>
             <div className='space-y-1'>
               <p className='text-xs border border-secondary rounded-full w-fit py-1.5 px-3'>
@@ -245,7 +244,9 @@ const Produtos = (): React.ReactNode => {
         </div>
         <Separator className='md:col-span-2 pb-1 bg-border' />
         <div className='md:col-span-2'>
-          <H2 className='!text-lg !text-foreground !font-bold'>Descrição:</H2>
+          <h2 className='scroll-m-20 text-xl tracking-wide text-foreground font-bold'>
+            Descrição:
+          </h2>
           <MarkdownToHtml markdown={produto.descricao} />
           <p className='font-bold pt-4'>
             {process.env.NEXT_PUBLIC_SITE_NAME || ''}: Transformando desafios
@@ -254,9 +255,9 @@ const Produtos = (): React.ReactNode => {
         </div>
         <Separator className='md:col-span-2 pb-1 bg-border' />
         <div className='md:col-span-2 space-y-6'>
-          <H3 className='block !text-2xl !text-primary'>
+          <h3 className='scroll-m-20 md:text-xl lg:text-2xl font-semibold tracking-tight block text-2xl text-primary'>
             Confira mais produtos:
-          </H3>
+          </h3>
           <Carousel
             opts={{
               align: 'start',

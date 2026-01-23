@@ -18,6 +18,7 @@ const buttonVariants = cva(
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
+        base: 'bg-card shadow-sm inset-shadow-xs text-card-foreground hover:bg-card/90',
       },
       effect: {
         expandIcon: 'group gap-0 relative',
@@ -49,7 +50,7 @@ const buttonVariants = cva(
       variant: 'default',
       size: 'default',
     },
-  }
+  },
 );
 
 interface IconProps {
@@ -63,7 +64,8 @@ interface IconRefProps {
 }
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }
@@ -85,7 +87,7 @@ const Button = React.forwardRef<
       asChild = false,
       ...props
     },
-    ref
+    ref,
   ) => {
     const Comp = asChild ? Slot : 'button';
     return (
@@ -115,7 +117,7 @@ const Button = React.forwardRef<
           ))}
       </Comp>
     );
-  }
+  },
 );
 Button.displayName = 'Button';
 

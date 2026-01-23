@@ -1,11 +1,9 @@
 import ReactMarkdown from 'react-markdown';
 import { ReactMarkdownProps } from 'react-markdown/lib/complex-types';
 import remarkGfm from 'remark-gfm';
-import { A } from './a';
-import { Ul } from './ul';
-import { Ol } from './ol';
 import { Blockquote } from './blockquote';
 import { Separator } from './separator';
+import Link from 'next/link';
 
 interface Props {
   markdown: string;
@@ -28,14 +26,19 @@ const MarkdownToHtml = ({ markdown }: Props) => {
         p: (props: ReactMarkdownProps) => <p {...props} />,
         strong: (props: ReactMarkdownProps) => <strong {...props} />,
         a: (props: ReactMarkdownProps) => (
-          <A
+          <Link
             href={(props.node?.properties?.href as string) || '#'}
+            className='scroll-m-20 md:text-lg text-primary hover:underline'
             {...props}
           />
         ),
         blockquote: (props: ReactMarkdownProps) => <Blockquote {...props} />,
-        ul: (props: ReactMarkdownProps) => <Ul {...props} />,
-        ol: (props: ReactMarkdownProps) => <Ol {...props} />,
+        ul: (props: ReactMarkdownProps) => (
+          <ul className='ml-6 list-disc [&>li]:mt-1'>{props.children}</ul>
+        ),
+        ol: (props: ReactMarkdownProps) => (
+          <ol className='ml-6 list-disc [&>li]:mt-1'>{props.children}</ol>
+        ),
         hr: () => <Separator />,
         table: (props: ReactMarkdownProps) => (
           <div className='w-full overflow-x-auto'>

@@ -8,7 +8,6 @@ import {
 } from '@/components/ui/breadcrumb';
 import BotoesCarrinho from './botoes-carrinho';
 import TableCarrinho from './table-carrinho';
-import { H1 } from '@/components/ui/h1';
 
 import type { Metadata } from 'next';
 
@@ -55,7 +54,9 @@ const Carrinho = () => {
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
-        <H1 className='text-center'>Carrinho de compras</H1>
+        <h1 className='scroll-m-20 text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-wide text-center'>
+          Carrinho de compras
+        </h1>
         <TableCarrinho />
         <BotoesCarrinho />
       </section>

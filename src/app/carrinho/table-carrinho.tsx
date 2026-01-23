@@ -1,6 +1,5 @@
 'use client';
 import { Button } from '@/components/ui/button';
-import { H2 } from '@/components/ui/h2';
 import {
   Select,
   SelectContent,
@@ -49,7 +48,7 @@ export default function TableCarrinho() {
                 <TableCell className='py-2.5 md:py-3 font-medium space-y-3 md:space-y-0'>
                   <Link
                     href={`/produto/${generateUrl(
-                      `${produto.item.nome}-${produto.item.sku}`
+                      `${produto.item.nome}-${produto.item.sku}`,
                     )}`}
                     className='group flex gap-3 items-center'
                   >
@@ -150,7 +149,9 @@ export default function TableCarrinho() {
         </Table>
       ) : (
         <div className='flex items-center flex-col gap-3 min-h-96 justify-center'>
-          <H2 className='text-center'>Seu carrinho está vazio.</H2>
+          <h2 className='scroll-m-20 text-primary text-2xl md:text-3xl lg:text-4xl font-semibold tracking-wide text-center'>
+            Seu carrinho está vazio.
+          </h2>
           <Button asChild>
             <Link href='/'>Ver mais produtos</Link>
           </Button>

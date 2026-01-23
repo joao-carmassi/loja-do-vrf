@@ -11,9 +11,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { H1 } from '@/components/ui/h1';
 import { Label } from '@/components/ui/label';
-import { P } from '@/components/ui/p';
 import { Separator } from '@/components/ui/separator';
 import {
   Sheet,
@@ -54,7 +52,7 @@ function AsideEProdutos({
 
   const handleSubcategoriaChange = (subcategoria: string) => {
     setSubcategoriaSelecionada((prev) =>
-      prev === subcategoria ? '' : subcategoria
+      prev === subcategoria ? '' : subcategoria,
     );
   };
 
@@ -90,7 +88,7 @@ function AsideEProdutos({
           setQuantidadeItems((prev) => prev + itemsPorPagina);
         }
       },
-      { threshold: 0 }
+      { threshold: 0 },
     );
     observer.observe(refUltimoItem.current);
     return () => observer.disconnect();
@@ -102,7 +100,9 @@ function AsideEProdutos({
         <aside className='px-8 min-w-56 sticky top-[5.75rem] h-fit hidden md:block space-y-6 overflow-y-auto max-h-container pb-12'>
           {subcategorias && subcategorias.length > 1 && (
             <div className='space-y-3'>
-              <P className='font-semibold'>Subcategoria:</P>
+              <p className='scroll-m-20 md:text-lg font-semibold'>
+                Subcategoria:
+              </p>
               <ul className='space-y-4'>
                 <li className='flex items-center gap-2'>
                   <Checkbox
@@ -137,7 +137,7 @@ function AsideEProdutos({
           )}
           <>
             <div className='space-y-3 '>
-              <P className='font-semibold'>Marca:</P>
+              <p className='scroll-m-20 md:text-lg font-semibold'>Marca:</p>
               <ul className='space-y-4'>
                 <li className='flex items-center gap-2'>
                   <Checkbox
@@ -177,11 +177,13 @@ function AsideEProdutos({
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <H1 className='hidden'>{categoria}</H1>
+          <h1 className='scroll-m-20 text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-wide hidden'>
+            {categoria}
+          </h1>
           <div className='flex justify-end'>
             <Sheet>
               <SheetTrigger asChild>
-                <Button className='md:hidden' variant='outline' size={'sm'}>
+                <Button className='md:hidden' variant='base' size={'sm'}>
                   <FilterIcon /> Filtros
                 </Button>
               </SheetTrigger>
@@ -192,7 +194,9 @@ function AsideEProdutos({
                     <div className='space-y-6'>
                       {subcategorias && subcategorias.length > 1 && (
                         <div className='space-y-3 '>
-                          <P className='font-semibold'>Subcategoria:</P>
+                          <p className='scroll-m-20 md:text-lg font-semibold'>
+                            Subcategoria:
+                          </p>
                           <ul className='space-y-4'>
                             <li className='flex items-center gap-2'>
                               <Checkbox
@@ -240,7 +244,9 @@ function AsideEProdutos({
                         subcategorias.length > 1 && <Separator />}
                       <>
                         <div className='space-y-3 '>
-                          <P className='font-semibold'>Marca:</P>
+                          <p className='scroll-m-20 md:text-lg font-semibold'>
+                            Marca:
+                          </p>
                           <ul className='space-y-4'>
                             <li className='flex items-center gap-2'>
                               <Checkbox
@@ -296,9 +302,9 @@ function AsideEProdutos({
                   );
                 })
             ) : (
-              <P className='w-full'>
+              <p className='md:text-lg w-full'>
                 Nenhum produto encontrado para os filtros selecionados.
-              </P>
+              </p>
             )}
           </div>
         </div>

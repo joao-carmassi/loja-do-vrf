@@ -10,9 +10,7 @@ import {
 } from '@/components/ui/breadcrumb';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
-import { H1 } from '@/components/ui/h1';
 import { Label } from '@/components/ui/label';
-import { P } from '@/components/ui/p';
 import {
   Sheet,
   SheetContent,
@@ -45,7 +43,7 @@ function AsideEProdutos({
 
   const produtosFiltrados = selectedCategorias
     ? produtos.filter((produto) =>
-        produto.categoria.includes(selectedCategorias)
+        produto.categoria.includes(selectedCategorias),
       )
     : produtos;
 
@@ -60,7 +58,7 @@ function AsideEProdutos({
           setQuantidadeItems((prev) => prev + itemsPorPagina);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
     observer.observe(refUltimoItem.current);
     return () => observer.disconnect();
@@ -71,7 +69,7 @@ function AsideEProdutos({
       <div className='flex gap-3'>
         <aside className='px-8 min-w-56 sticky top-[5.75rem] h-fit hidden md:block space-y-6 overflow-y-auto max-h-container pb-12'>
           <div className='space-y-3 '>
-            <P className='font-semibold'>Categoria:</P>
+            <p className='scroll-m-20 md:text-lg font-semibold'>Categoria:</p>
             <ul className='space-y-4'>
               <li className='flex items-center gap-2'>
                 <Checkbox
@@ -88,7 +86,7 @@ function AsideEProdutos({
                     checked={selectedCategorias === categoria}
                     onCheckedChange={() =>
                       setSelectedCategorias((prev) =>
-                        prev === categoria ? '' : categoria
+                        prev === categoria ? '' : categoria,
                       )
                     }
                   />
@@ -110,9 +108,9 @@ function AsideEProdutos({
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <H1 className='capitalize p-4 bg-secondary w-fit rounded-lg hidden'>
+          <h1 className='scroll-m-20 text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-wide capitalize p-4 bg-secondary w-fit rounded-lg hidden'>
             {marca}
-          </H1>
+          </h1>
           <Image
             src={`/imgs/marcas/${marca.toUpperCase()}.png`}
             alt={marca}
@@ -132,7 +130,9 @@ function AsideEProdutos({
                   <SheetTitle hidden>Filtros</SheetTitle>
                   <SheetDescription asChild>
                     <div className='space-y-3 '>
-                      <P className='font-semibold'>Categoria:</P>
+                      <p className='scroll-m-20 md:text-lg font-semibold'>
+                        Categoria:
+                      </p>
                       <ul className='space-y-4'>
                         <li className='flex items-center gap-2'>
                           <Checkbox
@@ -154,7 +154,7 @@ function AsideEProdutos({
                               checked={selectedCategorias === categoria}
                               onCheckedChange={() =>
                                 setSelectedCategorias((prev) =>
-                                  prev === categoria ? '' : categoria
+                                  prev === categoria ? '' : categoria,
                                 )
                               }
                             />
