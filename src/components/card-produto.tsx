@@ -44,7 +44,7 @@ function CardProduto({ produto, cardOnMenu, ref }: Props): React.ReactNode {
           </CardHeader>
           <CardContent className='space-y-2 md:px-6'>
             <div>
-              <h2 className='scroll-m-20 tracking-wide text-base lg:text-lg text-foreground! font-bold break-words line-clamp-2'>
+              <h2 className='scroll-m-20 tracking-wide text-base 2xl:text-lg text-foreground! font-bold break-words line-clamp-2'>
                 {produto.nome}
               </h2>
               <p className='text-muted-foreground text-sm break-words line-clamp-1'>
