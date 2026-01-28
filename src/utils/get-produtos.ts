@@ -22,7 +22,7 @@ getProdutos.categorias.forEach((categoria) => {
       ...new Set(
         getProdutos.produtos
           .filter((produto) => produto.categoria === categoria)
-          .map((produto) => produto.subcategoria)
+          .map((produto) => produto.subcategoria),
       ),
     ].filter(Boolean),
   };

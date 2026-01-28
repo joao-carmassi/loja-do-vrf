@@ -3,7 +3,8 @@
   "version": "2.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "build-excel": "node scripts/excel-to-json.mjs",
+    "dev": "npm run build-excel && next dev --turbopack",
     "build": "eslint && next build --turbopack",
     "start": "next start",
     "lint": "eslint"
@@ -26,6 +27,7 @@
     "embla-carousel-auto-scroll": "^8.6.0",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
+    "exceljs": "^4.4.0",
     "lucide-react": "^0.544.0",
     "motion": "^12.24.10",
     "next": "^16.0.10",
