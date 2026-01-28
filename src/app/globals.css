@@ -118,8 +118,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 @theme inline {
-  --height-container: calc(100svh - 4.125rem);
-  --height-container-mobile: calc(100svh - 4rem);
+  --height-container: calc(100svh - 6.5rem);
+  --height-container-mobile: calc(100svh - 8rem);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -603,10 +603,14 @@ body::-webkit-scrollbar-thumb {
 
   @keyframes aurora-background {
     from {
-      background-position: 50% 50%, 50% 50%;
+      background-position:
+        50% 50%,
+        50% 50%;
     }
     to {
-      background-position: 350% 50%, 350% 50%;
+      background-position:
+        350% 50%,
+        350% 50%;
     }
   }
 
