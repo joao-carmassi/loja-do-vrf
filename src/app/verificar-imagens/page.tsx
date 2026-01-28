@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
@@ -31,6 +31,8 @@ export default function VerificarImagensPage(): React.ReactNode {
   const [imagensEnviadas, setImagensEnviadas] = useState<Set<string>>(
     new Set(),
   );
+  const excelInputRef = useRef<HTMLInputElement>(null);
+  const imagensInputRef = useRef<HTMLInputElement>(null);
   const [resultado, setResultado] = useState<ResultadoVerificacao | null>(null);
   const [excelCarregado, setExcelCarregado] = useState(false);
   const [imagensCarregadas, setImagensCarregadas] = useState(false);
@@ -172,9 +174,9 @@ export default function VerificarImagensPage(): React.ReactNode {
     if (!resultado || resultado.imagensFaltantes.length === 0) return;
 
     const csvContent = [
-      'ID,SKU,Nome,Imagem Esperada',
+      'ID;SKU;Nome;Imagem Esperada',
       ...resultado.imagensFaltantes.map(
-        (p) => `"${p.id}","${p.sku}","${p.nome}","${p.id}.png"`,
+        (p) => `"${p.id}";"${p.sku}";"${p.nome}";"${p.id}.png"`,
       ),
     ].join('\n');
 
@@ -195,6 +197,13 @@ export default function VerificarImagensPage(): React.ReactNode {
     setResultado(null);
     setExcelCarregado(false);
     setImagensCarregadas(false);
+    // Reseta os inputs de arquivo para permitir novo upload
+    if (excelInputRef.current) {
+      excelInputRef.current.value = '';
+    }
+    if (imagensInputRef.current) {
+      imagensInputRef.current.value = '';
+    }
   }, []);
 
   return (
@@ -219,6 +228,7 @@ export default function VerificarImagensPage(): React.ReactNode {
             <CardContent>
               <label className='block'>
                 <input
+                  ref={excelInputRef}
                   type='file'
                   accept='.xlsx,.xls'
                   onChange={handleExcelUpload}
@@ -265,6 +275,7 @@ export default function VerificarImagensPage(): React.ReactNode {
             <CardContent>
               <label className='block'>
                 <input
+                  ref={imagensInputRef}
                   type='file'
                   accept='image/*'
                   multiple
@@ -315,7 +326,7 @@ export default function VerificarImagensPage(): React.ReactNode {
           </Button>
           <Button
             size='lg'
-            variant='outline'
+            variant='base'
             onClick={limparTudo}
             disabled={!excelCarregado && !imagensCarregadas}
           >
@@ -430,8 +441,7 @@ export default function VerificarImagensPage(): React.ReactNode {
           </CardHeader>
           <CardContent className='text-sm text-muted-foreground space-y-2'>
             <p>
-              1. <strong>Carregue o Excel</strong> - O arquivo deve ter uma
-              coluna &quot;id&quot; com o identificador de cada produto
+              1. <strong>Carregue o Excel</strong>
             </p>
             <p>
               2. <strong>Selecione a pasta de imagens</strong> - O sistema irá
@@ -448,7 +458,7 @@ export default function VerificarImagensPage(): React.ReactNode {
             <p className='mt-4 p-3 bg-muted rounded-lg'>
               <strong>Formato esperado:</strong> Para um produto com ID
               &quot;ABC123&quot;, o sistema espera encontrar uma imagem chamada
-              &quot;ABC123.png&quot; (ou qualquer outra extensão de imagem)
+              &quot;ABC123.png&quot;
             </p>
           </CardContent>
         </Card>
