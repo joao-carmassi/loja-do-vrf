@@ -95,6 +95,7 @@ const Produtos = (): React.ReactNode => {
     },
     sku: produto.sku,
     category: produto.categoria,
+    gtin: Array.isArray(produto.codigos) ? produto.codigos : [produto.codigos],
     offers: {
       '@type': 'Offer',
       availability: 'https://schema.org/PreOrder',
